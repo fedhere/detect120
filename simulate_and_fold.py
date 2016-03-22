@@ -3,11 +3,12 @@ import numpy as np
 from scipy import signal
 import pylab as pl
 
-# default input: 120 Hz sine wave from 0 to 150 with magnitude of 1 and no phase
+# default input: 120 Hz sine wave from 0 to 150 seconds (stepsize=1000) with magnitude of 1 and no phase
 # output: a sine wave or square wave shifted up by its magnitude
 def sim_wave(w_type='sine', 
-			time=np.linspace(0, 150, 150*1000, endpoint=False), 
-			s_freq=120, mag=1, phase=0):
+	time=np.linspace(0, 150, 150*1000, endpoint=False), 
+	s_freq=120, mag=1, phase=0):
+
 	if w_type=='sine':
 		wave = mag*np.sin(2*np.pi*s_freq*time+phase)+mag
 	elif w_type=='square':
@@ -17,10 +18,10 @@ def sim_wave(w_type='sine',
 		return
 	return wave
 
-# default input: flux is a
+# default input: same as the sim_wave function
 def folding_test(w_type='sine', 
-				time=np.linspace(0, 150, 150*1000, endpoint=False), 
-				s_freq=120, mag=1, phase=0):
+	time=np.linspace(0, 150, 150*1000, endpoint=False), 
+	s_freq=120, mag=1, phase=0):
 
 	# simulate the wave first
 	flux = sim_wave(w_type=w_type, time=time, s_freq=s_freq, mag=mag, phase=phase)
