@@ -24,10 +24,8 @@ s = json.load( open("fbb_matplotlibrc.json") )
 pl.rcParams.update(s)
 
 
-EXTRACT=True
-EXTRACT=False
-READ=True
-#READ=False
+REREAD=False
+REREAD=True
 DETREND=0
 nmax=100
 #lmax = 10
@@ -249,8 +247,8 @@ def read_to_lc(x1,y1,x2,y2, flist, fname, imshape, fft=False, c='w',  showme=Fal
 
     if showme :
         plotwindows(x1,y1,x2,y2, flist[0], c=c)
-    rereadnow = EXTRACT
-    if not EXTRACT:
+    rereadnow = REREAD
+    if not REREAD:
         try:
             if not fft:
                 a = pkl.load(open(fullfname+".pkl",'rb'))
@@ -588,6 +586,7 @@ if __name__=='__main__':
     
     filepattern = args[0]
     impath = os.getenv("UIdata") + filepattern
+    print ("Using image path: %s"%impath)
     
     #"/groundtest1/ESB_s119.75*" 
     img = glob.glob(impath+"*0000.raw")[0]
@@ -643,7 +642,7 @@ if __name__=='__main__':
 
     print ("")
 
-    if READ and os.path.isfile(bsoutfile) and \
+    if not REREAD and os.path.isfile(bsoutfile) and \
        os.path.isfile(coordsoutfile):
         print ("reading old data file", bsoutfile)
         bs = np.load(bsoutfile)
@@ -701,11 +700,10 @@ if __name__=='__main__':
             bs = bsnew
 
             allightsnew = np.delete(allights[:lmax],  badindx, 0)
-            allights = allightsnew[:lmax-len(badindx)]
+            allights = allightsnew
+
             fsnew = np.delete(fs, badindx, 0)
             fs = fsnew
-
-        else: allights = allights[:lmax]
         np.save(coordsoutfile, allights)
         np.save(bsoutfile, bs)
         
@@ -742,20 +740,19 @@ if __name__=='__main__':
          evals_cs = evals.cumsum()
          evecs = pca.components_
 
+
          figrows = min(60,(int(lts/2)+1))
          fig = pl.figure(figsize = (10, figrows))
          spax = []
          for i,Xc in enumerate(evecs):
+             if evals_cs[i] > 0.91:
+                 break
+             x2 = 0 if i%2 == 0 else 2
              spax.append(fig.add_subplot(figrows, 2, i+1))
              sparklines(Xc, "%.3f"%evals_cs[i], spax[i],
                         maxminloc=options.fft)
-             if evals_cs[i] > 0.9:
-                 break
-             
-             
-             
 
-         print ("Number of PCA component to reconstruct 90% signal: {0}".format(i+1))
+         print ("Number of PCA component to reconstruct 90% signal: {0}".format(i))
          if not options.fft: pl.savefig(filepattern+"_PCA_N%d.pdf"%lmax)
          else: pl.savefig(filepattern+"_PCA_fft_N%d.pdf"%lmax)
 
@@ -843,7 +840,7 @@ if __name__=='__main__':
          axs1.imshow(img,  interpolation='nearest')
          axs1.set_xlim(0, axs1.get_xlim()[1])
          axs1.set_ylim(axs1.get_ylim()[0], 0)
-
+         print (len(allights))
          for i,cc in enumerate(allights):
              x1,x2=int(cc[0])-options.aperture*3,\
                     int(cc[0])+options.aperture*3
