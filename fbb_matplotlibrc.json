@@ -1,0 +1,23 @@
+{
+  "lines.linewidth": 2.0,
+  "axes.edgecolor": "#bcbcbc",
+  "patch.linewidth": 1.0,
+  "legend.fancybox": true,
+  "axes.color_cycle": [
+    "SteelBlue",
+    "IndianRed",
+    "Green",
+    "DarkOrange",
+    "MediumTurquoise",
+    "gold",
+    "#E24A33",
+"Teal",  "YellowGreen", "Plum",  "SlateBlue", "RoyalBlue", "Violet", "Tomato", "RosyBrown","Blue", "BlueViolet", "Brown", "DarkViolet","CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "SeaGreen",  "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGreen", "DarkGray", "DarkGoldenRod", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "DarkOrange", "DarkOrchid", "DarkRed", "Olive","DarkSlateBlue", "DarkSlateGray", "DarkTurquoise",  "Purple", "DeepPink", "DeepSkyBlue", "DimGray", "DodgerBlue", "FireBrick", "Turquoise", "ForestGreen", "Fuchsia", "OliveDrab", "Gold", "GoldenRod", "Gray", "Green", "GreenYellow","IndianRed", "Indigo",  "SteelBlue", "Khaki", "Lavender",  "LawnGreen","SpringGreen",  "Lime", "LimeGreen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue",  "Navy",  "OliveDrab", "Orange", "OrangeRed", "Orchid",  "Peru", "Pink",  
+"SlateBlue", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "Sienna", "Silver", "SkyBlue", "Purple", "SlateGray", "SpringGreen", "SteelBlue", "Tan", "Turquoise"],
+  "axes.facecolor": "#ffffff",
+  "axes.labelsize": "large",
+  "axes.grid": false,
+  "patch.edgecolor": "#ffffff",
+  "axes.titlesize": "x-large",
+  "svg.embed_char_paths": "path",
+  "examples.directory": ""
+}
