@@ -18,6 +18,7 @@ def divisorGenerator(n):
 
 
 def findsize (imgfile, nbands=3, filepattern=None):
+    print (filepattern+"_imgsize.txt")
     if filepattern:
         if os.path.isfile(filepattern+"_imgsize.txt"):
             imgsize = json.load(open(filepattern+"_imgsize.txt",'r'))

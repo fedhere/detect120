@@ -19,11 +19,11 @@ import configstack as cfg
 SAVEALL = True
 SAVEALL = False
 REREAD = False
-#REREAD = True
+REREAD = True
 REWINDOW = False
-#REWINDOW = True
+REWINDOW = True
 REGIF = False
-#REGIF = True
+REGIF = True
 
 ANALIZE = False
 DETREND =0
@@ -129,14 +129,16 @@ def read_to_lc(c, aperture, flist, fname, imgeom, col='w'):
     mx = np.argmax([R,G,B])
     colors= ['Red','Yellow','Blue']
     print (colors[mx], ': R: {0:.2f} G: {1:.2f} B: {2:.2f}'.format(1, G/R, B/R))
+    '''
     if REREAD:
         pkl.dump(a,open('lcvs/'+fname+"_%d_%d.pkl"%(c[0],c[1]),"wb"),
                  protocol=2)
         pkl.dump(rgb,open('lcvs/'+fname+"_rgb_%d_%d.pkl"%(c[0],c[1]),"wb"),
                  protocol=2)
+    '''
     if REGIF:  writeGif('lcvs/'+fname+"_%d_%d.gif"%(c[0],c[1]),
                         images, dither=0)
-
+    
     return a, rgb
 
 def get_plot_lca (c, aperture, flist, fname, imgeom, col='k'):
@@ -296,13 +298,13 @@ fname = flist[0].split("/")[-1]
 stack = stackem((cfg.imgpars['nrow'], cfg.imgpars['ncol'],
                  cfg.imgpars['nband']), flist[:nstack], fname)
 '''
-
 if REWINDOW:
     wv = getem(stack, [])
     pkl.dump(wv, open('lcvs/'+fname+"_windows.pkl","wb"),
              protocol=2)
 else:
     wv = pkl.load(open('lcvs/'+fname+"_windows.pkl","rb"))
+
 fig, axs = pl.subplots(1,1,figsize=(10,10))
 
 axs.imshow(stack.mean(axis=2), interpolation='nearest', cmap='bone')
@@ -316,15 +318,21 @@ for i, coords in enumerate(wv.clist):
     axs.plot([x+ew, x+ew], [y-ew, y+ew], '-', color='DarkOrange')    
     axs.plot([x+ew, x-ew], [y+ew, y+ew], '-', color='DarkOrange')    
     axs.plot([x-ew, x+ew], [y-ew, y-ew], '-', color='DarkOrange')        
-    
+
 pl.savefig('stacks/%s_%d.png'%(fname.replace('.raw','_N_windows'),
                                nstack))
 pl.show()
 pl.close()
+'''
+fig, axs = pl.subplots(1,1,figsize=(10,10))
+
 pl.imshow(stack, interpolation='nearest', cmap='bone')
 pl.savefig('stacks/%s_%d.png'%(fname.replace('.raw','_N'),
                                nstack))
 
+np.save('stacks/%s_%d.npy'%(fname.replace('.raw',''),
+                               nstack), stack)
+'''
 fname = flist[0].split("/")[-1][:-8]
 n = len(wv.newlist)
 for i, coords in enumerate(wv.newlist):
@@ -333,7 +341,6 @@ for i, coords in enumerate(wv.newlist):
                 (cfg.imgpars['nrow'],
                 cfg.imgpars['ncol'],
                  cfg.imgpars['nband']), col='w')
-
-
-
 '''
+
+

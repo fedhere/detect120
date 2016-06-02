@@ -24,8 +24,10 @@ s = json.load( open("fbb_matplotlibrc.json") )
 pl.rcParams.update(s)
 
 
-REREAD=False
-REREAD=True
+EXTRACT=True
+EXTRACT=False
+READ=True
+#READ=False
 DETREND=0
 nmax=100
 #lmax = 10
@@ -247,8 +249,8 @@ def read_to_lc(x1,y1,x2,y2, flist, fname, imshape, fft=False, c='w',  showme=Fal
 
     if showme :
         plotwindows(x1,y1,x2,y2, flist[0], c=c)
-    rereadnow = REREAD
-    if not REREAD:
+    rereadnow = EXTRACT
+    if not EXTRACT:
         try:
             if not fft:
                 a = pkl.load(open(fullfname+".pkl",'rb'))
@@ -262,7 +264,7 @@ def read_to_lc(x1,y1,x2,y2, flist, fname, imshape, fft=False, c='w',  showme=Fal
                 afft[0] = min(a)
         except:
             rereadnow = True
-            print ("missing files: changing reread to True")
+            #print ("missing files: changing reread to True")
         
     if rereadnow:
         a = np.ones(nmax)*np.nan
@@ -283,10 +285,26 @@ def read_to_lc(x1,y1,x2,y2, flist, fname, imshape, fft=False, c='w',  showme=Fal
             if not os.path.isfile(fullfname+"_fft.pkl"):
                 pkl.dump(a, open(fullfname+".pkl","wb"))
             
-    f0 = np.fromfile(flist[0],
+    try:
+        f0 = np.fromfile(flist[0],
                      dtype=np.uint8).reshape(imshape['nrows'],
                                              imshape['ncols'],
                                      imshape['nbands'])[y1:y2,x1:x2]
+    except IndexError:
+        print ("something is wrong with the file list ", flist)
+    '''
+    print (flist[0])
+    print (np.fromfile(flist[0],
+                       dtype=np.uint8).reshape(imshape['nrows'],
+                                               imshape['ncols'],
+                                               imshape['nbands']))
+    print (np.fromfile(flist[0],
+                      dtype=np.uint8).reshape(imshape['nrows'],
+                                              imshape['ncols'],
+                                              imshape['nbands'])[y1:y2,x1:x2])
+        
+        #print (glob.glob(impath+"*.raw"))
+    '''
     area = (x2-x1)*(y2-y1)
     if verbose:
         print ('mean: {0:.2f}, stdev: {1:.2f}, area: {2:d} pixels, {3:d} images, average flux/pixel: {4:.1f}'.format(
@@ -404,7 +422,7 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
     else:
         outphasesfile = open(filepattern+"_phases_N%d.dat"%lmax, "w")        
     print ("#index,x,y,freq,phase", file=outphasesfile)
-    figsp = pl.figure(figsize = (10,(int(lmax/2)+1)))
+    figsp = pl.figure(figsize = (10,(int(lmax/4)+1)))
     axsp = []
     goodcounter = 0
 
@@ -524,8 +542,14 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
             print ("%d,%.2f,%.2f,%.2f,%.2f"%(i, phases[2][i], phases[3][i], phases[0][i], phases[5][i]),
                    file=outphasesfile)
 
-    if not fft: figsp.savefig(filepattern + "_km_assignments_N%d.pdf"%lmax)
-    else: figsp.savefig(filepattern + "_km_assignments_fft_N%d.pdf"%lmax)
+    if not fft: #figsp.savefig(
+        figname = filepattern + "_km_assignments_N%d.pdf"%lmax
+    else: #figsp.savefig(
+        figname = filepattern + "_km_assignments_fft_N%d.pdf"%lmax
+    try:
+        figsp.savefig(figname)
+    except ValueError: 
+        print ("could not save figure %s"%figname)
     
     print ("")
     if newntot == 0:
@@ -533,14 +557,23 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
         sys.exit()
     axs1.set_title("%d good windows"%newntot)
 
-    if not fft: fig2.savefig(filepattern + "_goodwindows_N%d.pdf"%lmax)
-    else: fig2.savefig(filepattern + "_goodwindows_fft_N%d.pdf"%lmax)    
-    
+    if not fft: #fig2.savefig(
+        figname = filepattern + "_goodwindows_N%d.pdf"%lmax
+    else: #fig2.savefig(
+        figname = filepattern + "_goodwindows_fft_N%d.pdf"%lmax
+    try:
+        fig2.savefig(figname)
+    except ValueError: 
+        print ("could not save figure %s"%figname)    
     
     ax[-1].set_xlabel("seconds")
 
-    if not fft: fig.savefig(filepattern + "_goodwindows_fits_N%d.pdf"%lmax)  
-    else:  fig.savefig(filepattern + "_goodwindows_fits_fft_N%d.pdf"%lmax)
+    if not fft: figname = filepattern + "_goodwindows_fits_N%d.pdf"%lmax
+    else: figname = filepattern + "_goodwindows_fits_fft_N%d.pdf"%lmax
+    try:
+        figsp.savefig(figname)
+    except ValueError: 
+        print ("could not save figure %s"%figname)
     
     print ("\nActual number of windows well fit by a sine wave (chisq<1): %d"%newntot)
     #sys.exit()
@@ -587,13 +620,16 @@ if __name__=='__main__':
     filepattern = args[0]
     impath = os.getenv("UIdata") + filepattern
     print ("Using image path: %s"%impath)
-    
+
     #"/groundtest1/ESB_s119.75*" 
     img = glob.glob(impath+"*0000.raw")[0]
     
     outdir = '/'.join(filepattern.split('/')[:-1])
     print ("Output directory", outdir)
-    if not os.path.isdir(outdir): os.system('mkdir -p %s '%outdir)
+    if not os.path.isdir(outdir): 
+        os.system('mkdir -p %s '%outdir)
+        os.system('mkdir %s '%outdir+"/pickles")
+        os.system('mkdir %s '%outdir+"/gifs")
 
     logfile = open(filepattern+".log", "a")
     print ("Logfile:", logfile)
@@ -603,7 +639,7 @@ if __name__=='__main__':
     imsize  = findsize(img, filepattern = filepattern)
     print ("Image size: ", imsize)
 
-    flist=sorted(glob.glob(impath+"*.raw"))
+    flist = sorted(glob.glob(impath+"*.raw"))
     print ("Number of timestamps (files): %d"%len(flist))
     flist = flist[options.skipfiles:]
 
@@ -633,7 +669,7 @@ if __name__=='__main__':
     else:
         kmresultfile = filepattern + "_kmresult_N%d.pkl" %lmax
         
-    fig = pl.figure(figsize = (10,(int(lmax/2)+1)))
+    figspk = pl.figure(figsize = (10,(int(lmax/2)+1)))
     ax = []
     
     bs = np.zeros((lmax, nmax))
@@ -642,7 +678,7 @@ if __name__=='__main__':
 
     print ("")
 
-    if not REREAD and os.path.isfile(bsoutfile) and \
+    if READ and os.path.isfile(bsoutfile) and \
        os.path.isfile(coordsoutfile):
         print ("reading old data file", bsoutfile)
         bs = np.load(bsoutfile)
@@ -656,7 +692,7 @@ if __name__=='__main__':
 
             x2 = 0 if i%2 == 0 else 2
             #ax.append(pl.subplot2grid((25,3), ((i/2)+1, x2+1)))
-            ax.append(fig.add_subplot(lmax/2+1,2,i+1))
+            ax.append(figspk.add_subplot(lmax/2+1,2,i+1))
             #if False:    
             bs[i], fs[i]  = get_plot_lca (int(cc[0])-options.aperture,
                                   int(cc[1])-options.aperture, 
@@ -686,7 +722,11 @@ if __name__=='__main__':
                     .format(len(bs[0])*4,'min/max'), 
                 transform = ax[1].transAxes, fontsize=15)
 
-        pl.savefig(filepattern+"_sparklines_lcv_N%d.pdf"%lmax)
+        try: 
+            figspk.savefig(filepattern+"_sparklines_lcv_N%d.pdf"%lmax)
+        except ValueError:
+            print ("could not save", filepattern+"_sparklines_lcv_N%d.pdf"%lmax)
+            
         if options.showme: pl.show()
 
         badindx = []
@@ -700,10 +740,11 @@ if __name__=='__main__':
             bs = bsnew
 
             allightsnew = np.delete(allights[:lmax],  badindx, 0)
-            allights = allightsnew
-
+            allights = allightsnew[:lmax-len(badindx)]
             fsnew = np.delete(fs, badindx, 0)
             fs = fsnew
+
+        else: allights = allights[:lmax]
         np.save(coordsoutfile, allights)
         np.save(bsoutfile, bs)
         
@@ -740,21 +781,22 @@ if __name__=='__main__':
          evals_cs = evals.cumsum()
          evecs = pca.components_
 
-
          figrows = min(60,(int(lts/2)+1))
-         fig = pl.figure(figsize = (10, figrows))
+         figpca = pl.figure(figsize = (10, figrows))
          spax = []
          for i,Xc in enumerate(evecs):
-             if evals_cs[i] > 0.91:
-                 break
-             x2 = 0 if i%2 == 0 else 2
-             spax.append(fig.add_subplot(figrows, 2, i+1))
+             spax.append(figpca.add_subplot(figrows, 2, i+1))
              sparklines(Xc, "%.3f"%evals_cs[i], spax[i],
                         maxminloc=options.fft)
+             if evals_cs[i] > 0.9:
+                 break
+             
+             
+             
 
-         print ("Number of PCA component to reconstruct 90% signal: {0}".format(i))
-         if not options.fft: pl.savefig(filepattern+"_PCA_N%d.pdf"%lmax)
-         else: pl.savefig(filepattern+"_PCA_fft_N%d.pdf"%lmax)
+         print ("Number of PCA component to reconstruct 90% signal: {0}".format(i+1))
+         if not options.fft: figpca.savefig(filepattern+"_PCA_N%d.pdf"%lmax)
+         else: figpca.savefig(filepattern+"_PCA_fft_N%d.pdf"%lmax)
 
          print ("\n### Starting K-Means clustering")
 
@@ -840,7 +882,7 @@ if __name__=='__main__':
          axs1.imshow(img,  interpolation='nearest')
          axs1.set_xlim(0, axs1.get_xlim()[1])
          axs1.set_ylim(axs1.get_ylim()[0], 0)
-         print (len(allights))
+
          for i,cc in enumerate(allights):
              x1,x2=int(cc[0])-options.aperture*3,\
                     int(cc[0])+options.aperture*3
@@ -921,9 +963,14 @@ if __name__=='__main__':
     ax.set_xlim(-0.5,9.5)
     ax.set_xlabel("K-means cluster")
     ax.set_ylabel(r"phase ($\pi$)")
-    if not options.fft: pl.savefig(filepattern + "_km_phases_N%d.png"%lmax) 
-    else:  pl.savefig(filepattern + "_km_phases_fft_N%d.png"%lmax) 
-    
+    if options.fft: figname = filepattern + "_km_phases_fft_N%d.png"%lmax 
+#pl.savefig(filepattern + "_km_phases_N%d.png"%lmax) 
+    else:  figname = filepattern + "_km_phases_N%d.png"%lmax 
+#pl.savefig(
+    try:
+        pl.savefig(figname)
+    except ValueError: 
+        print ("could not save figure %s"%figname)    
 
     ax = pl.figure().add_subplot(111)
     cmap =  pl.cm.rainbow(phases[0][~np.isnan(phases[0])])
