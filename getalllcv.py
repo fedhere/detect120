@@ -92,7 +92,7 @@ def callplotw(xc, yc, i, ts, flist, aperture, imshape, fft=False,
    if stack is None:
        print ("no stack")
        ind = min([len(flist),10])
-       img = np.fromfile(flist[10],
+       img = np.fromfile(flist[ind],
                         dtype=np.uint8).reshape(imshape['nrows'],
                                                 imshape['ncols'],
                                                 imshape['nbands'])
