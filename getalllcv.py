@@ -71,11 +71,11 @@ def chisq(data, model):
 
 def makeGifLcPlot(x, y, ind, ts, aperture, fnameroot,
                   imshape, flist, showme=False, fft=False,
-                  stack=None):
+                  stack=None, outdir="./"):
 
     fig = callplotw(x, y, ind, ts, flist, aperture,
               imshape, fname = fnameroot,
-              giflen=160, stack=stack)
+                    giflen=160, stack=stack, outdir=outdir)
 
     if not fft: fig.savefig(fnameroot + "_%d_%d"%(x,y)+".png")
     else: fig.savefig(fnameroot + "_%d_%d"%(x,y)+"_fft.png")
@@ -85,7 +85,7 @@ def makeGifLcPlot(x, y, ind, ts, aperture, fnameroot,
         IPdisplay.Image(url=fnameroot + "_%04d_%04d"%(x,y)+".GIF")
     
 def callplotw(xc, yc, i, ts, flist, aperture, imshape, fft=False,
-              fname = None, giflen=40, stack=None):
+              fname = None, giflen=40, stack=None, outdir='./'):
 
    fig = pl.figure(figsize=(10,10))
    ax1 = fig.add_subplot(221)
@@ -119,8 +119,7 @@ def callplotw(xc, yc, i, ts, flist, aperture, imshape, fft=False,
                                 imshape['nbands'])[yc-22:yc+21,
                                                    xc-22:xc+21]) \
                  for f in flist[:giflen]]
-       fullfname = '/'.join(fname.split('/')[:-1])+ "/gifs/" + \
-                   fname.split('/')[-1]
+       fullfname = outdir + "/gifs/" + fname.split('/')[-1]
        
        writeGif(fullfname + "_%04d_%04d"%(xc,yc)+".GIF",
                 images, duration=0.01)
@@ -211,22 +210,20 @@ def sparklines(data, lab, ax, x=None, title=None,
         ax.text(1, 0.4, "%.1f"%(min(data)), fontsize = 10, 
                 transform = ax.transAxes, ha = 'right', color='IndianRed')
         ax.text(1, 0.7, "%.1f"%(max(data)), fontsize = 10, 
-                transform = ax.transAxes, ha = 'right', color='SteelBlue')        
-        
-
-
+                transform = ax.transAxes, ha = 'right', color='SteelBlue')  
+    
     return ((xmax, xmax1), xmin)
 
 def get_plot_lca (x1, y1, x2, y2, flist, fname, imshape,
-                  fft=False, c='w', verbose=True, showme=False):
+                  fft=False, c='w', verbose=True, showme=False, outdir='./'):
     if not fft:
         a = read_to_lc(x1, y1, x2, y2, flist, fname, imshape, fft=fft,
-                  showme=showme, c=c, verbose=verbose)
+                       showme=showme, c=c, verbose=verbose, outdir=outdir)
         afft = np.ones(a.size/2+1) * np.nan
 
     else:
         afft, a = read_to_lc(x1, y1, x2, y2, flist, fname, imshape, fft=fft,
-                  showme=showme, c=c, verbose=verbose)
+                  showme=showme, c=c, verbose=verbose, outdir=outdir)
         
     flux0=(a-np.nanmean(a))/np.nanstd(a)
     flux=flux0.copy()
@@ -242,10 +239,10 @@ def get_plot_lca (x1, y1, x2, y2, flist, fname, imshape,
     return flux0, afft
 
 
-def read_to_lc(x1,y1,x2,y2, flist, fname, imshape, fft=False, c='w',  showme=False, verbose = False):
+def read_to_lc(x1,y1,x2,y2, flist, fname, imshape, fft=False, c='w',
+               showme=False, verbose = False, outdir = './'):
 
-    fullfname = '/'.join(fname.split('/')[:-1])+ "/pickles/" + \
-                   fname.split('/')[-1]
+    fullfname = outdir + "/pickles/" + fname.split('/')[-1]
 
     if showme :
         plotwindows(x1,y1,x2,y2, flist[0], c=c)
@@ -387,8 +384,11 @@ def fit_freq(freq, ts):
 
 
 def fit_waves(filepattern, lmax, timeseries, transformed, km,
-              goodkmeanlabels, ntot, aperture, imsize, flist,
-              km_freqs, stack, bs, fft=False,   showme=False):
+              goodkmeanlabels, ntot, 
+              km_freqs, stack, bs,
+              aperture, imsize, flist,
+              fft=False,   showme=False,
+              outdir="./", outdir0="./"):
 
     newntot = 0
     j = 0
@@ -524,7 +524,7 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
                           imsize, flist,
                           showme = showme,
                           fft = fft,
-                          stack = stack)
+                          stack = stack, outdir=outdir0)
     
             x1,x2=int(phases[2][i])-options.aperture*3,\
                    int(phases[2][i])+options.aperture*3
@@ -543,9 +543,9 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
                    file=outphasesfile)
 
     if not fft: #figsp.savefig(
-        figname = filepattern + "_km_assignments_N%d.pdf"%lmax
+        figname = outdir + "/" + fnameroot + "_km_assignments.pdf"
     else: #figsp.savefig(
-        figname = filepattern + "_km_assignments_fft_N%d.pdf"%lmax
+        figname = outdir + "/" + fnameroot + "_km_assignments_fft.pdf"
     try:
         figsp.savefig(figname)
     except ValueError: 
@@ -557,10 +557,10 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
         sys.exit()
     axs1.set_title("%d good windows"%newntot)
 
-    if not fft: #fig2.savefig(
-        figname = filepattern + "_goodwindows_N%d.pdf"%lmax
-    else: #fig2.savefig(
-        figname = filepattern + "_goodwindows_fft_N%d.pdf"%lmax
+    if not fft: 
+        figname = outdir + "/" + fnameroot + "_goodwindows.pdf"
+    else: 
+        figname = outdir + "/" + fnameroot + "_goodwindows_fft.pdf"
     try:
         fig2.savefig(figname)
     except ValueError: 
@@ -568,8 +568,8 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
     
     ax[-1].set_xlabel("seconds")
 
-    if not fft: figname = filepattern + "_goodwindows_fits_N%d.pdf"%lmax
-    else: figname = filepattern + "_goodwindows_fits_fft_N%d.pdf"%lmax
+    if not fft: figname = outdir + "/" + fnameroot + "_goodwindows_fits.pdf"
+    else: figname = outdir + "/" + fnameroot + "_goodwindows_fits_fft.pdf"
     try:
         figsp.savefig(figname)
     except ValueError: 
@@ -608,8 +608,7 @@ if __name__=='__main__':
                       help='custer in fourier space')
     options,  args = parser.parse_args()
 
-    print ("options and arguments:", options,
-           args, len(args))
+    print ("options and arguments:", options, args)
     if len(args) != 1:
         sys.argv.append('--help')
         options,  args = parser.parse_args()
@@ -619,24 +618,28 @@ if __name__=='__main__':
     
     filepattern = args[0]
     impath = os.getenv("UIdata") + filepattern
-    print ("Using image path: %s"%impath)
+    print ("\n\nUsing image path: %s\n\n"%impath)
 
-    #"/groundtest1/ESB_s119.75*" 
     img = glob.glob(impath+"*0000.raw")[0]
-    
-    outdir = '/'.join(filepattern.split('/')[:-1])
-    print ("Output directory", outdir)
-    if not os.path.isdir(outdir): 
-        os.system('mkdir -p %s '%outdir)
-        os.system('mkdir %s '%outdir+"/pickles")
-        os.system('mkdir %s '%outdir+"/gifs")
+
+    fnameroot = filepattern.split('/')[-1]
 
     logfile = open(filepattern+".log", "a")
     print ("Logfile:", logfile)
     print ("\n\n\n\t\t%s"%str(datetime.datetime.now()), file=logfile)
     print ("options and arguments:", options,
            args, len(args), file=logfile)
-    imsize  = findsize(img, filepattern = filepattern)
+
+    if options.stack:
+        print ("(There is a stack", options.stack,")")
+        stack = np.load(options.stack)
+        imsize  = findsize(stack,
+                           filepattern=options.stack.replace('.npy','.txt'))
+    else:
+        stack = img
+        imsize  = findsize(img, filepattern=filepattern)
+            
+    
     print ("Image size: ", imsize)
 
     flist = sorted(glob.glob(impath+"*.raw"))
@@ -654,20 +657,30 @@ if __name__=='__main__':
     if options.lmax: lmax = min([lmax, options.lmax])
     print ("Max number of windows to use: %d"%lmax)
 
+
+    outdir0 = '/'.join(filepattern.split('/')[:-1])
+    outdir = '/'.join(filepattern.split('/')[:-1])+'/N%d'%lmax    
+    print ("Output directory", outdir)
+    if not os.path.isdir(outdir): 
+        os.system('mkdir -p %s '%outdir)
+        os.system('mkdir %s'%outdir0+"/pickles")
+        os.system('mkdir %s'%outdir0+"/gifs")
+    
     if options.fft:
-        bsoutfile = filepattern + "_bs_fft_N%d.npy"%lmax
+        bsoutfile = outdir + "/" + fnameroot + "_bs_fft.npy"
     else:
-        bsoutfile = filepattern + "_bs_N%d.npy"%lmax
+        bsoutfile = outdir + "/" + fnameroot + "_bs.npy"
+
 
     if options.fft:
-        coordsoutfile = filepattern + "_coords_fft_N%d.npy"%lmax
+        coordsoutfile = outdir + "/" + fnameroot + "_coords_fft.npy"
     else:
-        coordsoutfile = filepattern + "_coords_N%d.npy"%lmax                        
+        coordsoutfile = outdir + "/" + fnameroot + "_coords.npy"
 
     if options.fft:
-        kmresultfile = filepattern + "_kmresult_fft_N%d.pkl"%lmax
+        kmresultfile = outdir + "/" + fnameroot + "_kmresult_fft.pkl"
     else:
-        kmresultfile = filepattern + "_kmresult_N%d.pkl" %lmax
+        kmresultfile = outdir + "/" + fnameroot + "_kmresult.pkl"
         
     figspk = pl.figure(figsize = (10,(int(lmax/2)+1)))
     ax = []
@@ -695,15 +708,16 @@ if __name__=='__main__':
             ax.append(figspk.add_subplot(lmax/2+1,2,i+1))
             #if False:    
             bs[i], fs[i]  = get_plot_lca (int(cc[0])-options.aperture,
-                                  int(cc[1])-options.aperture, 
-                                  int(cc[0])+options.aperture+1,
-                                  int(cc[1])+options.aperture+1,
-                                  flist, 
-                                  filepattern+'_x%d_y%d_ap%d'%(int(cc[0]),
-                                                               int(cc[1]), 
-                                                        options.aperture),
-                                  imsize, fft=options.fft,
-                                  verbose=False, showme=options.showme)
+                                          int(cc[1])-options.aperture, 
+                                          int(cc[0])+options.aperture+1,
+                                          int(cc[1])+options.aperture+1,
+                                          flist, 
+                                          filepattern+'_x%d_y%d_ap%d'%(int(cc[0]),
+                                                                       int(cc[1]), 
+                                                                       options.aperture),
+                                          imsize, fft=options.fft,
+                                          verbose=False, showme=options.showme,
+                                          outdir = outdir0)
 
             #pl.plot(b1)
             #print (bs[i].size)
@@ -722,10 +736,11 @@ if __name__=='__main__':
                     .format(len(bs[0])*4,'min/max'), 
                 transform = ax[1].transAxes, fontsize=15)
 
+        figname = outdir + "/" + fnameroot + "_sparklines_lcv.pdf"
         try: 
-            figspk.savefig(filepattern+"_sparklines_lcv_N%d.pdf"%lmax)
+            figspk.savefig(figname)
         except ValueError:
-            print ("could not save", filepattern+"_sparklines_lcv_N%d.pdf"%lmax)
+            print ("could not save", figname)
             
         if options.showme: pl.show()
 
@@ -753,11 +768,6 @@ if __name__=='__main__':
                                                        imsize['ncols'],
                                                        imsize['nbands'])
     
-    if options.stack:
-        print ("(There is a stack", options.stack,")")
-        stack = np.load(options.stack)
-    else:
-        stack = img
 
     if options.readKM and os.path.isfile(kmresultfile):
         print ("reading KM result from saved file %s"%kmresultfile)
@@ -795,8 +805,11 @@ if __name__=='__main__':
              
 
          print ("Number of PCA component to reconstruct 90% signal: {0}".format(i+1))
-         if not options.fft: figpca.savefig(filepattern+"_PCA_N%d.pdf"%lmax)
-         else: figpca.savefig(filepattern+"_PCA_fft_N%d.pdf"%lmax)
+         
+         if not options.fft: figname = outdir + "/" + fnameroot + "_PCA.pdf"
+         else: figname = outdir + "/" + fnameroot + "_PCA_fft.pdf"
+
+         figpca.savefig(figname)
 
          print ("\n### Starting K-Means clustering")
 
@@ -862,8 +875,10 @@ if __name__=='__main__':
          print (" All labels: ", km.labels_, file=logfile)
          print (" Good labels:", goodkmeanlabels, file=logfile)
 
-         if not options.fft: pl.savefig(filepattern+"_KM_N%d.pdf"%lmax)
-         else: pl.savefig(filepattern+"_KM_fft_N%d.pdf"%lmax)
+         
+         if not options.fft: figname = outdir + "/" + fnameroot + "_KM.pdf"
+         else: figname = outdir + "/" + fnameroot + "_KM_fft.pdf"
+         pl.savefig(figname)
 
          transformed = np.array(transformed)
 
@@ -923,7 +938,8 @@ if __name__=='__main__':
          axs0.axis('off')
          axs1.axis('off')    
 
-         fig.savefig(filepattern + "_windows_N%d.pdf"%lmax)
+         figname = outdir + "/" + fnameroot + "_windows.pdf"
+         fig.savefig(figname)
          #fig2.savefig(filepattern + "_kmclusters_brightness.png")
 
          phi0 = 0
@@ -948,11 +964,11 @@ if __name__=='__main__':
     
     
     phases = fit_waves(filepattern, lmax, kmresult['timeseries'],
-                           kmresult['transformed'], kmresult['km'],
-                           kmresult['goodkmeanlabels'], kmresult['ntot'],
-                           options.aperture, imsize, flist,
-                           kmresult['km_freqs'],
-                           stack, bs, fft=options.fft, showme=options.showme)
+                       kmresult['transformed'], kmresult['km'],
+                       kmresult['goodkmeanlabels'], kmresult['ntot'],
+                       kmresult['km_freqs'], stack, bs,
+                       options.aperture, imsize, flist,
+                       fft=options.fft, showme=options.showme, outdir=outdir)
 
 
     ax = pl.figure().add_subplot(111)
@@ -963,10 +979,9 @@ if __name__=='__main__':
     ax.set_xlim(-0.5,9.5)
     ax.set_xlabel("K-means cluster")
     ax.set_ylabel(r"phase ($\pi$)")
-    if options.fft: figname = filepattern + "_km_phases_fft_N%d.png"%lmax 
-#pl.savefig(filepattern + "_km_phases_N%d.png"%lmax) 
-    else:  figname = filepattern + "_km_phases_N%d.png"%lmax 
-#pl.savefig(
+    if options.fft: figname = outdir + "/" + fnameroot + "_km_phases_fft.png"
+    else:  figname = outdir + "/" + fnameroot + "_km_phases.png"
+
     try:
         pl.savefig(figname)
     except ValueError: 
@@ -982,7 +997,9 @@ if __name__=='__main__':
     #    pl.scatter(phases[2][p], phases[3][p], color = cmap(len(phases[0]) / float(phases[0][p])))
     pl.scatter(phases[2][~np.isnan(phases[0])], phases[3][~np.isnan(phases[0])], color = cmap)
     ax.get_axes().set_aspect('equal', 'datalim')
-    if not options.fft: pl.savefig(filepattern + "_phases_N%d.png"%lmax) 
-    else: pl.savefig(filepattern + "_phases_fft_N%d.png"%lmax)
+
+
+    if not options.fft: pl.savefig(outdir + "/" + fnameroot + "_phases.png") 
+    else: pl.savefig(outdir + "/" + fnameroot + "_phases_fft.png")
     #ax.axis('off')
     #pl.show()
