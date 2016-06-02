@@ -645,6 +645,7 @@ if __name__=='__main__':
         allights = np.load(filepattern+"_allights.npy")
     else:
         print ("you need to create the window mask")
+        print (filepattern+"_allights.npy")
         sys.exit()
         
         
