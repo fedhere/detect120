@@ -624,11 +624,6 @@ if __name__=='__main__':
 
     fnameroot = filepattern.split('/')[-1]
 
-    logfile = open(filepattern+".log", "a")
-    print ("Logfile:", logfile)
-    print ("\n\n\n\t\t%s"%str(datetime.datetime.now()), file=logfile)
-    print ("options and arguments:", options,
-           args, len(args), file=logfile)
 
     if options.stack:
         print ("(There is a stack", options.stack,")")
@@ -665,6 +660,12 @@ if __name__=='__main__':
         os.system('mkdir -p %s '%outdir)
         os.system('mkdir %s'%outdir0+"/pickles")
         os.system('mkdir %s'%outdir0+"/gifs")
+
+    logfile = open(filepattern+".log", "a")
+    print ("Logfile:", logfile)
+    print ("\n\n\n\t\t%s"%str(datetime.datetime.now()), file=logfile)
+    print ("options and arguments:", options,
+           args, len(args), file=logfile)
     
     if options.fft:
         bsoutfile = outdir + "/" + fnameroot + "_bs_fft.npy"
