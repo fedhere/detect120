@@ -17,16 +17,29 @@ def divisorGenerator(n):
         yield divisor
 
 
-def findsize (imgfile, nbands=3, filepattern=None):
-    print (filepattern+"_imgsize.txt")
+def findsize (imgfile, nbands=3, filepattern=None, imsizefile=None):
+    
+    ''' if an nd.array is passed just return its shape'''
     if isinstance(imgfile, (np.ndarray)):
         imgsize = {}
         imgsize['nrows'], imgsize['ncols'], imgsize['nbands'] = imgfile.shape
         return imgsize
+    ''' look for a saved file contianing the shape info. if found return that'''
+    if imsizefile:
+        if os.path.isfile(imsizefile):
+            imgsize = json.load(open(imsizefile,'r'))
+            return imgsize
+        
     if filepattern:
+        print (filepattern+"_imgsize.txt")        
         if os.path.isfile(filepattern+"_imgsize.txt"):
             imgsize = json.load(open(filepattern+"_imgsize.txt",'r'))
             return imgsize
+    
+    ''' if thr shape needs to be recinstructed 
+    show the image with different shape assumptions and 
+    wait for positive user response w raw_input'''
+
     imgsize = {}
     imgsize['nbands'] = nbands
     divlist = list(divisorGenerator(100))

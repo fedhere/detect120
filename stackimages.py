@@ -1,241 +1,111 @@
 from __future__ import print_function
+##CUSP UO 2016
+__author__ = "fbb"
+
+import os
+import sys
 import glob
 import numpy as np
-import matplotlib.pyplot as pl
-import sys
-import pickle as pkl
-from scipy import misc
-from scipy import ndimage
+import optparse
+import pylab as pl
 import matplotlib
-
-
-
 import json
+
+from images2gif import writeGif
+from PIL import Image, ImageSequence
+
+from findImageSize import findsize
 s = json.load( open("fbb_matplotlibrc.json") )
 pl.rcParams.update(s)
 
 import configstack as cfg
 
-SAVEALL = True
+GIFALL = False
+#GIFALL = True
 SAVEALL = False
-REREAD = False
-REREAD = True
-REWINDOW = False
-REWINDOW = True
-REGIF = False
-REGIF = True
+#SAVEALL = True
 
-ANALIZE = False
-DETREND =0
-
-ww = cfg.srcpars['search_aperture']
-ew = cfg.srcpars['extract_aperture']
-nmax = cfg.srcpars['nmax']
 nstack = cfg.srcpars['nstack']
-sample_rate = cfg.imgpars['sample_rate']
 font = {'size'   : 23}
 
-def read_to_lc(c, aperture, flist, fname, imgeom, col='w'):
-    nrow, ncol, nband = imgeom
-    fig, axs = pl.subplots(1,1,figsize=(10,10))
-    #pl.imshow(np.fromfile(flist[0],dtype=np.uint8).reshape(nrow,ncol,nband))
-    #pl.imshow(np.fromfile(flist[0],dtype=np.uint8).reshape(nrow,ncol,nband)[x1:x2,y1:y2])
-    #pl.figure()
-    #axs.imshow(np.fromfile(flist[0],dtype=np.uint8).reshape(nrow,ncol,nband)[y1:y2,x1:x2],  interpolation='none')
-    print ("c",c,"aperture",aperture)
-    try:
-        axs.imshow(np.fromfile(flist[0],
-                           dtype=np.uint8).\
-               reshape(nrow,ncol,nband)[c[1]-aperture*2:
-                                        c[1]+aperture*2+1,
-                                        c[0]-aperture*2:
-                                        c[0]+aperture*2+1],
-               interpolation='nearest', cmap='bone')
-    except IndexError: pass
-    x1, x2 = c[0]-aperture, c[0]+aperture+1
-    y1, y2 = c[1]-aperture, c[1]+aperture+1
-    #axs.plot([x1,x2],[y1,y1], '-', color='%s'%col)    
-    #axs.plot([x2,x2],[y1,y2], '-', color='%s'%col)    
-    #axs.plot([x1,x2],[y2,y2], '-', color='%s'%col)    
-    #axs.plot([x1,x1],[y2,y1], '-', color='%s'%col)    
-    #pl.show()
-    pl.savefig(fname+"_thumb_%d_%d.png"%(c[0],c[1]))
-    pl.close()
-    if REREAD:
-        if REGIF: images = []
-        
-        a = np.zeros(len(flist[:nmax]))
-        rgb = np.zeros((len(flist[:nmax]),3))
-        for i,f in enumerate(flist[:nmax]):
-            try:
-                data = np.fromfile(f,dtype=np.uint8).\
-                        reshape(nrow, ncol, nband)[y1:y2, x1:x2].astype(float)
-                rgb[i] = np.array([data[:,:,0].sum(),
-                                   data[:,:,1].sum(),
-                                   data[:,:,2].sum()])/data[:,:,0].sum()
-                a[i] = (data.sum())
-            except: 
-                a[i]=float('NaN')
-                rgb[i] = (float('NaN'), float('NaN'), float('NaN'))
-                continue                
-            if REGIF:
-                import PIL
-                matplotlib.use('TkAgg')
-                from images2gif import writeGif
-                #fig = pl.figure()
-                #axs   = fig.add_subplot (111)
-                #axs.imshow(np.fromfile(f,
-                #                       dtype=np.uint8).\
-                #           reshape(nrow,ncol,nband)[c[1]-aperture*2:
-                #                                    c[1]+aperture*2+1,
-                #                                    c[0]-aperture*2:
-                #                                    c[0]+aperture*2+1],
-                #           interpolation='none', cmap='bone')
+def stackem(imgesize, stackarray, filename):
+    stack = np.zeros((imsize['nrows'],
+                      imsize['ncols'],
+                      imsize['nbands']))
+    if SAVEALL:
+          for i,f in enumerate(stackarray):
+              print ("\r  working on image {0} of {1}".format(i+1, stackarray.shape[0]),
+                     end="")
+              sys.stdout.flush()
+              fig = pl.figure()
+              pl.imshow(f, interpolation='nearest')
+              pl.savefig('stacks/'+filename+'_%03d.png'%i)
+              pl.close(fig)
+    if GIFALL:
+        print ("\nGIFfing...")
+        writeGif('stacks/'+ filename + \
+                 "_N%d"%stackarray.shape[0]+".GIF",
+                 stackarray, duration=0.01)
 
-
-                #fig.canvas.draw ( )
-                #w, h = fig.canvas.get_width_height()
-                #buf = np.fromstring ( fig.canvas.tostring_rgb(),
-                      #                dtype=numpy.uint8 )
-
-                #buf.shape = ( w, h, 4 )
- 
-                #buf = np.roll ( buf, 3, axis = 2 )
-                buf = np.fromfile(f,
-                                       dtype=np.uint8).\
-                           reshape(nrow,ncol,nband)[c[1]-aperture*2:
-                                                    c[1]+aperture*2+1,
-                                                    c[0]-aperture*2:
-                                                    c[0]+aperture*2+1]
-                im=PIL.Image.fromstring( "RGB", ( aperture*2 ,aperture*2 ),
-                                         buf.tostring())
-                #im = im.convert(mode="RGB")
-                images.append(im)
-                #print (a[i])
-                
-
-            #print (np.fromfile(f,dtype=np.uint8).reshape(nrow,ncol,nband)[y1:y2,x1:x2,0])
-            #a[i] = (np.fromfile(f,dtype=np.uint8).reshape(nrow,ncol,nband)[y1:y2,x1:x2]).sum()
-    else:
-        a = pkl.load(open('lcvs/'+fname+"_%d_%d.pkl"%(c[0],c[1]),'rb'))
-        rgb = pkl.load(open('lcvs/'+fname+"_rgb_%d_%d.pkl"%(c[0],c[1]),'rb'))        
-    f0 = ((np.fromfile(flist[0],dtype=np.uint8).reshape(nrow,ncol,nband)[y1:y2,x1:x2]))
-    area = int((x2-x1)*(y2-y1))
-    print ('mean: {0:.2f}, stdev: {1:.2f}, area: {2:d} pixels, {3:d} images, average flux/pixel: {4:.1f}'.format(
-                    np.nanmean(a), np.nanstd(a), area, len(a), np.nanmean(a)/float(area)))
-    R = float(f0[:,:,0].sum())
-    G = float(f0[:,:,1].sum())
-    B = float(f0[:,:,2].sum())
-    mx = np.argmax([R,G,B])
-    colors= ['Red','Yellow','Blue']
-    print (colors[mx], ': R: {0:.2f} G: {1:.2f} B: {2:.2f}'.format(1, G/R, B/R))
-    '''
-    if REREAD:
-        pkl.dump(a,open('lcvs/'+fname+"_%d_%d.pkl"%(c[0],c[1]),"wb"),
-                 protocol=2)
-        pkl.dump(rgb,open('lcvs/'+fname+"_rgb_%d_%d.pkl"%(c[0],c[1]),"wb"),
-                 protocol=2)
-    '''
-    if REGIF:  writeGif('lcvs/'+fname+"_%d_%d.gif"%(c[0],c[1]),
-                        images, dither=0)
-    
-    return a, rgb
-
-def get_plot_lca (c, aperture, flist, fname, imgeom, col='k'):
-    nrow, ncol, nband = imgeom
-    a, rgb = read_to_lc(c, aperture, flist, fname, imgeom, col=col)
-    n = len(a)
-    flux0 = (a - np.nanmean(a))/np.nanstd(a)
-    #flux = flux0.copy()
-    pl.rc('font', **font)
-    fig = pl.figure(figsize=(15, 10))
-    axs = pl.subplot2grid((4,3), (0,0), colspan=2, rowspan=2)#(211)
-    axs.plot(np.arange(0, n*sample_rate, sample_rate), flux0, '.')
-    axs.plot(np.arange(0, n*sample_rate, sample_rate), flux0, 'k-')
-    axs.yaxis.set_major_formatter(pl.NullFormatter())
-    axs.set_xlabel("sec")
-    axs.set_ylabel("standardized flux")
-
-    axs.set_title(c)
-
-    axs = pl.subplot2grid((4,3), (2,0), colspan=2)
-    axs.plot(np.arange(0, n*sample_rate, sample_rate), rgb[:,0], 'r-')
-    axs.plot(np.arange(0, n*sample_rate, sample_rate), rgb[:,1], 'g-')
-    axs.plot(np.arange(0, n*sample_rate, sample_rate), rgb[:,2], 'b-')
-    axs.set_xlabel("sec")
-    axs.set_ylabel("G/R B/R color")
-
-    axs = pl.subplot2grid((4,3), (3,0), colspan=2)
-    freq = np.fft.rfftfreq(n, d=sample_rate)[1:]
-    myfft = np.abs(np.fft.rfft(a))[1:]
-    axs.plot(freq, myfft, alpha=0.5, color='IndianRed')
-    axs.plot([0.25,0.25],[myfft.min(), myfft.max()],'k-')
-    axs.yaxis.set_major_formatter(pl.NullFormatter())
-    axs.set_xlabel("period (seconds)")
-    axs.set_ylabel("power")
-
-    
-    #axs.set_xlim(0, 200)
-    axs = pl.subplot2grid((4,3), (0,2), rowspan=2)#(211)
-    axs.imshow(np.fromfile(flist[0],
-                           dtype=np.uint8).\
-               reshape(nrow,ncol,nband)[c[1]-aperture*4:
-                                        c[1]+aperture*4+1,
-                                        c[0]-aperture*4:
-                                        c[0]+aperture*4+1],
-               interpolation='nearest')
-    x1 = aperture*3
-    x2 = aperture*5
-    y1,y2 = x1,x2
-    axs.plot([x1,x1], [y1,y2], '-', color='DarkOrange')
-    axs.plot([x1,x2], [y1,y1], '-', color='DarkOrange')  
-    axs.plot([x2,x2], [y1,y2], '-', color='DarkOrange')   
-    axs.plot([x1,x2], [y2,y2], '-', color='DarkOrange')
-    axs.axis('off')
-    axs.set_xlim(0,aperture*8)
-    axs.set_ylim(0,aperture*8)
-
-    axs = pl.subplot2grid((4,3), (2,2), rowspan=2)#(211)
-    axs.imshow(np.fromfile(flist[0],
-                           dtype=np.uint8).\
-               reshape(nrow,ncol,nband),
-               interpolation='nearest')
-    ew = aperture*4
-    axs.plot([c[0]-ew, c[0]-ew], [c[1]-ew, c[1]+ew], '-', color='DarkOrange')
-    axs.plot([c[0]+ew, c[0]+ew], [c[1]-ew, c[1]+ew], '-', color='DarkOrange')   
-    axs.plot([c[0]+ew, c[0]-ew], [c[1]+ew, c[1]+ew], '-', color='DarkOrange')   
-    axs.plot([c[0]-ew, c[0]+ew], [c[1]-ew, c[1]-ew], '-', color='DarkOrange')   
-    #axs.set_xlim(0,nrow)
-    #axs.set_ylim(0,ncol)
-    axs.axis('off')
-    
-    
-    pl.savefig("lcvs/"+fname+"_lc_%d_%d.png"%(c[0],c[1]))
-    pl.close()
-    return flux0
-
-def stackem(imgeom, flistforstack, fname):
-    nrow, ncol, nband = imgeom
-    stack = np.zeros((len(flistforstack), nrow, ncol, nband), np.uint8)
-    for i,f in enumerate(flistforstack):
-        print (f)
-        data = np.fromfile(f,dtype=np.uint8).reshape(nrow,ncol,nband)
-        if SAVEALL:
-            pl.imshow(data)
-            pl.savefig('stacks/'+f.split('/')[-1]+'.png')
-        sharpened  =  data
-        #np.dstack(
-            #[1.0*im + 0.5*(1.0*im - ndimage.filters.gaussian_filter(1.0*im,2))
-            # for im in data.transpose(2, 0, 1)]).clip(0, 255).astype(np.uint8)
-        #pl.imshow(sharpened,vmin=0, vmax=255)
-        #pl.show()
-        
-        stack[i] = sharpened
-
-    #print ("here", stack[:])
-    stack = np.median(stack, axis=0).astype(np.uint8)
+    stack = np.median(stackarray, axis=0).astype(np.uint8)
     return stack
 
+
+if __name__ == '__main__':
+    parser = optparse.OptionParser(usage="stackImages.py 'filepattern'",
+                                   conflict_handler="resolve")
+    parser.add_option('--nstack', default=20, type="int",
+                      help='number of images to stack')
+    parser.add_option('--imsize', default='', type="str",
+                      help='image size file')    
+    parser.add_option('--showme', default=False, action="store_true",
+                      help='show plots')
+
+
+    options,  args = parser.parse_args()
+    print ("options and arguments:", options, args)
+    if len(args) != 1:
+        sys.argv.append('--help')
+        options,  args = parser.parse_args()
+
+        sys.exit(0)
+    
+    filepattern = args[0]
+    impath = os.getenv("UIdata") + '/' + filepattern + '*.raw'
+    flist = glob.glob(impath)
+    img = flist[0]
+
+    fnameroot = filepattern.split('/')[-1]
+
+    if not options.imsize == '':
+        imsize = findsize(img, imsizefile=options.imsize)
+    else:
+        imsize = findsize(img, filepattern=filepattern)
+        
+    rgb = np.zeros((len(flist[:options.nstack]), imsize['nrows'],
+                    imsize['ncols'], imsize['nbands']), np.uint8) 
+
+    for i,f in enumerate(flist[:options.nstack]):
+        try:
+            rgb[i] = np.fromfile(f, dtype=np.uint8).clip(0,255).\
+                   reshape(imsize['nrows'],
+                           imsize['ncols'],
+                           imsize['nbands']).astype(float)
+        except: pass
+
+    os.system('mkdir -p stacks/'+'/'.join(filepattern.split('/')[:-1]))
+    stack = stackem(imsize, rgb, filepattern)
+    print ("")
+    stackfig = pl.figure()
+    ax0 = stackfig.add_subplot(211)
+    ax0.imshow(stack.clip(0,255).astype(np.uint8), interpolation='nearest')
+    ax0.axis('off')
+    if options.showme: pl.show()
+    stackfig.savefig('stacks/%s_N%d.png'%(filepattern, options.nstack))
+
+    np.save('stacks/%s_N%d.npy'%(filepattern, options.nstack), stack)
+
+'''
 class getWval:
 
     def __init__(self, data, clist):
@@ -297,33 +167,7 @@ fname = flist[0].split("/")[-1]
 
 stack = stackem((cfg.imgpars['nrow'], cfg.imgpars['ncol'],
                  cfg.imgpars['nband']), flist[:nstack], fname)
-'''
-if REWINDOW:
-    wv = getem(stack, [])
-    pkl.dump(wv, open('lcvs/'+fname+"_windows.pkl","wb"),
-             protocol=2)
-else:
-    wv = pkl.load(open('lcvs/'+fname+"_windows.pkl","rb"))
 
-fig, axs = pl.subplots(1,1,figsize=(10,10))
-
-axs.imshow(stack.mean(axis=2), interpolation='nearest', cmap='bone')
-for i, coords in enumerate(wv.clist):
-    x, y = int(wv.newlist[i][0]), int(wv.newlist[i][1])
-    x2, y2 = int(coords[0]), int(coords[1])
-    axs.plot(x2, y2, '.', color='w')
-    axs.plot(x, y, '.', color='r')    
-
-    axs.plot([x-ew, x-ew], [y-ew, y+ew], '-', color='DarkOrange')
-    axs.plot([x+ew, x+ew], [y-ew, y+ew], '-', color='DarkOrange')    
-    axs.plot([x+ew, x-ew], [y+ew, y+ew], '-', color='DarkOrange')    
-    axs.plot([x-ew, x+ew], [y-ew, y-ew], '-', color='DarkOrange')        
-
-pl.savefig('stacks/%s_%d.png'%(fname.replace('.raw','_N_windows'),
-                               nstack))
-pl.show()
-pl.close()
-'''
 fig, axs = pl.subplots(1,1,figsize=(10,10))
 
 pl.imshow(stack, interpolation='nearest', cmap='bone')
@@ -332,15 +176,5 @@ pl.savefig('stacks/%s_%d.png'%(fname.replace('.raw','_N'),
 
 np.save('stacks/%s_%d.npy'%(fname.replace('.raw',''),
                                nstack), stack)
-'''
-fname = flist[0].split("/")[-1][:-8]
-n = len(wv.newlist)
-for i, coords in enumerate(wv.newlist):
-    print ("#######%d/%d#############"%(i,n))
-    get_plot_lca (coords, ew, flist, fname,
-                (cfg.imgpars['nrow'],
-                cfg.imgpars['ncol'],
-                 cfg.imgpars['nband']), col='w')
-'''
 
-
+'''

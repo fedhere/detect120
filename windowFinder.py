@@ -1,293 +1,222 @@
+from __future__ import print_function
+##CUSP UO 2016
+__author__ = "fbb"
+
 import numpy as np
 import scipy as sp
 import pylab as pl
-'''
-stack = np.load("stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20.npy")
-#pl.imshow(stack, interpolation='nearest')
-overgaussstack = (stack.astype(float) - sp.ndimage.gaussian_filter(stack.astype(float), (10,10,0)))
-#pl.imshow(overgaussstack.astype(np.uint8), interpolation='nearest')
-foo = overgaussstack - overgaussstack.min()
-foo/=foo.max()
-foo.dtype
-foo *= 255
-#pl.imshow(foo.clip(0,255).astype(np.uint8),interpolation='nearest')
-#pl.imshow(foo.mean(-1)>112,interpolation='nearest',cmap='gist_gray')
-newdata = sp.ndimage.filters.median_filter(\
-                (foo.mean(-1)>110).astype(float), 4).astype(uint8)
+import optparse
+import matplotlib.gridspec as gridspec
+from scipy import ndimage
+from scipy import optimize
 
-labels, nlabels = scipy.ndimage.measurements.label(newdata)
-#windowlabels = [sum(labels==i)>10
+def getknuth(m,data,N):
+    m=int(m)
+    if m > N:
+        return -1
+    bins=np.linspace(min(data),max(data), int(m) + 1)
+    try:
+        nk,bins=np.histogram(data,bins)
+        return -(N*np.log(m) + gammaln(0.5*m) - m*gammaln(0.5) - gammaln(N + 0.5*m)+ np.sum(gammaln(nk+0.5)))
+    except:
+        return -1
 
-
-goodwindows = [sum(labels==i)>10 for i in range (nlabels)]
-
-bar = labels.astype(float)/labels.max()*1000%100
-bar = bar/bar.max()
-
-print bar.astype(float)
-
-clrs2 = (cm.jet((bar))*255).astype(np.uint8)
-
-#clrs2 = (bar*1000%100*25.5).astype(uint8)
-
-#pl.imshow(clrs2, interpolation='nearest')
-
-clrs2[bar==0] = [0,0,0,255]
-
-#pl.figure()
-#pl.imshow(clrs2, interpolation='nearest')
-
-
-labels2 = np.zeros_like(labels)
-for i in range (nlabels):
-     if goodwindows[i]:
-         labels2[labels==i] = labels[labels==i]
-
-
-bar2 = labels2.astype(float)/labels2.max()*1000%100
-bar2 = bar2/bar2.max()
-
-
-clrs3 = (cm.jet((bar))*255).astype(np.uint8)
-
-#clrs2 = (bar*1000%100*25.5).astype(uint8)
-
-#pl.imshow(clrs2, interpolation='nearest')
-
-clrs3[bar2==0] = [0,0,0,255]
-'''
-pl.figure()
-
-pl.imshow(clrs3, interpolation='nearest')
-
-coords = sp.ndimage.measurements.center_of_mass(newdata, labels, np.where(goodwindows))
-
-for c in coords:
-    pl.plot(c[0][1],c[0][0],'wo')
     
-'''
-overgaussstack = (stack - scipy.ndimage.gaussian_filter(stack, 20))
-grad = overgaussstack[1:,1:,:].mean(axis=2) - overgaussstack[:-1,:-1,:].mean(axis=2)
-imshow(grad, interpolation='nearest')
-overgaussstack = (stack - scipy.ndimage.gaussian_filter(stack, 30))
-imshow(overgaussstack)
-pl.figure()
-imshow(overgaussstack)
-pl.figure()
-imshow(stack, interpolation='nearest')
-pl.figure()
-imshow(overgaussstack, interpolation='nearest')
-ndimage?
-median_filter(stack)
-scipy.ndimage.median_filter(stack)
-scipy.ndimage.median_filter(stack, 10)
-pl.close('all')
-pl.figure()
-imshow(stack,interpolation='nearest')
-pl.figure()
-overgaussstack = (stack - scipy.ndimage.gaussian_filter(stack, 50))
-imshow(overgaussstack,interpolation='nearest')
-overgaussstack = (stack.astype(float) - scipy.ndimage.gaussian_filter(stack.astype(float), (50,50,0)))
-imshow(overgaussstack,interpolation='nearest')
-imshow(overgaussstack.astype(np.uint8),interpolation='nearest')
+def knuthn(data):
+    assert data.ndim==1, "data must be 1D array to calculate Knuth's number of bins"
+    N = data.size
+    maxM = 5 * np.sqrt(N)
+    m0 = 2.0 * N**(1./3.)
+    gk = getknuth
+    if gk == -1:
+        return m0
+    mkall = optimize.fmin(gk, m0, args = (data, N), maxiter=3)
+    #, maxfun=1000)#[0]
+    mk = mkall[0]
+    if mk > maxM or mk < 0.3 * np.sqrt(N):
+        return m0
+    return mk
 
-stack.dtype
-overgaussstack.min()
-overgaussstack.mad()
-overgaussstack.max()
-imshow(overgaussstack.clip(0,255).astype(np.uint8),interpolation='nearest')
+GS = 10 #gaussian standard deviation (x and y)
+if __name__=='__main__':
 
-imshow(foo.clip(0,255).astype(np.uint8),interpolation='nearest')
-imshow(foo.mean(-1),interpolation='nearest')
-imshow(foo.mean(-1),interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1),interpolation='nearest',cmap='gist_gray',clim=[100,255])
-imshow(foo.mean(-1),interpolation='nearest',cmap='gist_gray',clim=[100,200])
-imshow(foo.mean(-1),interpolation='nearest',cmap='gist_gray',clim=[50,200])
-imshow(foo.mean(-1),interpolation='nearest',cmap='gist_gray',clim=[50,100])
-imshow(foo.mean(-1)>50,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>100,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>150,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>130,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>120,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>110,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>120,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>120,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>115,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>112,interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter(foo.mean(-1)>110), 2),interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter(foo.mean(-1)>110, 2),interpolation='nearest',cmap='gist_gray')
-pl.figure()
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 2),interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>110,interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 2),interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>110,interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 3),interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 3)>0.1,interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 3)>0.3,interpolation='nearest',cmap='gist_gray')
-pl.figure()
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 3),interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 3),interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>110,interpolation='nearest',cmap='gist_gray')
-imshow(foo.mean(-1)>110,interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 3)>0.5,interpolation='nearest',cmap='gist_gray')
-pl.figure()
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 3)>0.8,interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4),interpolation='nearest',cmap='gist_gray')
+    parser = optparse.OptionParser(usage="windowFinder 'stackpath' ",
+                                   conflict_handler="resolve")
 
-imshow(scipy.ndimage.measurements.label(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4)),interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.measurements.label(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4)).astype(np.unit8),interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.measurements.label(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4).astype(np.unit8)),interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.measurements.label(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4).astype(np.uint8)),interpolation='nearest',cmap='gist_gray')
-imshow(scipy.ndimage.measurements.label(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4).astype(np.uint8)),interpolation='nearest',cmap='gist_gray')
+    parser.add_option('--thr', default=110, type="float",
+                      help='threshold for window')
+    parser.add_option('--auto', default=False, action="store_true",
+                      help='automaticallyl setting the threshold to 98% of pixel value distribution')
+    parser.add_option('--nocheck', default=False, action="store_true",
+                      help='dont check if threshold is right')        
+    parser.add_option('--showme', default=False, action="store_true",
+                      help='show plots')
 
-bar = scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4)
-bar
-bar = scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4).astype(uint8)
-bar
-scipy.ndimage.measurements.label(bar)
-scipy.ndimage.measurements.label(bar).max()
-scipy.ndimage.measurements.label(bar)
-scipy.ndimage.measurements.label(bar)[1].astype(float)
-scipy.ndimage.measurements.label(bar)[1]
-scipy.ndimage.measurements.label(bar)[0]
-scipy.ndimage.measurements.label(bar)[0].astype(float)
-bar = scipy.ndimage.measurements.label(bar)[0].astype(float)
-bar /= bar.ma()
-bar /= bar.max()
-bar
-max(bar)
-bar.max()
-bar.max()
-imshow(scipy.ndimage.measurements.label(scipy.ndimage.filters.median_filter((foo.mean(-1)>110).astype(float), 4).astype(np.unit8)),interpolation='nearest',cmap='gist_gray')
-cm.jet(bar)
-cm.jet(bar).shape
-cm.jet(bar)*255
-imshow((cm.jet(bar)*255).astype(uint8), interpolation='nearest')
-pl.figure()
-imshow((cm.jet(bar)*255).astype(uint8), interpolation='nearest')
-clrs = (cm.jet(bar)*255).astype(uint8)
-clrs[bar==0] = [0,0,0,0]
-imshow(clrs, interpolation='nearest')
-clrs
-clf()
-imshow(clrs, interpolation='nearest')
-clrs[bar==0] = [0,0,0,255]
-imshow(clrs, interpolation='nearest')
-bar.max()
-np.unique(bar)
-len(np.unique(bar))
-bar*100%100
-len(np.unique(bar*100%100))
-bar*100%100
-imshow(clrs, interpolation='nearest')
-clrs2 = (bar*100%100*255).astype(uint8)
-clrs2[bar==0] = [0,0,0,255]
-clrs2
-clrs2[bar==0] = [0,0,0,255]
-clrs2 = (cm.jet(bar*100%100)*255).astype(uint8)
-clrs2[bar==0] = [0,0,0,255]
-pl.figure()
-imshow(clrs2, interpolation='nearest')
-clrs2
-bar
-bar.shape
-cm.jet(bar)
-cm.jet(bar).shape
-cm.jet(bar*100%100).shape
-clrs2 = (cm.jet(bar*100%100)*255).astype(uint8)
-clrs2.shape
-clrs2
-clrs2[bar==0] = [0,0,0,255]
-imshow(clrs2, interpolation='nearest')
-clf()
-clrs2 = (cm.jet(bar*100%100)*255).astype(uint8)
-clrs2
-imshow(clrs2, interpolation='nearest')
-clrs2 = (cm.jet(bar*100.%100.)*255).astype(uint8)
-imshow(clrs2, interpolation='nearest')
-clrs2
-clrs2 = (cm.jet(bar*100.%100.)*255).astype(uint8)
-bar
-bar*100%100
-bar
-imshow(bar)
-imshow(foo)
-clrs2 = (cm.jet(bar*1000%100.)*255).astype(uint8)
+    options,  args = parser.parse_args()
+    print (options)
+    '''
+    thr=200
+    args = [0]
+    args[0] = "stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20.npy"
+    '''
+    stack = np.load(args[0])
+    
+    #gaussian filter first
+    overgaussstack = (stack.astype(float) - sp.ndimage.gaussian_filter(stack.astype(float), (GS,GS,0)))
 
-In [413]: imshow(clrs2, interpolation='nearest')
-Out[413]: <matplotlib.image.AxesImage at 0x136872390>
+    #reset the limits
+    foo = overgaussstack - overgaussstack.min()
+    foo/=foo.max()
+    
+    foo *= 255
+    flatfoo = foo.flatten()    
+    pcs = np.array([16,50,84,90,95,99.5])
+    pc =  np.percentile(flatfoo, pcs)
+    if options.auto: thr = pc[pcs==90]
+    else: thr = options.thr
 
-In [414]: clf()
+    numbins = int(knuthn(flatfoo) + 0.5)
+    counts, bins = np.histogram(flatfoo, bins=numbins, density=True)
+    widths = np.diff(bins)
+    countsnorm = counts/counts.max()
+    #show the stacks
+    #done = True
+    done = options.nocheck
+    if not done:
+        pl.ion()
+        pl.clf()
+        stackfig = pl.figure()
+        gs = gridspec.GridSpec(2, 2)
+        ax0 = stackfig.add_subplot(gs[0, 0])
+        ax0.imshow(foo.clip(thr/3,255).astype(np.uint8), interpolation='nearest')
+        ax0.set_title("gaussian filter residuals, gaussian size: %d"%GS,
+                      fontsize=13)
+        ax0.axis('off')
+        ax1 = stackfig.add_subplot(gs[0, 1])
+        ax1.set_title("thresholded image, threshold: %.2f"%thr,
+                      fontsize=13)
+        ax1.imshow(foo.mean(-1)>thr, interpolation='nearest', cmap='gist_gray')
+        ax1.axis('off')
+        ax3 = stackfig.add_subplot(gs[1, :])
+        ax3.bar(bins[:-1], countsnorm,  widths,
+                        color='gray')
+        for i,k in enumerate(pc[1:-1]):
+            ax3.plot([k,k],[0,ax3.get_ylim()[1]],
+                 '-', color='SteelBlue')
+            ax3.text(k, ax3.get_ylim()[1]*(1.0-i*0.1), "%.1f"%(pcs[i+1]),
+                     ha='right')
+            ax3.text(k, ax3.get_ylim()[1]*(1.0-i*0.1-0.08), "%.1f"%(k),
+                     ha='right')
+            
+        ax3.plot([thr,thr],[0,ax3.get_ylim()[1]],
+                 '-', color='IndianRed')
+        ax3.text(thr, ax3.get_ylim()[1]*0.8, "%d"%(thr),
+                 ha='right', color='red')
+            
+        
+        ax3.set_xlim(pc[0], max(pc[-1], thr))
+        #pl.show()    
+    while not done:
+        pl.draw()
+        
+        if raw_input("is this the right threshold?").lower().startswith('y'):
+            done = True
+            pl.savefig(args[0].replace(".npy","_allwindows.pdf"))
+            pl.close()
+        else:
+            thr = np.float(raw_input("try another threshold"))
+            ax0 = stackfig.add_subplot(gs[0, 0])
+            ax0.imshow(foo.clip(thr/3,255).astype(np.uint8),
+                       interpolation='nearest')
+            ax1 = stackfig.add_subplot(gs[0, 1])
+            ax1.imshow(foo.mean(-1)>thr,
+                       interpolation='nearest',
+                       cmap='gist_gray')
+            ax3 = stackfig.add_subplot(gs[1, :])
+            ax3.bar(bins[:-1], countsnorm,  widths,
+                        color='gray')
+            for i,k in enumerate(pc[1:-1]):
+                ax3.plot([k,k],[0,ax3.get_ylim()[1]],
+                         '-', color='SteelBlue')        
+                ax3.text(k, ax3.get_ylim()[1]*(1.0-i*0.1), "%.1f"%(pcs[i+1]),
+                     ha='right')
+                ax3.text(k, ax3.get_ylim()[1]*(1.0-i*0.1-0.08), "%.1f"%(k),
+                     ha='right')                
+            
+        ax3.plot([thr,thr],[0,ax3.get_ylim()[1]],
+                 '-', color='IndianRed')
+        ax3.text(thr, ax3.get_ylim()[1]*0.8, "%d"%(thr),
+                 ha='right')
+        ax3.plot([thr,thr],[0,ax3.get_ylim()[1]],
+                         '-', color='IndianRed')            
+        ax3.set_xlim(pc[0],max(pc[-1], thr))
+    pl.ioff()
+    newdata = sp.ndimage.filters.median_filter(\
+            (foo.mean(-1)>thr).astype(float), 4).astype(np.uint8)
 
-In [415]: imshow(clrs2, interpolation='nearest')
-Out[415]: <matplotlib.image.AxesImage at 0x11752b410>
+    labels, nlabels = sp.ndimage.measurements.label(newdata)
+    
+    print ("Found %d individual labels"%nlabels)
 
-In [416]: imshow(bar*10000%100)
-Out[416]: <matplotlib.image.AxesImage at 0x11752b510>
+    #only choose windows larger than 10 pixels to remove noise speks
+    goodwindows = [(labels==i).sum()>10 for i in range (nlabels)]
 
-In [417]: imshow(bar*10000%100)[bar==0]^C
+    print ("Found %d individual labels with > 10 pixels"%np.sum(goodwindows))
 
-KeyboardInterrupt
+    #remove bad windows
+    for i in range (nlabels):
+        if ~goodwindows[i]:
+            labels[labels==i] = 0
 
-In [417]: 
+    #resetting label numbers to get  better color map
 
-In [417]: clrs2 = (bar*1000%100*25.5).astype(uint8)
+    tmp = np.random.choice(range(labels.max()+1), labels.max()+1, replace=False)
+    def mapcolor(i):
+        return tmp[i].astype(float)
+    
+    bar = np.array(map(mapcolor, labels))
+    bar[labels==0] = 0.
+    bar = bar/bar.max()
+    clrs = (pl.cm.jet((bar))*255).astype(np.uint8)
 
-In [418]: imshow(clrs2, interpolation='nearest')
-Out[418]: <matplotlib.image.AxesImage at 0x18d4ec190>
+    #set background to black
+    clrs[bar==0] = [0,0,0,255]
 
-In [419]: clf()
+    pl.figure()
+    
+    pl.imshow(clrs, interpolation='nearest')
+    pl.xlim(0,pl.xlim()[1])
+    pl.ylim(pl.ylim()[0],0)
+    #pl.draw()
+    pl.title("gaussian std %d, threshold %.1f, labels %d"%(GS,
+                                                           thr,
+                                                           np.sum(goodwindows)))
+    pl.savefig(args[0].replace(".npy","_labelledwindows.pdf"))
+    if options.showme: pl.show()
+    pl.close()
+    coords = np.array(sp.ndimage.measurements.center_of_mass(newdata, labels,
+                                                    np.where(goodwindows))).squeeze()
 
-In [420]: imshow(clrs2, interpolation='nearest')
-Out[420]: <matplotlib.image.AxesImage at 0x11704e5d0>
+    pl.figure()
+    
+    pl.imshow(clrs, interpolation='nearest')
+    pl.xlim(0,pl.xlim()[1])
+    pl.ylim(pl.ylim()[0],0)
 
-In [421]: clrs2[bar==0] = [0,0,0,255]
----------------------------------------------------------------------------
-ValueError                                Traceback (most recent call last)
-<ipython-input-421-5213c3de1d02> in <module>()
-----> 1 clrs2[bar==0] = [0,0,0,255]
+    coords = (coords[(coords[:,0]>5) * \
+                     (coords[:,0]<stack.shape[0]-5) *\
+                     (coords[:,1]>5) * \
+                     (coords[:,1]<stack.shape[1]-5)])
+    print ("Found %d good windows away from the edges"%len(coords))
+    
+    for c in coords:
+        pl.plot(c[1],c[0],'wo', alpha=0.3)
+    pl.title("gaussian std %d, threshold %.1f, labels %d"%(GS,
+                                                           thr,
+                                                           np.sum(goodwindows)))    
+    pl.savefig(args[0].replace(".npy","_selectedwindows.pdf"))
+    if options.showme: pl.show()
+    pl.close()
+    #coords = np.array([coords[:,1],coords[:,0]])
+    pl.save(args[0].replace(".npy", "_coords.npy"), coords)
 
-ValueError: NumPy boolean array indexing assignment cannot assign 4 input values to the 3456229 output values where the mask is true
-
-In [422]: clr
-clrs   clrs2  
-
-In [422]: clr
-clrs   clrs2  
-
-In [422]: clrs2
-Out[422]: 
-array([[  6,   6,   6, ...,   0,   0,   0],
-       [  6,   6,   6, ...,   0,   0,   0],
-       [  6,   6,   6, ...,   0,   0,   0],
-       ..., 
-       [  0,   0,   0, ..., 110, 110, 110],
-       [  0,   0,   0, ..., 110, 110, 110],
-       [  0,   0,   0, ..., 110, 110, 110]], dtype=uint8)
-
-In [423]: clrs
-clrs   clrs2  
-
-In [423]: clrs2.max()
-Out[423]: 255
-
-In [424]: clrs2
-Out[424]: 
-array([[  6,   6,   6, ...,   0,   0,   0],
-       [  6,   6,   6, ...,   0,   0,   0],
-       [  6,   6,   6, ...,   0,   0,   0],
-       ..., 
-       [  0,   0,   0, ..., 110, 110, 110],
-       [  0,   0,   0, ..., 110, 110, 110],
-       [  0,   0,   0, ..., 110, 110, 110]], dtype=uint8)
-
-In [425]: clrs2.size
-Out[425]: 3739320
-
-In [426]: clrs2.shape
-Out[426]: (1530, 2444)
-
-In [427]: clrs2 = (cm.jet(clrs2.astype(float)/255)*255).astype(uint8)
-
-In [428]: clrs2[bar==0] = [0,0,0,255]
-'''

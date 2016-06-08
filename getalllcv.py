@@ -23,13 +23,17 @@ from findImageSize import findsize
 s = json.load( open("fbb_matplotlibrc.json") )
 pl.rcParams.update(s)
 
-
+### EXTRACT: if True extracts the lightcurves from imaging data
 EXTRACT=True
 EXTRACT=False
+### READ: if True reads the results of the PCA/KM clustering
+### stored in earlier runs, if they exist
 READ=True
 #READ=False
 DETREND=0
-nmax=100
+### nmax: maximum number of datapoints per lightcurve (overwritten by 
+#nmax=100
+### lmax: maximum number of windows to use 
 #lmax = 10
 
 
@@ -58,7 +62,7 @@ kelly_colors_hex = [
     '#232C16', # Dark Olive Green
     ]
 
-wave = lambda t, phi, fq: np.sin(2.*fq*np.pi*t + phi*np.pi)
+wave = lambda t, phi, fq: np.sin(2.*fq*np.pi*t + phi*np.pi)/0.7
 resd = lambda phi, fq, x, t: np.sum((wave(t*fq, phi, fq) - x)**2)
 resd_freq = lambda fq, phi, x, t: np.sum((wave(t*fq, phi, fq) - x)**2)
 
@@ -74,8 +78,8 @@ def makeGifLcPlot(x, y, ind, ts, aperture, fnameroot,
                   stack=None, outdir="./"):
 
     fig = callplotw(x, y, ind, ts, flist, aperture,
-              imshape, fname = fnameroot,
-                    giflen=160, stack=stack, outdir=outdir)
+                    imshape, fname = fnameroot,
+                    giflen=160, stack=stack, outdir=outdir0)
 
     if not fft: fig.savefig(fnameroot + "_%d_%d"%(x,y)+".png")
     else: fig.savefig(fnameroot + "_%d_%d"%(x,y)+"_fft.png")
@@ -83,6 +87,7 @@ def makeGifLcPlot(x, y, ind, ts, aperture, fnameroot,
         pl.show()
         print (fnameroot + "_%d_%d"%(x,y)+".GIF")
         IPdisplay.Image(url=fnameroot + "_%04d_%04d"%(x,y)+".GIF")
+    pl.close(fig)
     
 def callplotw(xc, yc, i, ts, flist, aperture, imshape, fft=False,
               fname = None, giflen=40, stack=None, outdir='./'):
@@ -120,7 +125,6 @@ def callplotw(xc, yc, i, ts, flist, aperture, imshape, fft=False,
                                                    xc-22:xc+21]) \
                  for f in flist[:giflen]]
        fullfname = outdir + "/gifs/" + fname.split('/')[-1]
-       
        writeGif(fullfname + "_%04d_%04d"%(xc,yc)+".GIF",
                 images, duration=0.01)
        #print ("Done writing GIF %s_%04d_%04d.GIF"%(fname, xc, yc))
@@ -129,20 +133,19 @@ def callplotw(xc, yc, i, ts, flist, aperture, imshape, fft=False,
    ax3 = fig.add_subplot(223)
    ax3.plot(ts, label = "time series")
    ax3.legend()
-
    ax4 = fig.add_subplot(224)
    if fft:
        ax4.plot(np.abs(np.fft.irfft(ts)), 
                 label = "ifft")
-       ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
+       #ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
    else:
-       ax4.plot(np.fft.rfftfreq(ts.size, d=options.sample_spacing)[2:],
-                np.abs(np.fft.rfft(ts))[2:], 
+       ax4.plot(np.abs(np.fft.rfft(ts))[2:], 
                 label = "fft")
        ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
    ax4.legend()
    return fig
-   
+
+
 def sparklines(data, lab, ax, x=None, title=None,
                color='k', alpha=0.3, maxminloc=False, nolabel=False):
     if x is None :#and len(x)==0:
@@ -163,9 +166,10 @@ def sparklines(data, lab, ax, x=None, title=None,
        return  ((np.nan, np.nan), np.nan)
     ymax = max(data[:-5])
     xmaxind = np.where(data[:-5] == ymax)[0]
-
+    #print (xmaxind, x[xmaxind])
     try:
         xmax =  x[xmaxind]
+#        print ("xmax", xmax)
         ax.plot(xmax, ymax, 'o', ms=5, color='SteelBlue')
         if xmaxind-3>0:
             max2data = np.concatenate([data[:xmaxind-3],data[xmaxind+3:-5]])
@@ -174,9 +178,10 @@ def sparklines(data, lab, ax, x=None, title=None,
             max2data = data[3:-5]
             x2 = x[3:-5]
         xmax1 =  x2[np.where(max2data == max(max2data))[0]]
+#        print ("xmax1", xmax1, max(max2data))
         ax.plot(xmax1, max(max2data), 'o', ms=5,
-                color='SteelBlue', alpha=0.5)
-        
+                    color='SteelBlue', alpha=0.5)
+                    
     except ValueError:
         try:
             xmax = x[xmaxind[0]]
@@ -189,7 +194,6 @@ def sparklines(data, lab, ax, x=None, title=None,
                 color='SteelBlue', alpha=0.5)
         except IndexError:
             xmax, xmax1 = np.nan, np.nan
-        
     try:
         xmin =  x[2:-5][np.where(data[2:-5] == min(data[2:-5]))[0]]   
         ax.plot(xmin, min(data[2:-5]), 'o', ms=5, color='IndianRed')
@@ -200,18 +204,21 @@ def sparklines(data, lab, ax, x=None, title=None,
             
         except IndexError: pass
         
-   
+    if not isinstance(xmax, (np.int64,float)) and len(xmax)==0: xmax=np.nan
+    if not isinstance(xmax1, (np.int64,float)) and len(xmax1)==0: xmax1=np.nan
+    if not isinstance(xmin, (np.int64,float)) and len(xmin)==0: xmin=np.nan    
+    
     if maxminloc:
-        ax.text(1, 0.4, "%.1f"%(xmin), fontsize = 10, 
+        ax.text(1, 0.4, "%.2f"%(xmin), fontsize = 10, 
                 transform = ax.transAxes, ha = 'right', color='IndianRed')
-        ax.text(1, 0.7, "%.1f"%(xmax), fontsize = 10, 
+        ax.text(1, 0.7, "%.2f"%(xmax), fontsize = 10, 
                 transform = ax.transAxes, ha = 'right', color='SteelBlue')
     else:
         ax.text(1, 0.4, "%.1f"%(min(data)), fontsize = 10, 
                 transform = ax.transAxes, ha = 'right', color='IndianRed')
         ax.text(1, 0.7, "%.1f"%(max(data)), fontsize = 10, 
                 transform = ax.transAxes, ha = 'right', color='SteelBlue')  
-    
+
     return ((xmax, xmax1), xmin)
 
 def get_plot_lca (x1, y1, x2, y2, flist, fname, imshape,
@@ -224,18 +231,19 @@ def get_plot_lca (x1, y1, x2, y2, flist, fname, imshape,
     else:
         afft, a = read_to_lc(x1, y1, x2, y2, flist, fname, imshape, fft=fft,
                   showme=showme, c=c, verbose=verbose, outdir=outdir)
-        
+    #print (a)
     flux0=(a-np.nanmean(a))/np.nanstd(a)
     flux=flux0.copy()
     
     if showme:
         pl.rc('font', **font)
 
-        pl.figure(figsize=(15,5))
+        fig = pl.figure(figsize=(15,5))
         pl.plot(flux, color=c)
         pl.xlabel("img number")
         pl.ylabel("standardized flux")
-
+        pl.show()
+        pl.close(fig)
     return flux0, afft
 
 
@@ -243,29 +251,35 @@ def read_to_lc(x1,y1,x2,y2, flist, fname, imshape, fft=False, c='w',
                showme=False, verbose = False, outdir = './'):
 
     fullfname = outdir + "/pickles/" + fname.split('/')[-1]
-
+    nmax = len(flist)
     if showme :
         plotwindows(x1,y1,x2,y2, flist[0], c=c)
     rereadnow = EXTRACT
-    if not EXTRACT:
+
+    if not rereadnow:
         try:
             if not fft:
-                a = pkl.load(open(fullfname+".pkl",'rb'))
-                
+                try:
+                    a = pkl.load(open(fullfname+".pkl",'rb'))
+                except ValueError:
+                    rereadnow = True
             else:
-                a = pkl.load(open(fullfname+".pkl",'rb'))
-                #print ("printing now ",a.size)
-                #pl.plot(a)
-                #pl.show()
-                afft = pkl.load(open(fullfname+"_fft.pkl",'rb'))
-                afft[0] = min(a)
+                try:
+                    a = pkl.load(open(fullfname+".pkl",'rb'))
+                    #print ("printing now ",a.size)
+                    #pl.plot(a)
+                    #pl.show()
+                    afft = pkl.load(open(fullfname+"_fft.pkl",'rb'))
+                    afft[0] = min(a)
+                except ValueError:
+                    rereadnow = True                    
         except:
             rereadnow = True
             #print ("missing files: changing reread to True")
         
     if rereadnow:
         a = np.ones(nmax)*np.nan
-        for i,f in enumerate(flist[:nmax]):
+        for i,f in enumerate(flist):
             try:
                 a[i] = np.fromfile(f,
                         dtype=np.uint8).reshape(imshape['nrows'],
@@ -383,10 +397,10 @@ def fit_freq(freq, ts):
     
 
 
-def fit_waves(filepattern, lmax, timeseries, transformed, km,
+def fit_waves(filepattern, lmax, nmax, timeseries, transformed, km,
               goodkmeanlabels, ntot, 
               km_freqs, stack, bs,
-              aperture, imsize, flist,
+              aperture, imsize, flist, xfreq,
               fft=False,   showme=False,
               outdir="./", outdir0="./"):
 
@@ -395,6 +409,7 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
     fig = pl.figure(figsize=(10,(int(ntot/2)+1)))#figsize=(10,100))
     ax = []
     fig2 = pl.figure()
+
     axs0 = fig2.add_subplot(211)
     axs1 = fig2.add_subplot(212)    
     #fig2 = pl.figure()
@@ -415,39 +430,76 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
 
     #for i,cc in enumerate(allights[:lmax]):
     phases = np.zeros((6,len(bs)))*float('NaN')
-    freq = (km_freqs[goodkmeanlabels[0]], km_freqs[goodkmeanlabels[1]])
+    try:
+        freq = [km_freqs[goodkmeanlabels[0]], km_freqs[goodkmeanlabels[1]]]
+        i=2
+        while (freq[0] == freq[1] and i<len(goodkmeanlabels)):
+            #print (goodkmeanlabels)
+            freq[1] = km_freqs[goodkmeanlabels[i]]
+            i=i+1
+    except IndexError:
+        freq = (km_freqs[goodkmeanlabels[0]])
+        
+
     
     if fft:
-        outphasesfile = open(filepattern+"_fft_phases_N%d.dat"%lmax, "w")
+        outphasesfile = open(filepattern+"_fft_phases_N%04dW%04dS%04d.dat"%(nmax,lmax, options.skipfiles), "w")
     else:
-        outphasesfile = open(filepattern+"_phases_N%d.dat"%lmax, "w")        
+        outphasesfile = open(filepattern+"_phases_N%04dW%04dS%04d.dat"%(nmax,lmax,
+         options.skipfiles), "w")
+        
     print ("#index,x,y,freq,phase", file=outphasesfile)
     figsp = pl.figure(figsize = (10,(int(lmax/4)+1)))
+    figspfft = pl.figure(figsize = (10,(int(lmax/4)+1)))
+    #figspgood = pl.figure(figsize = (10,(int(lmax/4)+1)))
     axsp = []
+    axspfft = []    
     goodcounter = 0
 
     for i, Xc in enumerate(timeseries):
         stdtimeseries = (Xc-Xc.mean())/Xc.std()
         stdbs = (bs[i]-bs[i].mean())/bs[i].std()
+#        print ("here", min(stdbs),  max(stdbs), np.mean(stdbs), np.std(stdbs))
         color, alpha = 'k', 0.3
         axsp.append(figsp.add_subplot(lmax,2,(i*2+1)))
         sparklines(stdbs, '%d'%i,
                    axsp[-1], color=color, alpha=alpha, nolabel=True)
-        axsp.append(figsp.add_subplot(lmax,2,(i*2+2)))
+        if not fft:
+            axspfft.append(figspfft.add_subplot(lmax,2,(i*2+1)))
+            power = np.abs(np.fft.rfft(stdbs))[2:-5]
+#            print (power)
+#            print (freq)
+            xmaxs, xmin = sparklines(power, '%d'%i,
+                                     axspfft[-1], x=xfreq[2:-5], color=color,
+                                     alpha=alpha)
+            ymin, ymax = axspfft[-1].get_ylim()
+            axspfft[-1].plot([0.25,0.25],[ymin, ymax],'k-')
+#            print ("\r freq max",xmaxs, end='')
+            sys.stdout.flush()
+
+
+        axsp.append(figsp.add_subplot(lmax,2,(i*2+2)))        
 
         if not fft:
             sparklines(km.cluster_centers_[km.labels_[i]],
                    "cluster %i"%km.labels_[i], axsp[-1],
                    color=color, alpha=alpha)
+            axspfft.append(figspfft.add_subplot(lmax,2,(i*2+2)))
+            xmaxs, xmin = sparklines(np.abs(np.fft.rfft(km.cluster_centers_[km.labels_[i]])[2:-5]),
+                       "cluster %i"%km.labels_[i], axspfft[-1],
+                       x=xfreq[2:-5], color=color, alpha=alpha)
+            #=print (xmaxs)            
+            ymin, ymax = axspfft[-1].get_ylim()
+            axspfft[-1].plot([0.25,0.25],[ymin, ymax],'k-')
         else:
-            sparklines(transformed[km.labels_[i]],
+            sparklines(transformed[km.labels_[i]][2:-5],
                        "cluster %i"%km.labels_[i], axsp[-1],
                        color=color, alpha=alpha, maxminloc=True)
         
         if km.labels_[i] in goodkmeanlabels:
             goodcounter +=1
             color, alpha = 'Navy', 0.8
-            
+#            print ("min and max: ",min(stdbs), max(stdbs))
             sparklines(stdbs, "",
                        axsp[-2], color=color, alpha=alpha)
         
@@ -460,25 +512,28 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
                        "cluster %i"%km.labels_[i], axsp[-1],
                         color=color, alpha=alpha, maxminloc=True)
             
-            print ("\r Analyzing window {0:d} from {1:d}".format(goodcounter,
-                                                                 ntot),
+            print ("\r Analyzing window {0:d} of {1:d} (testing periods {2}, {3})".format(goodcounter, ntot, freq[0], freq[1]),
                    end="")
             sys.stdout.flush()
 
-            print (" Analyzing & plotting sine window {0:d}".format(i),
+            print (" Analyzing & plotting sine window {0:d} (testing periods {1}, {2})".format(i, freq[0], freq[1]),
                    file=logfile)
             #print  (km.labels_[i] ,  goodkmeanlabels,  km_freqs.keys())
             j = j+1
             
-
+        
             phases[0][i], phases[5][i], thiswave = fit_freq(freq[0], stdbs)
 
+            #print (min(thiswave), max(thiswave), freq[0],
+            #       min(stdbs), max(stdbs))
             sparklines(thiswave,  "          %.2f"%(phases[5][i]),
                            axsp[-2], color='r', alpha=0.3, nolabel=True)
             fq = freq[0]
-            if phases[5][i] > 1:
+            if phases[5][i] > 1 and len(freq)>1:
                 phases[0][i], phases[5][i], thiswave = fit_freq(freq[1], stdbs)
                      
+                #print (min(thiswave), max(thiswave), freq[1],
+                #       min(stdbs), max(stdbs))
                 sparklines(thiswave,  "                   %.2f"%(phases[5][i]),
                                axsp[-2], color='y', alpha=0.3, nolabel=True)
                 fq = freq[0]
@@ -492,8 +547,8 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
             phases[2][i] = allights[i][0]
             phases[3][i] = allights[i][1]
             phases[4][i] = km.labels_[i]
-    
-            ax.append(fig.add_subplot(ntot/2+1, 1, (newntot+1)))
+#            print ("here", ntot/2+1, newntot+1)
+            ax.append(fig.add_subplot(max(ntot/2+1, newntot+1), 1, (newntot+1)))
             
             ax[-1].plot(np.arange(stdbs.size) * options.sample_spacing,
                         stdbs, label="%.2f %.2f"%(phases[2][i], phases[3][i]))
@@ -526,10 +581,10 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
                           fft = fft,
                           stack = stack, outdir=outdir0)
     
-            x1,x2=int(phases[2][i])-options.aperture*3,\
-                   int(phases[2][i])+options.aperture*3
-            y1,y2=int(phases[3][i])-options.aperture*3,\
-                   int(phases[3][i])+options.aperture*3
+            x1,x2=int(phases[2][i])-aperture*3,\
+                   int(phases[2][i])+aperture*3
+            y1,y2=int(phases[3][i])-aperture*3,\
+                   int(phases[3][i])+aperture*3
             axs1.plot([x1,x2],[y1,y1], '-',
                       color='%s'%kelly_colors_hex[km.labels_[i]])    
             axs1.plot([x2,x2],[y1,y2], '-',
@@ -542,14 +597,24 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
             print ("%d,%.2f,%.2f,%.2f,%.2f"%(i, phases[2][i], phases[3][i], phases[0][i], phases[5][i]),
                    file=outphasesfile)
 
-    if not fft: #figsp.savefig(
-        figname = outdir + "/" + fnameroot + "_km_assignments.pdf"
-    else: #figsp.savefig(
-        figname = outdir + "/" + fnameroot + "_km_assignments_fft.pdf"
+    if not fft: 
+        fignamekm = outdir + "/" + fnameroot + "_km_assignments.pdf"
+        fignamegw = outdir + "/" + fnameroot + "_goodwindows.pdf"
+        fignamefft = outdir + "/" + fnameroot + "_transform.pdf" 
+        fignamegwf = outdir + "/" + fnameroot + "_goodwindows_fits.pdf"
+    else: 
+        fignamekm = outdir + "/" + fnameroot + "_km_assignments_fft.pdf"
+        fignamegw = outdir + "/" + fnameroot + "_goodwindows_fft.pdf"
+        fignamegwf = outdir + "/" + fnameroot + "_goodwindows_fits_fft.pdf"
+        
     try:
-        figsp.savefig(figname)
+        figsp.savefig(fignamekm)
+        if not fft:
+             figspfft.savefig(fignamefft)
     except ValueError: 
-        print ("could not save figure %s"%figname)
+        print ("could not save figure %s or %s"%(figname, fignamefft))
+    pl.close(figsp)
+    pl.close(figspfft)
     
     print ("")
     if newntot == 0:
@@ -557,24 +622,18 @@ def fit_waves(filepattern, lmax, timeseries, transformed, km,
         sys.exit()
     axs1.set_title("%d good windows"%newntot)
 
-    if not fft: 
-        figname = outdir + "/" + fnameroot + "_goodwindows.pdf"
-    else: 
-        figname = outdir + "/" + fnameroot + "_goodwindows_fft.pdf"
     try:
-        fig2.savefig(figname)
+        fig2.savefig(fignamegw)
     except ValueError: 
         print ("could not save figure %s"%figname)    
-    
-    ax[-1].set_xlabel("seconds")
+    pl.close(fig2)
 
-    if not fft: figname = outdir + "/" + fnameroot + "_goodwindows_fits.pdf"
-    else: figname = outdir + "/" + fnameroot + "_goodwindows_fits_fft.pdf"
+    ax[-1].set_xlabel("seconds")
     try:
-        figsp.savefig(figname)
+        fig.savefig(fignamegwf)
     except ValueError: 
         print ("could not save figure %s"%figname)
-    
+    pl.close(fig)
     print ("\nActual number of windows well fit by a sine wave (chisq<1): %d"%newntot)
     #sys.exit()
   
@@ -586,10 +645,10 @@ if __name__=='__main__':
 
     parser = optparse.OptionParser(usage="getallcv.py 'filepattern' ",
                                    conflict_handler="resolve")
-    parser.add_option('--nmax', default=None, type="int",
-                      help='number of images to process')
+    parser.add_option('--nmax', default=100, type="int",
+                      help='number of images to process (i.e. timestamps)')
     parser.add_option('--lmax', default=None, type="int",
-                      help='number of lights')    
+                      help='number of lights')
     parser.add_option('--showme', default=False, action="store_true",
                       help='show plots')
     parser.add_option('--aperture', default=2, type="int",
@@ -636,10 +695,14 @@ if __name__=='__main__':
             
     
     print ("Image size: ", imsize)
-
+        
     flist = sorted(glob.glob(impath+"*.raw"))
-    print ("Number of timestamps (files): %d"%len(flist))
-    flist = flist[options.skipfiles:]
+
+    print ("Total number of image files: %d"%len(flist))
+
+    nmax = min(options.nmax, len(flist)-options.skipfiles)
+    print ("Number of timestamps (files): %d"%(nmax))
+    flist = flist[options.skipfiles:nmax+options.skipfiles]    
 
     if os.path.isfile(filepattern+"_allights.npy"):
         allights = np.load(filepattern+"_allights.npy")
@@ -652,16 +715,20 @@ if __name__=='__main__':
     lmax = len(allights)
     if options.lmax: lmax = min([lmax, options.lmax])
     print ("Max number of windows to use: %d"%lmax)
-
-
-    outdir0 = '/'.join(filepattern.split('/')[:-1])
-    outdir = '/'.join(filepattern.split('/')[:-1])+'/N%d'%lmax    
-    print ("Output directory", outdir)
+    print ( options.skipfiles)
+    outdir0 = '/'.join(filepattern.split('/')[:-1])+'/N%04dS%04d'%(nmax,  options.skipfiles)
+    outdir = '/'.join(filepattern.split('/')[:-1])+'/N%04dW04%dS%04d'%(nmax,
+                                                                 lmax,
+                                                                 options.skipfiles)
     if not os.path.isdir(outdir): 
         os.system('mkdir -p %s '%outdir)
-        os.system('mkdir %s'%outdir0+"/pickles")
-        os.system('mkdir %s'%outdir0+"/gifs")
+    if not os.path.isdir(outdir0):
+        os.system('mkdir -p %s'%outdir0+"/pickles")
+        os.system('mkdir -p %s'%outdir0+"/gifs")
+    print ("Output directories: ",
+           '/'.join(filepattern.split('/')[:-1]), outdir0, outdir)
 
+    
     logfile = open(filepattern+".log", "a")
     print ("Logfile:", logfile)
     print ("\n\n\n\t\t%s"%str(datetime.datetime.now()), file=logfile)
@@ -670,22 +737,19 @@ if __name__=='__main__':
     
     if options.fft:
         bsoutfile = outdir + "/" + fnameroot + "_bs_fft.npy"
+        coordsoutfile = outdir + "/" + fnameroot + "_coords_fft.npy"
+        kmresultfile = outdir + "/" + fnameroot + "_kmresult_fft.pkl"
+        xfreq = np.fft.rfftfreq(nmax, d=options.sample_spacing)
+        
     else:
         bsoutfile = outdir + "/" + fnameroot + "_bs.npy"
-
-
-    if options.fft:
-        coordsoutfile = outdir + "/" + fnameroot + "_coords_fft.npy"
-    else:
         coordsoutfile = outdir + "/" + fnameroot + "_coords.npy"
-
-    if options.fft:
-        kmresultfile = outdir + "/" + fnameroot + "_kmresult_fft.pkl"
-    else:
         kmresultfile = outdir + "/" + fnameroot + "_kmresult.pkl"
-        
+
     figspk = pl.figure(figsize = (10,(int(lmax/2)+1)))
     ax = []
+    figspkfft = pl.figure(figsize = (10,(int(lmax/2)+1)))
+    axfft = []
     
     bs = np.zeros((lmax, nmax))
     fs = np.zeros((lmax, int(nmax/2+1)))
@@ -701,21 +765,21 @@ if __name__=='__main__':
     else:
         for i,cc in enumerate(allights[:lmax]):
 
-            print ("\r### Extracting window {0:d} of {1:d} ".format(i+1,
-                                                        lmax), end="")
+            print ("\r### Extracting window {0:d} of {1:d} (x={2:d}, y={3:d})"\
+                   .format(i+1, lmax, int(cc[0]),  int(cc[1])), end="")
             sys.stdout.flush()
 
             x2 = 0 if i%2 == 0 else 2
             #ax.append(pl.subplot2grid((25,3), ((i/2)+1, x2+1)))
             ax.append(figspk.add_subplot(lmax/2+1,2,i+1))
             #if False:    
-            bs[i], fs[i]  = get_plot_lca (int(cc[0])-options.aperture,
-                                          int(cc[1])-options.aperture, 
-                                          int(cc[0])+options.aperture+1,
-                                          int(cc[1])+options.aperture+1,
+            bs[i], fs[i]  = get_plot_lca (int(cc[0]+0.5)-options.aperture,
+                                          int(cc[1]+0.5)-options.aperture, 
+                                          int(cc[0]+0.5)+options.aperture+1,
+                                          int(cc[1]+0.5)+options.aperture+1,
                                           flist, 
-                                          filepattern+'_x%d_y%d_ap%d'%(int(cc[0]),
-                                                                       int(cc[1]), 
+                                          filepattern+'_x%d_y%d_ap%d'%(int(cc[0]+0.5),
+                                                                       int(cc[1]+0.5), 
                                                                        options.aperture),
                                           imsize, fft=options.fft,
                                           verbose=False, showme=options.showme,
@@ -723,9 +787,13 @@ if __name__=='__main__':
 
             #pl.plot(b1)
             #print (bs[i].size)
-
-
+            
             sparklines(bs[i], '%d %d:%d'%(i, int(cc[0]), int(cc[1])), ax[i])
+            if options.fft:
+                axfft.append(figspkfft.add_subplot(lmax/2+1,2,i+1))                
+                sparklines(fs[i][2:-5], '%d %d:%d'%(i, int(cc[0]), int(cc[1])),
+                           axfft[-1], x=xfreq[2:-5],
+                           maxminloc=options.fft)
 
         print ("")
 
@@ -743,6 +811,15 @@ if __name__=='__main__':
             figspk.savefig(figname)
         except ValueError:
             print ("could not save", figname)
+        pl.close(figspk)   
+
+        if options.fft:
+            figname = outdir + "/" + fnameroot + "_sparklinesfft_lcv.pdf"
+            try: 
+                figspkfft.savefig(figname)
+            except ValueError:
+                print ("could not save", figname)
+        pl.close(figspkfft)   
             
         if options.showme: pl.show()
 
@@ -772,18 +849,28 @@ if __name__=='__main__':
     
 
     if options.readKM and os.path.isfile(kmresultfile):
-        print ("reading KM result from saved file %s"%kmresultfile)
-        kmresult = pkl.load(open(kmresultfile))
+        try: 
+            print ("reading KM result from saved file %s"%kmresultfile)
+            kmresult = pkl.load(open(kmresultfile))
+        except ValueError:
+            print ("wrong pickle protocol. remove ",kmresultfile)
+            sys.exit()
+            
     else:
 
          print ("\n### Starting PCA")
 
-         if not options.fft: timeseries = bs
-         else: timeseries = fs
+         if not options.fft:
+             timeseries = bs
+             x = np.arange(timeseries)
+         else:
+             timeseries = fs
 
          lts = len(timeseries)
-
-
+         #pl.figure()
+         #print (bs.shape)
+         #[pl.plot(bs[i], alpha=0.1) for i in range(len(bs))]
+         #pl.show()
 
          pca = PCA()
          X_pca = pca.fit_transform(timeseries)
@@ -796,12 +883,22 @@ if __name__=='__main__':
          figrows = min(60,(int(lts/2)+1))
          figpca = pl.figure(figsize = (10, figrows))
          spax = []
-         for i,Xc in enumerate(evecs):
-             spax.append(figpca.add_subplot(figrows, 2, i+1))
-             sparklines(Xc, "%.3f"%evals_cs[i], spax[i],
-                        maxminloc=options.fft)
-             if evals_cs[i] > 0.9:
-                 break
+         
+         if options.fft:
+             for i,Xc in enumerate(evecs):
+                 spax.append(figpca.add_subplot(figrows, 2, i+1))
+                 sparklines(Xc, "%.3f"%evals_cs[i], spax[i],
+                            x=xfreq, maxminloc=options.fft)
+                 if evals_cs[i] > 0.9 or i+1 == figrows * 2:
+                     break
+         else:
+             for i,Xc in enumerate(evecs):
+                 spax.append(figpca.add_subplot(figrows, 2, i+1))
+                 sparklines(Xc, "%.3f"%evals_cs[i], spax[i],
+                            maxminloc=options.fft)
+                 if evals_cs[i] > 0.9 or i+1 == figrows * 2:
+                     break
+                
              
              
              
@@ -823,7 +920,7 @@ if __name__=='__main__':
              kmcenters[-1] = evecs[0]*10<0.5
 
              kmcenters[-2] = evecs[1]*10<0.5
-
+         print (evecs)
          km = KMeans(n_clusters=options.nkmc, init=evecs[:options.nkmc])
          vals = ((timeseries.T - timeseries.mean(1))/timeseries.std(1)).T
          km.fit(vals)
@@ -834,7 +931,6 @@ if __name__=='__main__':
          kmax = []
          goodkmeanlabels, km_freqs = [], {}
          transformed = []
-         freq = np.fft.rfftfreq(nmax, d=options.sample_spacing)
          for i,Xc in enumerate(km.cluster_centers_):
              kmax.append(fig.add_subplot(20,2,(i*2+1)))
              if not options.fft:
@@ -843,11 +939,12 @@ if __name__=='__main__':
                  transformed.append( np.abs(np.fft.rfft(Xc))[1:])
                  transformed[-1][0] = 0
                  km_xmax, km_xmin = sparklines(transformed[-1][:-5], "", kmax[-1],
-                                               x=freq[1:-5])
+                                               x=xfreq[1:-5])
              else:
                  kmax.append(fig.add_subplot(20,2,(i*2+2)))
-                 km_xmax, km_xmin = sparklines(Xc[:-5], "%i"%i, kmax[-1],
-                                               x=freq[:-5], maxminloc=True)
+                 #print (Xc[1:-5])
+                 km_xmax, km_xmin = sparklines(Xc[1:-5], "%i"%i, kmax[-1],
+                                               x=xfreq[1:-5], maxminloc=True)
                  transformed.append(np.abs(np.fft.irfft(Xc)))
                  sparklines(transformed[-1], "", kmax[-2])
 
@@ -861,7 +958,7 @@ if __name__=='__main__':
                  goodkmeanlabels.append(i)
                  km_freqs[i] = km_xmax[1]            
                  accepted = "ACCEPTED!"
-
+                 
              print ("cluster {0}: strongest frequecies {1}, {2} - {3}".\
                     format(i,
                            km_xmax[0],
@@ -881,7 +978,8 @@ if __name__=='__main__':
          if not options.fft: figname = outdir + "/" + fnameroot + "_KM.pdf"
          else: figname = outdir + "/" + fnameroot + "_KM_fft.pdf"
          pl.savefig(figname)
-
+         pl.close(fig)
+         
          transformed = np.array(transformed)
 
          fig = pl.figure()
@@ -942,6 +1040,7 @@ if __name__=='__main__':
 
          figname = outdir + "/" + fnameroot + "_windows.pdf"
          fig.savefig(figname)
+         pl.close(fig)
          #fig2.savefig(filepattern + "_kmclusters_brightness.png")
 
          phi0 = 0
@@ -954,7 +1053,7 @@ if __name__=='__main__':
              sys.exit()
 
          
-
+         print (km_freqs)
          kmresult = {'timeseries':timeseries,
                      'transformed':transformed,
                      'km':km, 'km_freqs':km_freqs,
@@ -965,11 +1064,11 @@ if __name__=='__main__':
     
     
     
-    phases = fit_waves(filepattern, lmax, kmresult['timeseries'],
+    phases = fit_waves(filepattern, lmax, nmax, kmresult['timeseries'],
                        kmresult['transformed'], kmresult['km'],
                        kmresult['goodkmeanlabels'], kmresult['ntot'],
                        kmresult['km_freqs'], stack, bs,
-                       options.aperture, imsize, flist,
+                       options.aperture, imsize, flist, xfreq,
                        fft=options.fft, showme=options.showme, outdir=outdir)
 
 
@@ -988,7 +1087,8 @@ if __name__=='__main__':
         pl.savefig(figname)
     except ValueError: 
         print ("could not save figure %s"%figname)    
-
+    pl.close()
+    
     ax = pl.figure().add_subplot(111)
     cmap =  pl.cm.rainbow(phases[0][~np.isnan(phases[0])])
     #print (len(cmap), len(phases[0][~np.isnan(phases[0])]), cmap)
@@ -1005,3 +1105,4 @@ if __name__=='__main__':
     else: pl.savefig(outdir + "/" + fnameroot + "_phases_fft.png")
     #ax.axis('off')
     #pl.show()
+    pl.close()
