@@ -1244,7 +1244,7 @@ def fftsmooth(timeseries, spacing):
     return [smoothedTs, transform, smoothedFFTs, xfreq]
 
 def PCAnalysis(pca, ts, xfreq, fname,
-               plotsparks = True, coords = None,
+               plotsparks = False, coords = None,
                smooth=False):
     PCAr = np.zeros((ts.shape[0],5))
     evecs = pca.components_
