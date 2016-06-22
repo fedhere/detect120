@@ -1429,9 +1429,9 @@ def runit((arg, options)):
         subprocess.Popen('mkdir -p %s '%outdir, shell=True)
         #os.system('mkdir -p %s '%outdir)
     if not os.path.isdir(outdir0):
-        subprocess.Popen('mkdir -p %s/%s'%(outdir0+'pickles'), shell=True)
+        subprocess.Popen('mkdir -p %s/%s'%(outdir0,'pickles'), shell=True)
         #os.system('mkdir -p %s'%outdir0+"/pickles")
-        subprocess.Popen('mkdir -p %s/%s'%(outdir0+'gifs'), shell=True)
+        subprocess.Popen('mkdir -p %s/%s'%(outdir0,'gifs'), shell=True)
         #os.system('mkdir -p %s'%outdir0+"/gifs")
     print ("Output directories: ",
            '/'.join(filepattern.split('/')[:-1]), outdir0, outdir)
