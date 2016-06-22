@@ -39,7 +39,7 @@ GIF = False
 NOPARALLEL = True
 #NOPARALLEL = False
 #must set the backand to agg for parallel processing to work
-if not NOPARALLEL: matplotlib.use('agg')
+#if not NOPARALLEL: matplotlib.use('agg')
 
 ### READ: if True reads the results of the PCA/KM clustering
 ### stored in earlier runs, if they exist
@@ -574,13 +574,13 @@ def fit_freq(freq, ts, imgspacing, phi0=0.0, iteratit=False,
                 phaseold = phase
 
                 
-                fits = scipy.optimize.minimize(resd_freq_fold, freq,
+                fits = scipy.optimize.minimize(resd_freq, freq,
                                                args=(phase,
                                                      signal, lts))
                 freq=fits.x
 
                 
-                fits = scipy.optimize.minimize(resd_fold, phase,
+                fits = scipy.optimize.minimize(resd, phase,
                                                args=(np.abs(freq),
                                                      signal, lts))
                 phase = fits.x%2
@@ -1459,10 +1459,14 @@ def runit((arg, options)):
         bsoutfile = outdir + "/" + fnameroot + "_bs.npy"
         coordsoutfile = outdir + "/" + fnameroot + "_coords.npy"
         goodcoordsoutfile = outdir + "/" + fnameroot + "_goodcoords.npy"
+        if options.mcmc:
+            goodcoordsoutfile = outdir + "/" + fnameroot + "_goodcoords_mcmc.npy"
         kmresultfile = outdir + "/" + fnameroot + "_kmresult.pkl"
         pcaresultfile = outdir + "/" + fnameroot + "_PCAresult.pkl"        
         if options.smooth:
-            goodcoordsoutfile = outdir + "/" + fnameroot + "Smooth_goodcoords.npy"            
+            goodcoordsoutfile = outdir + "/" + fnameroot + "Smooth_goodcoords.npy"
+            if options.mcmc:
+                goodcoordsoutfile = outdir + "/" + fnameroot + "Smooth_goodcoords_mcmc.npy"
             pcaresultfile=pcaresultfile.replace("PCA","PCAsmooth")
     figspk = pl.figure(figsize = (10,(int(lmax/2)+1)))
     ax = []
@@ -1714,7 +1718,7 @@ def runit((arg, options)):
         #add an offset to the requency to have the chance to test 2 freqs
         if freqs[0] == freqs[1]:
             freqs[0] = (freqs[1] if freqs[0] == freqs[1] + FQOFFSET else  freqs[1] + FQOFFSET)
-        freqs[0]=0.3
+        #freqs[0]=0.3
             #if freqs[0] > 0.25:
             #    freqs[0] -= FQOFFSET
             #else:
