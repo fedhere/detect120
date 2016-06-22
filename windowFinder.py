@@ -45,7 +45,7 @@ if __name__=='__main__':
 
     parser.add_option('--thr', default=110, type="float",
                       help='threshold for window')
-    parser.add_option('--auto', default=False, action="store_true",
+    parser.add_option('--noauto', default=True, action="store_false",
                       help='automaticallyl setting the threshold to 98% of pixel value distribution')
     parser.add_option('--nocheck', default=False, action="store_true",
                       help='dont check if threshold is right')        
@@ -72,7 +72,7 @@ if __name__=='__main__':
     flatfoo = foo.flatten()    
     pcs = np.array([16,50,84,90,95,99.5])
     pc =  np.percentile(flatfoo, pcs)
-    if options.auto: thr = pc[pcs==90]
+    if options.noauto: thr = pc[pcs==90]
     else: thr = options.thr
 
     numbins = int(knuthn(flatfoo) + 0.5)
@@ -108,7 +108,7 @@ if __name__=='__main__':
             ax3.text(k, ax3.get_ylim()[1]*(1.0-i*0.1-0.08), "%.1f"%(k),
                      ha='right')
             
-        ax3.plot([thr,thr],[0,ax3.get_ylim()[1]],
+        ax3.plot([thr, thr],[0, ax3.get_ylim()[1]],
                  '-', color='IndianRed')
         ax3.text(thr, ax3.get_ylim()[1]*0.8, "%d"%(thr),
                  ha='right', color='red')
@@ -136,7 +136,7 @@ if __name__=='__main__':
             ax3.bar(bins[:-1], countsnorm,  widths,
                         color='gray')
             for i,k in enumerate(pc[1:-1]):
-                ax3.plot([k,k],[0,ax3.get_ylim()[1]],
+                ax3.plot([k, k],[0, ax3.get_ylim()[1]],
                          '-', color='SteelBlue')        
                 ax3.text(k, ax3.get_ylim()[1]*(1.0-i*0.1), "%.1f"%(pcs[i+1]),
                      ha='right')
@@ -167,7 +167,8 @@ if __name__=='__main__':
     for i in range (nlabels):
         if ~goodwindows[i]:
             labels[labels==i] = 0
-
+            
+    np.save(args[0].replace(".npy","_labels.npy"), labels)
     #resetting label numbers to get  better color map
 
     tmp = np.random.choice(range(labels.max()+1), labels.max()+1, replace=False)
@@ -175,6 +176,7 @@ if __name__=='__main__':
         return tmp[i].astype(float)
     
     bar = np.array(map(mapcolor, labels))
+    print (labels, labels==0)
     bar[labels==0] = 0.
     bar = bar/bar.max()
     clrs = (pl.cm.jet((bar))*255).astype(np.uint8)
@@ -185,6 +187,7 @@ if __name__=='__main__':
     pl.figure()
     
     pl.imshow(clrs, interpolation='nearest')
+    np.save(args[0].replace(".npy","_labelledwindows.npy"), clrs)
     pl.xlim(0,pl.xlim()[1])
     pl.ylim(pl.ylim()[0],0)
     #pl.draw()
@@ -196,7 +199,7 @@ if __name__=='__main__':
     pl.close()
     coords = np.array(sp.ndimage.measurements.center_of_mass(newdata, labels,
                                                     np.where(goodwindows))).squeeze()
-
+    mask = np.array([labels==i for i in range(1,labels.max()+1)])
     pl.figure()
     
     pl.imshow(clrs, interpolation='nearest')
@@ -207,6 +210,7 @@ if __name__=='__main__':
                      (coords[:,0]<stack.shape[0]-5) *\
                      (coords[:,1]>5) * \
                      (coords[:,1]<stack.shape[1]-5)])
+
     print ("Found %d good windows away from the edges"%len(coords))
     
     for c in coords:
@@ -218,5 +222,14 @@ if __name__=='__main__':
     if options.showme: pl.show()
     pl.close()
     #coords = np.array([coords[:,1],coords[:,0]])
-    pl.save(args[0].replace(".npy", "_coords.npy"), coords)
-
+    pl.save(args[0].replace(".npy", "_coords.npy"), coords[:,1::-1])
+    pl.save(args[0].replace(".npy", "_mask.npy"), mask)
+    #print (mask)
+    '''
+    for i in range(labels.max()+1):
+        if i in labels:
+            pl.figure()
+            pl.imshow(mask[:i].sum(axis=0),  interpolation='nearest', cmap='gist_gray')
+            pl.savefig("mask.%04d.png"%i)
+            pl.close('all')
+    '''
