@@ -1,0 +1,7 @@
+for f in groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-213949 groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-220941 groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-222440 groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-223940 groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-225440
+
+    do python getalllcvPCA.py $f --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy  --stack stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy --readPCA
+done
+
+#groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-213949 groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-220941 
+
