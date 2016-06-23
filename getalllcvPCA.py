@@ -666,7 +666,7 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
         outphasesfile = open(filepattern+"_phases_N%04dW%04dS%04d.dat"%(nmax,lmax,
          options.skipfiles), "w")
         
-    print ("#index,x,y,chi2,phase,freq", file=outphasesfile)
+    print ("#index,x,y,phase,chi2,freq", file=outphasesfile)
     figsp = pl.figure(figsize = (10,(int(lmax/4)+1)))
     figspfft = pl.figure(figsize = (10,(int(lmax/4)+1)))
     #figspgood = pl.figure(figsize = (10,(int(lmax/4)+1)))
@@ -830,7 +830,8 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
                       color='%s'%kelly_colors_hex[km.labels_[i]])
 
             print ("%d,%.2f,%.2f,%.2f,%.2f,%2f"%(i, phases['x'][i], phases['y'][i],
-                                                 phases['phase'][i], phases['chi2'][i],
+                                                 phases['phase'][i],
+                                                 phases['chi2'][i],
                                                  phases['freq'][i]),
                    file=outphasesfile)
             ilast = i
@@ -909,9 +910,9 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
                       color='%s'%kelly_colors_hex[3])    
             axs1.plot([x1,x1],[y2,y1], '-',
                       color='%s'%kelly_colors_hex[3])
-
             print ("%d,%.2f,%.2f,%.2f,%.2f,%2f"%(i, phases['x'][i], phases['y'][i],
-                                                 phases['phase'][i], phases['chi2'][i],
+                                                 phases['phase'][i],
+                                                 phases['chi2'][i],
                                                  phases['freq'][i]),
                    file=outphasesfile)
 
@@ -958,7 +959,6 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
     pl.close(figsp)
     pl.close(figspfft)
     
-    print ("")
     if newntot == 0:
         print ("\n   !!!No windows with the right time behavior!!!")
         return [-1], [-1]
