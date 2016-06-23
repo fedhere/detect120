@@ -1343,7 +1343,11 @@ def PCAnalysis(pca, ts, xfreq, fname,
             pl.close()
         pcasklfig.savefig(fname.replace(".pdf","_sparklines.pdf"))
         pl.close(pcasklfig)
-    else:     transformed = np.empty_like(ts)
+    else:
+        transformed = np.array([np.abs(np.fft.rfft(tsi))[1:] for tsi in ts])
+            
+        transformed[:,0] = 0
+            
 
     fig, rmin = plotPC12plane(PCAr, srtindx)
     
@@ -1500,9 +1504,7 @@ def runit((arg, options)):
             return (-1)
         else:
             for i,cc in enumerate(allights[:lmax]):
-
-                
-
+                print (cc)
                 print ("\r### Extracting window {0:d} of {1:d} (x={2:d}, y={3:d})"\
                        .format(i+1, lmax, int(cc[0]),  int(cc[1])), end="")
                 sys.stdout.flush()
