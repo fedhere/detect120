@@ -21,6 +21,7 @@ from images2gif import writeGif
 from PIL import Image, ImageSequence
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
+from sklearn.preprocessing import Imputer
 import IPython.display as IPdisplay
 import multiprocessing as mpc
 
@@ -322,6 +323,7 @@ def extraction(((coord), xfreq, lmax,
                 options, fig, ax, figfft, axfft)):
 
     cc,i = coord
+    extract = EXTRACT+options.extract
     bs, fs  = get_plot_lca ((int(cc[0]+0.5)-options.aperture,
                              int(cc[1]+0.5)-options.aperture, 
                              int(cc[0]+0.5)+options.aperture+1,
@@ -332,7 +334,7 @@ def extraction(((coord), xfreq, lmax,
                                                          options.aperture),
                             imsize, fft=options.fft,
                             verbose=False, showme=options.showme,
-                            outdir = outdir)
+                            outdir = outdir, extract = extract)
 
     #pl.plot(b1)
     #print (bs[i].size)
@@ -347,16 +349,16 @@ def extraction(((coord), xfreq, lmax,
     return bs, fs
 
 def get_plot_lca (coords, flist, fname, imshape, fft=False, c='w', verbose=True,
-                   showme=False, outdir='./'):
+                   showme=False, outdir='./', extract=False):
     
     if not fft:
         a = read_to_lc(coords, flist, fname, imshape, fft=fft,
-                       showme=showme, c=c, verbose=verbose, outdir=outdir)
+                       showme=showme, c=c, verbose=verbose, outdir=outdir, extract=False)
         afft = np.ones(a.size/2+1) * np.nan
 
     else:
         afft, a = read_to_lc(coords, flist, fname, imshape, fft=fft,
-                  showme=showme, c=c, verbose=verbose, outdir=outdir)
+                  showme=showme, c=c, verbose=verbose, outdir=outdir, extract=False)
     #print (a)
     flux0=(a-np.nanmean(a))/np.nanstd(a)
     flux=flux0.copy()
@@ -374,13 +376,13 @@ def get_plot_lca (coords, flist, fname, imshape, fft=False, c='w', verbose=True,
 
 
 def read_to_lc(coords, flist, fname, imshape, fft=False, c='w',
-               showme=False, verbose = False, outdir = './'):
+               showme=False, verbose = False, outdir = './', extract=False):
     x1, y1, x2, y2 = coords
     fullfname = outdir + "/pickles/" + fname.split('/')[-1]
     nmax = len(flist)
     if showme :
         plotwindows(x1,y1,x2,y2, flist[0], c=c)
-    rereadnow = EXTRACT
+    rereadnow = extract
 
     if not rereadnow:
         try:
@@ -1504,7 +1506,7 @@ def runit((arg, options)):
             return (-1)
         else:
             for i,cc in enumerate(allights[:lmax]):
-                print (cc)
+                
                 print ("\r### Extracting window {0:d} of {1:d} (x={2:d}, y={3:d})"\
                        .format(i+1, lmax, int(cc[0]),  int(cc[1])), end="")
                 sys.stdout.flush()
@@ -1517,20 +1519,6 @@ def runit((arg, options)):
                 
                 ax.append(figspk.add_subplot(lmax/2+1,2,i+1))
 
-                '''
-                bs[i], fs[i]  = get_plot_lca ((int(cc[0]+0.5)-options.aperture,
-                                          int(cc[1]+0.5)-options.aperture, 
-                                          int(cc[0]+0.5)+options.aperture+1,
-                                          int(cc[1]+0.5)+options.aperture+1),
-                                          flist, 
-                                          filepattern+'_x%d_y%d_ap%d'%(int(cc[0]+0.5),
-                                                                       int(cc[1]+0.5), 
-                                                                       options.aperture),
-                                          imsize, fft=options.fft,
-                                          verbose=False, showme=options.showme,
-                                          outdir = outdir0)
-
-                '''
                 sparklines(bs[i], '%d %d:%d'%(i, int(cc[0]), int(cc[1])), ax[i])
                 if options.fft:
                     axfft.append(figspkfft.add_subplot(lmax/2+1,2,i+1))                
@@ -1565,26 +1553,37 @@ def runit((arg, options)):
         pl.close(figspkfft)   
             
         if options.showme: pl.show()
-
         badindx = []
+        
+        #this is needed if using KM/PCA cause skitlearn cannot deal with nans
+        #removing all nan lights first, if any
+                   
         for i,bsi in enumerate(bs):
-            if np.isnan(bsi).any():
+            if np.isnan(bsi).all():
                 badindx.append(i)
 
-        print ("\n### Removing bad indices if any:", badindx, len(allights))            
-        if len(badindx)>0:
-            bsnew = np.delete(bs, badindx, 0)
-            bs = bsnew
+        print ("\n### Removing bad indices if any:", badindx, len(allights))
+            
+        if options.readKM and len(badindx)>0:
+                bsnew = np.delete(bs, badindx, 0)
+                bs = bsnew
 
-            allightsnew = np.delete(allights[:lmax],  badindx, 0)
-            allights = allightsnew[:lmax-len(badindx)]
-            fsnew = np.delete(fs, badindx, 0)
-            fs = fsnew
+                allightsnew = np.delete(allights[:lmax],  badindx, 0)
+                allights = allightsnew[:lmax-len(badindx)]
+                fsnew = np.delete(fs, badindx, 0)
+                fs = fsnew
 
-        else: allights = allights[:lmax]
+        else:  
+            allights = allights[:lmax]
+        ##removing sporadic nan values with mean interpolation
+        imp = Imputer(missing_values='NaN', strategy='mean', axis=1)
+        imp.fit(bs)
+        bs = imp.transform(bs)
+        for i,bsi in enumerate(bs):
+            print (bs[i])
         np.save(coordsoutfile, allights)
         np.save(bsoutfile, bs)
-        
+
     print ("Windows now:", len(bs))
     img = np.fromfile(flist[0],dtype=np.uint8).reshape(imsize['nrows'],
                                                        imsize['ncols'],
@@ -1880,6 +1879,8 @@ if __name__=='__main__':
                       help='mcmc to get uncertainties')
     parser.add_option('--folding', default=False, action="store_true",
                       help='folding time series')
+    parser.add_option('--extract', default=False, action="store_true",
+                      help='re-extracting time series')
     
     options,  args = parser.parse_args()
     #options.lmax=500
