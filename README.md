@@ -14,3 +14,10 @@ To avoid the use of expensive equipment necessary to monitor the 120Hz phase thr
 
 This repository collects the data analysis pipeline for this project, from source selection, to phase identification, and the code used to generate the plots in our publications, plus additional material (many many additioinal figures, simulations, tests). The data is however not made public, since persistent imaging of urban landscapes is a practice susceptible to privacy concerns.
 
+The steps of the pipeline, and the codes that perform them,  are as follow.
+
+First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image of the night skyline. 
+use 
+stackImages.py
+
+
