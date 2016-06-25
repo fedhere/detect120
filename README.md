@@ -18,6 +18,8 @@ The steps of the pipeline, and the codes that perform them,  are as follow.
 
 First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image of the night skyline. 
 use 
-stackImages.py
+**stackImages.py**
+
+>$python stackImages.py groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354 --nstack 20 --showme  --gif
 
 
