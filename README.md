@@ -20,6 +20,10 @@ First off: You need to decide what is a source. Generally that starts with stack
 use 
 **stackImages.py**
 
+for example:
+
+
 >$python stackImages.py groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354 --nstack 20 --showme  --gif
 
+This creates a directory **stacks** and stores the aa file recording the image size in it (under the assumptinon that the image size for science images is the same as that of the images used to make the stack.  If the image input has a path it will also create a directory corresponding to the full image path, up to the name (**groundtest1** in this case)
 
