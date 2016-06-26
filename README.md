@@ -16,14 +16,21 @@ This repository collects the data analysis pipeline for this project, from sourc
 
 The steps of the pipeline, and the codes that perform them,  are as follow.
 
-1. First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image of the night skyline. 
-use 
-**stackImages.py**
+1. First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image of the night skyline. Use **stackImages.py**
 
 for example:
-
 
 >$python stackImages.py groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354 --nstack 20 --showme  --gif
 
 This creates a directory **stacks** and stores the aa file recording the image size in it (under the assumptinon that the image size for science images is the same as that of the images used to make the stack.  If the image input has a path it will also create a directory corresponding to the full image path, up to the name (**groundtest1** in this case)
 
+2. Find the windows in the stack image. We do that by high pass filtering the image and then threshold it. Use **windosFinder.py** The threshold is set automatically to 90% of the distribution of pixels. It can also be set by hand
+
+
+3. Now you can extract the lightcurves and analyze them! the code that does all that is **getalllcvPCA.py**
+This is a large piece of code (and the docstrings are on still on my todo list)
+
+4. One should consider that some automatically selected windows belong to the same building, even to the same housing unit. Use **lassoselect.py** to create a file containing labels that identify sources grouped together. This is an interactive tool that selects groups of windows as you draw a lasso around them. 
+
+
+4. 
