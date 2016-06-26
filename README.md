@@ -200,6 +200,6 @@ This prodices the following lots, which are discussed in our paper (submitted, r
 
 **make120sMovie.py** and **makemovie.py** make GIF movies
 
-
+**plotone.py** plots the first 6 PCA components and a single source lightcurve, its PC1-PC2 reconstruction and its sine fit( figure 2 of our first paper)
 
 
