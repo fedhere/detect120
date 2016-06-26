@@ -46,7 +46,7 @@ A  **PDF** file of the sources on the scene is also stored: **ESB_c0.7Hz_250ms_2
 plus a file showing the high pass version of the image, and the pixel distribution, with the selection threshold (red).
 
 
-![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_allwindows.png "scene windows")
+![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_allwindows.png "scene windows selection")
 
 ###3 -  Now you can extract the lightcurves and analyze them! 
 The code that does all that is **getalllcvPCA.py**
@@ -67,6 +67,11 @@ ls groundtest1/
 **ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases_N0100W1533S0450.dat** stores the phases for all light with a good fit to a sine wave (the default is to require a chi^2 > 1 to the fit. Tighter ot looser constraints can be set with **--chi2** upon calling getalllcvPCA.py. The name stores the info on which set of images was analyzed in the name as N0100W1533S0450: N number of images in the burst, W number of windows selected by the previous portions of the pipeline, S number of images skipped from the beginning of run. 
 
 **N0100S0450** contains pickle files in (**groundtest1/N0100S0450/pickles**) for all lightcurves extracted. When you rerun the pipeline, as long as you want 100 file lightcurves that start after 450 files from the beginning of the run these will be read in unless you specifically want to extract the lightcurves again. You can force extraction with **--extract**). If the option **--gif** option is used, in **groundtest1/N0100S0450/gifs** and **groundtest1/N0100S0450/pngs** the code stores gifs of the cutout of each light that makes the final cut (43 pixels to the side centered on the source), and a png image with the location of the source,  a cutout of the source, the lightcurve, and the power spectrum of the lightcurve (with the target 0.25Hz frequency marked for reference)
+
+
+![](pipeline/groundtest1/N0100S0450/pngs/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_106_1174.png " scene stack")
+
+![](pipeline/groundtest1/N0100S0450/gifs/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_0106_1174.GIF " scene stack")
 
 **N0100W1533S0450** contains all the rest of the product for any image set whose path starts with  groundtest1 (if you have more than one run on the same night, for example, and you store the raw data together. Typically we run short ~minute runs at ~15 minutes separation, and analyzem together to detect phase changes.)
 
