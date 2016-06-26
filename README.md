@@ -160,10 +160,10 @@ This code makes and stores the file **stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-
 across the runs, or for several unrsts in a run. You will need to chose a reference source, and pass its coordinates with --ref, and have a families file for the color coding.
 
 To plot a sequence of bursts within a run
->python makemoneyplot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy    --ref 792.81,861.53  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --onerun N0100W1533
+>python makePhasePlot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy    --ref 792.81,861.53  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --onerun N0100W1533
 
 To plot a burst from several runs
->>python makemoneyplot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-213949 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-220941 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-222440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-223940 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --ref 792,861
+>>python makePhasePlot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-213949 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-220941 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-222440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-223940 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --ref 792,861
 
 
 ###Additional code: 
