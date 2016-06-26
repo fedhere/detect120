@@ -16,7 +16,7 @@ This repository collects the data analysis pipeline for this project, from sourc
 
 The steps of the pipeline, and the codes that perform them,  are as follow.
 
-First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image of the night skyline. 
+1. First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image of the night skyline. 
 use 
 **stackImages.py**
 
