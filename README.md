@@ -16,17 +16,19 @@ This repository collects the data analysis pipeline for this project, from sourc
 
 The steps of the pipeline, and the codes that perform them,  are as follow.
 
-__1 -  First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image of the night skyline.__ Use **stackImages.py**. For example:
+###1 -  First off: You need to decide what is a source. 
+Generally that starts with stacking images to get a deep enought image of the night skyline.__ Use **stackImages.py**. For example:
 
 >$python stackImages.py groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354 --nstack 20 --showme  --gif
  
 This creates a directory **stacks** and stores the aa file recording the image size in it (under the assumptinon that the image size for science images is the same as that of the images used to make the stack.  If the image input has a path it will also create a directory corresponding to the full image path, up to the name (**groundtest1** in this case) 
 
-![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.png | width=100)
+![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.png " scene stack")
 
-![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.png | width=100)
+![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.png "scene windows")
 
-__2 - Find the windows (or light sources) in the stack image__. We do that by high pass filtering the image and then threshold it. Use **windosFinder.py** The threshold is set automatically to 90% of the distribution of pixels. It can also be set by hand
+###2 - Find the windows (or light sources) in the stack image. 
+We do that by high pass filtering the image and then threshold it. Use **windosFinder.py** The threshold is set automatically to 90% of the distribution of pixels. It can also be set by hand
 At this point groundtest contains a file storing the image size as a json file
 >ls groundtest1/
 >ESB_c0.7Hz_250ms_2016-05-24-230354_imgsize.txt 
@@ -34,11 +36,12 @@ so the rest of the pipeline will use this info and wont need to find the file si
 
 >$python windowFinder.py stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy
 
-**stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy** is produced by stackImages.py
+Note that ==stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy== was produced by  stackImages.py
 
 The coordinate file is stored in **ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy** 
 
-__3 -  Now you can extract the lightcurves and analyze them!__ The code that does all that is **getalllcvPCA.py**
+###3 -  Now you can extract the lightcurves and analyze them! 
+The code that does all that is **getalllcvPCA.py**
 This is a large piece of code (and the docstrings are on still on my todo list)
 
  >$python getalllcvPCA.py groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440  --nmax 100  --skipfiles 450 --coordfile  stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy  --readPCA --stack stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy 
@@ -114,13 +117,15 @@ The following results are saved:
 
 
 
-__4 - You can group the windows in families.__ One should consider that some automatically selected windows belong to the same building, even to the same housing unit. Use **lassoselect.py** to create a file containing labels that identify sources grouped together. This is an interactive tool that allows you to select groups of windows as you draw a lasso around them. 
+###4 - You can group the windows in families. 
+One should consider that some automatically selected windows belong to the same building, even to the same housing unit. Use **lassoselect.py** to create a file containing labels that identify sources grouped together. This is an interactive tool that allows you to select groups of windows as you draw a lasso around them. 
 
 >$python lassoselect.py stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.npy  groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodcoords.npy
 
 This code makes and stores the file **stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy** wich contains the "families" of windows. it is a numpy array of families, wach entry containing a list of coordinate pairs (xy pairs)
 
-__5 - Lastly: you can make plots of the phase evolution__ across the runs, or for several unrsts in a run. You will need to chose a reference source, and pass its coordinates with --ref, and have a families file for the color coding.
+###5 - Lastly: you can make plots of the phase evolution 
+across the runs, or for several unrsts in a run. You will need to chose a reference source, and pass its coordinates with --ref, and have a families file for the color coding.
 
 To plot a sequence of bursts within a run
 >python makemoneyplot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy    --ref 792.81,861.53  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --onerun N0100W1533
@@ -128,7 +133,7 @@ To plot a sequence of bursts within a run
 To plot a burst from several runs
 >>python makemoneyplot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-213949 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-220941 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-222440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-223940 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --ref 792,861
 
-Additional code: 
+###Additional code: 
 
 **make_freqvsphase_errors.py** makes plots of freq vs phase, with errors, from the MCMC output.
 
