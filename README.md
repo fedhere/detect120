@@ -4,9 +4,9 @@
 **monitor the 120 Hz grid frequency with low cost equipment**
 
 This repository collects the pipeline and some output from our experiments on studying the urban electrical grid's behavior through visible imaging monitoring at subsecond frequency. 
-A single camera sited at an urban vantage point offers broad, persistent, real-time, and non-permissive coverage granular to individual housing units.
+A single camera sited at an urban vantage point offers broad, persistent, real-time coverage granular to individual housing units.
 
-The 60 Hz AC line frequency of an electrical grid in the US induces a 120 Hz flicker in most of lights that it powers, including incandescent, halogen, transitional fluorescent, and some LED sources.1 This flicker is generally imperceptible to the unaided eye.
+The 60 Hz AC line frequency of an electrical grid in the US induces a 120 Hz flicker in most of lights that it powers, including incandescent, halogen, transitional fluorescent, and some LED sources. This flicker is generally imperceptible to the unaided eye.
 The 60 Hz line frequency is universal across the grid and maintained to within ∼ 0.02 Hz but the phase of the volt- age driving any particular light (and hence of its flicker) will depend upon the grid’s generating sources, topology and condition of its reactive components (e.g., distribution transformers), and the load local to the light. 
 Changes in the phase, as observed in the urban lightscape, indicate changes in the power load. 
 
@@ -112,7 +112,7 @@ At this point **N0100W1533S0450** contains:
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.png**: the scene is plotted with the selected windows highlighted in color corresponing to the phase (binned).
 
-![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.pdf.png)
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.png)
 
 The following results are saved:
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_bs.npy**: the extracted lightcurves. 
@@ -123,25 +123,42 @@ The following results are saved:
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAamplitudes.npy**: a npy array file storing the full PCA result. This is an array, fist dimension equal to the total number of lightcurves in the set (lmax)
         PCAr[i][0] = Radius of the projection on the PC1-PC2 plane
+ 
         PCAr[i][1] = PC1 amplitude
+ 
         PCAr[i][2] = PC2 amplitude
+ 
         PCAr[i][3] = ampliture normalization (sqrt of the sum squared of all amplitudes)
+ 
         PCAr[i][5] = arctangent of PC1-PC2 amplitudes)
+ 
         PCAr[i][5] = x coordinate
+ 
         PCAr[i][6] = y coordinate
  
  -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodcoords.npy**:
  an array storing the details for the sources that pass the final cut:
+ 
      goodphases[0] = phases (from fit),
+ 
      goodphases[1] = index (index in the original coord file),
+ 
      goodphases[2] = x coordinate,
+ 
      goodphases[3] = y coordinate,
+ 
      goodphases[4] = km_cluster (superseded - ignore),
+ 
      goodphases[5] = chi2 of the sine wave fit,
+ 
      goodphases[6] = freq (from fit),
+ 
      goodphases[7] = phase_e upper bound of confidence interval on phase (only if MCMC is run with --mcmc),
+ 
      goodphases[8] = phase_e lower bound of confidence interval on phase (only if MCMC is run with --mcmc),
+ 
      goodphases[9] = freq_e upper bound of confidence interval on frequency (only if MCMC is run with --mcmc),
+ 
      goodphases[10] = freq_e upper bound of confidence interval on frequency (only if MCMC is run with --mcmc)
 
 
