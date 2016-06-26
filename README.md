@@ -78,9 +78,15 @@ ls groundtest1/
 At this point **N0100W1533S0450** contains: 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_sparklines_lcv.pdf**: sparkline plot of ALL lightcurves in the set. very long PDF. 
 
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_sparklines_lcv.png "sparklines)
+
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCA.pdf**: the PCA components up to 90\% explained variance
 
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCA.png "PCA sparklkines")
+
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult.pdf**, and **ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_log.pdf**: the first and second PCA componet, and the distribution of radii on the PC1-PC2 plane, natural space over r^2, and logspace (in natural space /r^2 the distribution should be flat if the projections were randomely distributed).
+
+![](pipeline/stacks/groundtest1/N0100W1533S0450/
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_PC1PC2plane.pdf**: projection of the lightcurves in the PC1-PC2 plane, with selection threshold marked
 
