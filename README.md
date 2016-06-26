@@ -123,25 +123,42 @@ The following results are saved:
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAamplitudes.npy**: a npy array file storing the full PCA result. This is an array, fist dimension equal to the total number of lightcurves in the set (lmax)
         PCAr[i][0] = Radius of the projection on the PC1-PC2 plane
+ 
         PCAr[i][1] = PC1 amplitude
+ 
         PCAr[i][2] = PC2 amplitude
+ 
         PCAr[i][3] = ampliture normalization (sqrt of the sum squared of all amplitudes)
+ 
         PCAr[i][5] = arctangent of PC1-PC2 amplitudes)
+ 
         PCAr[i][5] = x coordinate
+ 
         PCAr[i][6] = y coordinate
  
  -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodcoords.npy**:
  an array storing the details for the sources that pass the final cut:
+ 
      goodphases[0] = phases (from fit),
+ 
      goodphases[1] = index (index in the original coord file),
+ 
      goodphases[2] = x coordinate,
+ 
      goodphases[3] = y coordinate,
+ 
      goodphases[4] = km_cluster (superseded - ignore),
+ 
      goodphases[5] = chi2 of the sine wave fit,
+ 
      goodphases[6] = freq (from fit),
+ 
      goodphases[7] = phase_e upper bound of confidence interval on phase (only if MCMC is run with --mcmc),
+ 
      goodphases[8] = phase_e lower bound of confidence interval on phase (only if MCMC is run with --mcmc),
+ 
      goodphases[9] = freq_e upper bound of confidence interval on frequency (only if MCMC is run with --mcmc),
+ 
      goodphases[10] = freq_e upper bound of confidence interval on frequency (only if MCMC is run with --mcmc)
 
 
