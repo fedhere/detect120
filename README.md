@@ -68,10 +68,10 @@ ls groundtest1/
 
 **N0100S0450** contains pickle files in (**groundtest1/N0100S0450/pickles**) for all lightcurves extracted. When you rerun the pipeline, as long as you want 100 file lightcurves that start after 450 files from the beginning of the run these will be read in unless you specifically want to extract the lightcurves again. You can force extraction with **--extract**). If the option **--gif** option is used, in **groundtest1/N0100S0450/gifs** and **groundtest1/N0100S0450/pngs** the code stores gifs of the cutout of each light that makes the final cut (43 pixels to the side centered on the source), and a png image with the location of the source,  a cutout of the source, the lightcurve, and the power spectrum of the lightcurve (with the target 0.25Hz frequency marked for reference)
 
+![](pipeline/groundtest1/N0100S0450/gifs/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_0106_1174.GIF " source gif")
 
-![](pipeline/groundtest1/N0100S0450/pngs/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_106_1174.png " scene stack")
+![](pipeline/groundtest1/N0100S0450/pngs/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_106_1174.png " source png")
 
-![](pipeline/groundtest1/N0100S0450/gifs/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_0106_1174.GIF " scene stack")
 
 **N0100W1533S0450** contains all the rest of the product for any image set whose path starts with  groundtest1 (if you have more than one run on the same night, for example, and you store the raw data together. Typically we run short ~minute runs at ~15 minutes separation, and analyzem together to detect phase changes.)
 
@@ -128,7 +128,9 @@ The following results are saved:
      goodphases[10] = freq_e upper bound of confidence interval on frequency (only if MCMC is run with --mcmc)
 
 
+with the option --mcmc you can run an mcmc simulation to assess the confidence intervals for the phase and frequency bes t fits. This will produce the additional files in **groundtest1/triangles/** with the cornerplot (https://github.com/dfm/corner.py) of the 2 parameters fit.
 
+![](pipeline/groundtest1/triangles/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_triangle_0160_1195.png "corner plot")
 
 ###4 - You can group the windows in families. 
 One should consider that some automatically selected windows belong to the same building, even to the same housing unit. Use **lassoselect.py** to create a file containing labels that identify sources grouped together. This is an interactive tool that allows you to select groups of windows as you draw a lasso around them. 
@@ -145,6 +147,7 @@ To plot a sequence of bursts within a run
 
 To plot a burst from several runs
 >>python makemoneyplot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-213949 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-220941 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-222440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-223940 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --ref 792,861
+
 
 ###Additional code: 
 
