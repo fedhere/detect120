@@ -22,9 +22,9 @@ __1 -  First off: You need to decide what is a source. Generally that starts wit
  
 This creates a directory **stacks** and stores the aa file recording the image size in it (under the assumptinon that the image size for science images is the same as that of the images used to make the stack.  If the image input has a path it will also create a directory corresponding to the full image path, up to the name (**groundtest1** in this case) 
 
-![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.png " scene stack")
+![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.png | width=100)
 
-![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.png "scene windows")
+![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.png | width=100)
 
 __2 - Find the windows (or light sources) in the stack image__. We do that by high pass filtering the image and then threshold it. Use **windosFinder.py** The threshold is set automatically to 90% of the distribution of pixels. It can also be set by hand
 At this point groundtest contains a file storing the image size as a json file
@@ -34,7 +34,7 @@ so the rest of the pipeline will use this info and wont need to find the file si
 
 >$python windowFinder.py stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy
 
-Note that ==stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy== was produced by  stackImages.py
+**stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy** is produced by stackImages.py
 
 The coordinate file is stored in **ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy** 
 
