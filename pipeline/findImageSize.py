@@ -1,12 +1,37 @@
+from __future__ import print_function
+##CUSP UO 2016
+__author__ = "fbb"
+
 import numpy as np
 import pylab as pl
 import sys
 import os
-
 import json
 
+""" Find an image size: nrows, ncols, for a raw image
+
+    Args: 
+         img: a raw image as a numpy array
+         nbands: needs to know the number of bands
+         filepattern: the output file name for the json file. it will also check for an existing json file
+         imsizefile: reads an image size file by another name (different than filepattern)
+    Returns: 
+         image size dictionary upon success. 
+"""
 
 def divisorGenerator(n):
+    """
+    Finds  valid integer divisors of n:
+ 
+    Args: 
+        N (number of pixels)
+    Returns:
+        the divisors. 
+    Comments:
+        It also saves the image shape dictionary as a json file 
+        by the given name or by the name derived from the input file
+
+    """
     large_divisors = []
     for i in range(1, int(np.sqrt(n) + 1)):
         if n % i == 0:
@@ -45,10 +70,11 @@ def findsize (imgfile, nbands=3, filepattern=None, imsizefile=None):
     divlist = list(divisorGenerator(100))
     img = np.fromfile(imgfile, dtype=np.uint8)
     divlist = list(divisorGenerator(img.size/nbands))
+
     for i in range(len(divlist)/2,0,-1):
         #print divlist[i], divlist[-i-1], divlist[i] * divlist[-i-1], img.size
         pl.imshow(img.reshape(divlist[i], divlist[-i-1], nbands))
-        pl.show()
+        pl.draw()
         if raw_input("is this the right size?").lower().startswith('y'):
            
             imgsize['nrows'] = divlist[i]

@@ -1,7 +1,12 @@
 from __future__ import print_function
+##CUSP UO 2016
+__author__ = "fbb"
 
 import numpy as np
 import sys
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 from matplotlib.widgets import LassoSelector
 from matplotlib.path import Path
 
@@ -69,41 +74,39 @@ class SelectFromCollection(object):
 
 
 if __name__ == '__main__':
-    import matplotlib
-    matplotlib.use('TkAgg')
-    import matplotlib.pyplot as plt
+    
+ 
+    '''
+    Arguments: 
+        labelled windows array
+        good coordinates array
+    '''
+    
+    print ("args", sys.argv)
+   
 
     families = []
     data  = np.load(sys.argv[1])
-    coords = np.array([np.load(sys.argv[2])[2,:], np.load(sys.argv[2])[3,:]])
-    #datasum = data[:,:,:3].sum(axis=2)
-    #tmp = [(j,i, datasum[i][j].astype(float)/255/3.0) for i in range(datasum.shape[0]) \
-    #       for j in range(datasum.shape[1]) if datasum[i][j] > 0]
-    #tmp = np.array(tmp)
+    coords = np.array([np.load(sys.argv[2])[2,:],\
+                       np.load(sys.argv[2])[3,:]])
+
     plt.ion()
     done = np.zeros_like(coords.T)
     ii = 0
     fams = 0
-    #subplot_kw = dict(xlim=(0, 1), ylim=(0, 1), autoscale_on=False)
     fig = plt.figure(figsize=(12,12))
-    ax = fig.add_subplot(111)#subplot_kw=subplot_kw)
+    ax = fig.add_subplot(111)
     while 1:
         ax.imshow(data[:,:,:3].sum(axis=2), cmap="bone")
-        #subplot_kw=subplot_kw)
         ax.set_xlim(0,data.shape[1])
         ax.set_ylim(data.shape[0], 0)        
         try:
             toplot =np.array([c for c in coords.T if not c in done]).T
             if len(toplot)==0:
                 break
-            #print (toplot)
             ax.scatter(coords[0], coords[1], s=5, color='g')
-            #pts = ax.scatter(tmp.T[0],tmp.T[1], color = tmp.T[2], alpha=0.1)
             pts = ax.scatter(toplot[0], toplot[1], s=5, color='r')
-            #ax.imshow(data, cm="Grays")
             
-            #pts = ax.scatter(data[:, 0], data[:, 1], s=80)
-            #print (pts)
             selector = SelectFromCollection(ax, pts)
             plt.draw()
             raw_input('Press any key to accept selected points')
@@ -125,5 +128,4 @@ if __name__ == '__main__':
     print (families)
     families = np.array(families)
     np.save(sys.argv[1].replace("labelledwindows.npy",
-                                "families.npy"),
-            families)
+                                "families.npy"), families)

@@ -3,10 +3,10 @@ from __future__ import print_function
 __author__ = "fbb"
 
 '''    
-Fetches windows )light sources) from an image stack of a dense urban landscape.
+Fetches windows (light sources) from an image stack of a dense urban landscape.
 '''
 
-
+import sys
 import numpy as np
 import scipy as sp
 import pylab as pl
@@ -14,6 +14,12 @@ import optparse
 import matplotlib.gridspec as gridspec
 from scipy import ndimage
 from scipy import optimize
+
+try:
+    raw_input
+except NameError:
+    # Python 3
+    raw_input = input
 
 def getknuth(m,data,N=None):
     '''Calculates the likelihood of the proposed bin size according to Knuth's rule
@@ -89,12 +95,13 @@ if __name__=='__main__':
            Saves: 
                 all sources above threshold and the histogram in a PDF image
                 (_allwindows.pdf)
-                all good (>10 pixel) labelled windows in a npy array _labels.py 
+                all good (>10 pixel) labelled windows in a npy array _labels.npy 
                 an image of the labelled windows in a npy _labelledwindows.npy
                 an image of the labelled windows in PDF _labelledwindows.pdf
-                an image of the selected windows away from edges PDF _selected.pdf
                 a npy of the coordinates (center of brightness) of all selected windos
-                a npy mask that can be ised witht he orignal image
+                an image of the selected windows away from edges, a dot per wondows in coords PDF _selectedwindows.pdf
+                a npy mask that can be ised with the orignal image to make it a masked array.
+                All files stored in the past of the image, from the local dir
     Comments:
         Its a bit slow, so be patient...
     """
@@ -107,7 +114,7 @@ if __name__=='__main__':
                       help='threshold for window')
     
     parser.add_option('--noauto', default=True, action="store_false",
-                      help='''automaticallyl setting the threshold 
+                      help='''automatically setting the threshold 
                       to 98% of pixel value distribution''')
     
     parser.add_option('--nocheck', default=False, action="store_true",
@@ -117,8 +124,16 @@ if __name__=='__main__':
                       help='show plots')
 
     options,  args = parser.parse_args()
-    if len(args)<1:
-        print (options)
+    print (len(args))
+    options,  args = parser.parse_args()
+    print ("options and arguments:", options, args)
+    if len(args) < 1:
+        sys.argv.append('--help')
+        options,  args = parser.parse_args()
+
+        sys.exit(0)
+
+        
     '''
     thr=200
     args = [0]
@@ -206,7 +221,7 @@ if __name__=='__main__':
                      ha='right')
                 ax3.text(k, ax3.get_ylim()[1]*(1.0-i*0.1-0.08), "%.1f"%(k),
                      ha='right')                
-            
+        pl.ioff()   
         ax3.plot([thr,thr],[0,ax3.get_ylim()[1]],
                  '-', color='IndianRed')
         ax3.text(thr, ax3.get_ylim()[1]*0.8, "%d"%(thr),
@@ -289,11 +304,11 @@ if __name__=='__main__':
     pl.save(args[0].replace(".npy", "_coords.npy"), coords[:,1::-1])
     pl.save(args[0].replace(".npy", "_mask.npy"), mask)
     #print (mask)
-    '''
-    for i in range(labels.max()+1):
-        if i in labels:
-            pl.figure()
-            pl.imshow(mask[:i].sum(axis=0),  interpolation='nearest', cmap='gist_gray')
-            pl.savefig("mask.%04d.png"%i)
-            pl.close('all')
-    '''
+    
+    #for i in range(labels.max()+1):
+    #    if i in labels:
+    #        pl.figure()
+    #        pl.imshow(mask[:i].sum(axis=0),  interpolation='nearest', cmap='gist_gray')
+    #        pl.savefig("mask.%04d.png"%i)
+    #        pl.close('all')
+    

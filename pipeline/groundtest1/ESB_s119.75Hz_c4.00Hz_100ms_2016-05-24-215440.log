@@ -1,0 +1,1794 @@
+
+
+
+		2016-06-26 01:08:24.833558
+options and arguments: {'nmax': 100, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'readKM': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'nkmc': 10, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'lmax': None, 'nps': 3, 'aperture': 2, 'mcmc': False, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 29 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 30 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 31 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 32 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 33 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 34 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 35 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 36 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 37 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 38 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 39 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 40 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 41 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 42 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 43 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 44 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 45 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 46 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 47 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 48 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 49 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 50 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 51 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 52 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 53 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 54 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 55 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 56 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.02
+ Analyzing & plotting sine window 57 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 58 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 59 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 60 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 61 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 62 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.09
+ Analyzing & plotting sine window 63 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 64 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.08
+ Analyzing & plotting sine window 65 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 66 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 67 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 68 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 69 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 70 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 71 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 72 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 73 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 74 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 75 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 76 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.15
+ Analyzing & plotting sine window 77 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 78 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 79 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 80 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 81 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 82 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 83 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 84 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 85 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.11
+ Analyzing & plotting sine window 86 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 87 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 88 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 89 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 90 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 91 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 92 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 93 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 94 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 95 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 96 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 97 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 98 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 99 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 100 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 101 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 102 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 103 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 104 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 105 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 106 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 107 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 108 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 109 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 110 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 111 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 112 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 113 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 114 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 115 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 116 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 117 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 118 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 119 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 120 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.27
+ Analyzing & plotting sine window 121 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 122 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 123 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 124 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 125 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 126 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 127 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 128 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 129 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 130 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 131 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 132 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.22
+ Analyzing & plotting sine window 133 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 134 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 135 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 136 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 137 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 138 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 139 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 140 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 141 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 142 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 143 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 144 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 145 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 146 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 147 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 148 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 149 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 150 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 151 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.20
+
+
+
+		2016-06-26 10:36:55.221973
+options and arguments: {'nmax': 100, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'readKM': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'nkmc': 10, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'lmax': None, 'nps': 3, 'aperture': 2, 'mcmc': False, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:37:14.185886
+options and arguments: {'nmax': 100, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'readKM': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'nkmc': 10, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'lmax': None, 'nps': 3, 'aperture': 2, 'mcmc': False, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 29 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 30 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 31 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 32 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 33 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 34 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 35 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 36 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 37 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 38 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 39 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 40 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 41 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 42 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 43 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 44 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 45 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 46 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 47 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 48 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 49 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 50 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 51 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 52 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 53 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 54 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 55 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 56 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.02
+ Analyzing & plotting sine window 57 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 58 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 59 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 60 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 61 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 62 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.09
+ Analyzing & plotting sine window 63 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 64 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.08
+ Analyzing & plotting sine window 65 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 66 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 67 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 68 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 69 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 70 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 71 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 72 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 73 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 74 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 75 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 76 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.15
+ Analyzing & plotting sine window 77 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 78 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 79 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 80 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 81 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 82 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 83 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 84 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 85 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.11
+ Analyzing & plotting sine window 86 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 87 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 88 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 89 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 90 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 91 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 92 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 93 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 94 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 95 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 96 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 97 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 98 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 99 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 100 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 101 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 102 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 103 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 104 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 105 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 106 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 107 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 108 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 109 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 110 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 111 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 112 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 113 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 114 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 115 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 116 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 117 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 118 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 119 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 120 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.27
+ Analyzing & plotting sine window 121 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 122 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 123 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 124 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 125 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 126 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 127 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 128 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 129 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 130 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 131 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 132 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.22
+ Analyzing & plotting sine window 133 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 134 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 135 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 136 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 137 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 138 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 139 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 140 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 141 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 142 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 143 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 144 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 145 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 146 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 147 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 148 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 149 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 150 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 151 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.20
+
+
+
+		2016-06-26 10:43:24.627228
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'aperture': 2, 'pcthr': 5.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:43:39.894563
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:44:13.173859
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'aperture': 2, 'pcthr': 5.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:44:19.278994
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:47:06.357928
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:51:07.738832
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:53:56.847280
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:54:13.207427
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 10:55:23.772279
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:01:14.951822
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:03:45.288429
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:04:19.375635
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:05:03.100746
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:05:31.591198
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:06:00.133851
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:06:15.199651
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:08:33.236078
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:09:56.158446
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:12:17.685700
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:13:13.235559
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:13:33.552402
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:16:18.953034
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:16:41.889627
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:23:18.740025
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:25:10.216140
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:25:23.155548
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:25:44.660490
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:27:28.454663
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:27:59.044214
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:29:16.190804
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:30:05.899729
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:30:45.361479
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 2.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:32:52.602790
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 1.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 11:41:33.545720
+options and arguments: {'nmax': 100, 'nbursts': 1, 'readKM': False, 'fft': False, 'nkmc': 10.0, 'showme': False, 'readPCA': True, 'extract': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'aperture': 2, 'pcthr': 10.0, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'chi2': 1.0, 'mcmc': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nps': 3, 'folding': False, 'PCAnalysis': True, 'smooth': False, 'lmax': None} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 29 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 30 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 31 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 32 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 33 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 34 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 35 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 36 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 37 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 38 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 39 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 40 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 41 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 42 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 43 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 44 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 45 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 46 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 47 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 48 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 49 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 50 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 51 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 52 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 53 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 54 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 55 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 56 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.02
+ Analyzing & plotting sine window 57 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 58 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 59 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 60 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 61 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 62 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.09
+ Analyzing & plotting sine window 63 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 64 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.08
+ Analyzing & plotting sine window 65 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 66 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 67 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 68 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 69 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 70 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 71 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 72 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 73 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 74 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 75 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 76 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.15
+ Analyzing & plotting sine window 77 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 78 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 79 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 80 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 81 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 82 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 83 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 84 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 85 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.11
+ Analyzing & plotting sine window 86 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 87 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 88 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 89 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 90 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 91 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 92 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 93 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 94 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 95 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 96 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 97 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 98 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 99 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 100 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 101 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 102 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 103 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 104 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 105 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 106 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 107 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 108 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 109 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 110 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 111 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 112 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 113 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 114 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 115 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 116 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 117 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 118 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 119 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 120 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.27
+ Analyzing & plotting sine window 121 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 122 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 123 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 124 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 125 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 126 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 127 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 128 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 129 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 130 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 131 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 132 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.22
+ Analyzing & plotting sine window 133 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 134 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 135 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 136 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 137 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 138 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 139 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 140 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 141 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 142 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 143 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 144 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 145 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 146 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 147 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 148 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 149 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 150 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 151 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.20
+
+
+
+		2016-06-26 12:17:40.926726
+options and arguments: {'nmax': 100, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': None, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 29 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 30 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 31 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 32 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 33 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 34 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 35 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 36 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 37 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 38 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 39 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 40 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 41 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 42 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 43 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 44 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 45 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 46 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 47 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 48 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 49 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 50 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 51 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 52 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 53 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 54 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 55 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 56 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.02
+ Analyzing & plotting sine window 57 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 58 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 59 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 60 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 61 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 62 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.09
+ Analyzing & plotting sine window 63 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 64 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.08
+ Analyzing & plotting sine window 65 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 66 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 67 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 68 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 69 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 70 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 71 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 72 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 73 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 74 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 75 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 76 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.15
+ Analyzing & plotting sine window 77 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 78 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 79 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 80 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 81 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 82 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 83 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 84 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 85 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.11
+ Analyzing & plotting sine window 86 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 87 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 88 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 89 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 90 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 91 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 92 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 93 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 94 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 95 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 96 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 97 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 98 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 99 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 100 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 101 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 102 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 103 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 104 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 105 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 106 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 107 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 108 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 109 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 110 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 111 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 112 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 113 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 114 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 115 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 116 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 117 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 118 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 119 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 120 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.27
+ Analyzing & plotting sine window 121 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 122 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 123 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 124 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 125 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 126 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 127 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 128 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 129 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 130 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 131 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 132 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.22
+ Analyzing & plotting sine window 133 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 134 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 135 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 136 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 137 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 138 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 139 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 140 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 141 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 142 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 143 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 144 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 145 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 146 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 147 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 148 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 149 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 150 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 151 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.20
+
+
+
+		2016-06-26 12:35:21.621616
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 10, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 12:36:23.286993
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 10, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 12:50:09.865553
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 10, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 12:51:32.532861
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 12:52:31.162502
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.35
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.35
+
+
+
+		2016-06-26 12:58:33.934092
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 12:59:26.496387
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 13:00:06.115318
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 13:00:32.973957
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 13:00:49.380661
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.35
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.35
+
+
+
+		2016-06-26 13:03:24.698053
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.35
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.35
+
+
+
+		2016-06-26 13:04:15.428583
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.35
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.35
+
+
+
+		2016-06-26 13:06:09.169145
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+
+
+
+		2016-06-26 13:06:53.553126
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.35
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.35
+
+
+
+		2016-06-26 13:09:22.060412
+options and arguments: {'nmax': 80, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': True, 'lmax': 30, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.35
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.35
+
+
+
+		2016-06-26 13:10:53.888017
+options and arguments: {'nmax': 100, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': False, 'lmax': None, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+
+
+
+		2016-06-26 13:11:20.918332
+options and arguments: {'nmax': 100, 'sample_spacing': 0.25, 'skipfiles': 450, 'coordfile': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'folding': False, 'PCAnalysis': True, 'chi2': 1.0, 'fft': False, 'smooth': False, 'showme': False, 'coordfil': 'coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy', 'gif': False, 'lmax': None, 'nps': 3, 'aperture': 2, 'mcmc': False, 'pcthr': 10.0, 'readPCA': True, 'extract': False, 'stack': 'stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy', 'nbursts': 1} groundtest1//ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440
+ Analyzing & plotting sine window 0 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 1 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 2 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 3 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 4 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 5 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 6 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 7 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 8 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 9 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 10 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 11 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 12 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 13 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 14 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 15 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 16 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 17 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 18 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 19 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 20 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 21 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 22 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 23 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 24 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 25 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 26 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 27 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 28 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 29 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 30 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 31 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 32 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 33 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 34 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 35 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 36 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 37 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 38 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 39 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 40 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 41 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 42 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 43 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 44 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 45 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 46 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 47 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 48 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 49 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 50 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 51 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 52 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 53 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 54 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 55 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 56 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.02
+ Analyzing & plotting sine window 57 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 58 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 59 (testing frequencies 0.3, 0.28
+ Analyzing & plotting sine window 60 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 61 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 62 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.09
+ Analyzing & plotting sine window 63 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 64 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.08
+ Analyzing & plotting sine window 65 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 66 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 67 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 68 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.03
+ Analyzing & plotting sine window 69 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.06
+ Analyzing & plotting sine window 70 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 71 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.04
+ Analyzing & plotting sine window 72 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 73 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.07
+ Analyzing & plotting sine window 74 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 75 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 76 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.15
+ Analyzing & plotting sine window 77 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 78 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 79 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 80 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 81 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 82 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.10
+ Analyzing & plotting sine window 83 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 84 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 85 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.11
+ Analyzing & plotting sine window 86 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 87 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 88 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 89 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 90 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 91 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 92 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 93 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 94 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 95 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 96 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 97 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 98 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 99 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 100 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.16
+ Analyzing & plotting sine window 101 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 102 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.19
+ Analyzing & plotting sine window 103 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 104 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 105 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 106 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 107 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 108 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 109 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 110 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 111 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 112 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.14
+ Analyzing & plotting sine window 113 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 114 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 115 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 116 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 117 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 118 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 119 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 120 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.27
+ Analyzing & plotting sine window 121 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.18
+ Analyzing & plotting sine window 122 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 123 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 124 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 125 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 126 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 127 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 128 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 129 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 130 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 131 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 132 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.22
+ Analyzing & plotting sine window 133 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 134 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.17
+ Analyzing & plotting sine window 135 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 136 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.23
+ Analyzing & plotting sine window 137 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 138 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 139 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 140 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.26
+ Analyzing & plotting sine window 141 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.21
+ Analyzing & plotting sine window 142 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 143 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.25
+ Analyzing & plotting sine window 144 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 145 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 146 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 147 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 148 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 149 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 150 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 99.00
+ Analyzing & plotting sine window 151 (testing frequencies 0.3, 0.28
+	bad chi square fit to sine wave: 1.20
