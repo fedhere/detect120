@@ -82,15 +82,15 @@ At this point **N0100W1533S0450** contains:
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCA.pdf**: the PCA components up to 90\% explained variance
 
-![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCA.png "PCA sparklkines")
+![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCA.pdf.png "PCA sparklkines")
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult.pdf**, and **ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_log.pdf**: the first and second PCA componet, and the distribution of radii on the PC1-PC2 plane, natural space over r^2, and logspace (in natural space /r^2 the distribution should be flat if the projections were randomely distributed).
 
-![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_log.png "PCA result")
+![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_log.pdf.png "PCA result")
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_PC1PC2plane.pdf**: projection of the lightcurves in the PC1-PC2 plane, with selection threshold marked
 
-![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_PC1PC2plane.png "PC1PC2 plane")
+![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_PC1PC2plane.pdf.png "PC1PC2 plane")
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows.pdf**: the windows that make the final cut overplotted on the scene. 
  
@@ -100,11 +100,11 @@ At this point **N0100W1533S0450** contains:
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows_fits_pca.pdf**: the lightcurves that make the final cut with overplotted sine fit. Labels indicate the pixel location of the light on the scene, the phase and frequency, and the chi square of the sine fit
 
-![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows_fits_pca.png)
+![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows_fits_pca.pdf.png)
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_stats.pdf**: distribution of frequencies and phases in the set. the phases are calculated both by the fit and as arctangent of the ratio of the first 2 principal components.
 
-![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_stats.png)
+![](pipeline/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_stats.pdf.png)
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_transform.pdf**: the power spectrum and the lightcurve resonstructed by inverting it. only really interesting if the --smooth option is used and at this time it needs testing.
 
@@ -112,7 +112,7 @@ At this point **N0100W1533S0450** contains:
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.png**: the scene is plotted with the selected windows highlighted in color corresponing to the phase (binned).
 
-![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.png)
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.pdf.png)
 
 The following results are saved:
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_bs.npy**: the extracted lightcurves. 
