@@ -12,7 +12,7 @@ Changes in the phase, as observed in the urban lightscape, indicate changes in t
 
 To avoid the use of expensive equipment necessary to monitor the 120Hz phase through high speed imaging we chop the image at near-line frequency (119.75 Hz) with a liquid-crystal shutter and thus down-convert the flicker to a beat frequency of ∼ 0.25 Hz, which is then easily imaged at 4 Hz cadence with a small digital camera.
 
-This repository collects the data analysis pipeline for this project, from source selection, to phase identification, and the code used to generate the plots in our publications, plus additional material (many many additional figures, simulations, tests). The data is however not made public, since persistent imaging of urban landscapes is a practice susceptible to privacy concerns.
+This repository collects the data analysis pipeline for this project, in the directory pipeline, from source selection, to phase identification, and the code used to generate the plots in our publications, plus additional material (many many additional figures, simulations, tests). The data is however not made public, since persistent imaging of urban landscapes is a practice susceptible to privacy concerns.
 
 The steps of the pipeline, and the codes that perform them,  are as follow.
 

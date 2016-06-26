@@ -141,7 +141,7 @@ def plotstats(phases, fname, PC=None):
     pcs = [16., 50., 68.]    
     fig = pl.figure(figsize=(10,8))
     ax = fig.add_subplot(211)
-    pl.hist(phases[-1], color="IndianRed", alpha=0.8)    
+    pl.hist(phases[6], color="IndianRed", alpha=0.8)    
     ax.set_xlabel("frequency (Hz)")
     ax.set_title("Run %s"%fname.split("_")[-2].split(".")[0])
     pc =  np.percentile(phases[-1], pcs)
@@ -237,7 +237,7 @@ def callplotw(xc, yc, i, ts, xfreq, flist, aperture, imshape, fft=False,
                 label = "ifft")
        #ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
    else:
-       ax4.plot(np.abs(np.fft.rfft(ts))[2:], 
+       ax4.plot(xfreq[2:], np.abs(np.fft.rfft(ts))[2:], 
                 label = "fft")
        ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
    ax4.legend()
@@ -500,7 +500,7 @@ def plotwindows(x1,y1,x2,y2, img, imshape, wsize=None,
     #pl.show()
 
 def fit_freq(freq, ts, imgspacing, phi0=0.0, iteratit=False,
-             fold=False, mcmc=False, fp=None):
+             fold=False, mcmc=False, fp=None, xy=(np.nan,np.nan)):
 
     #fits frequency 
     lts =  np.arange(ts.size)*imgspacing
@@ -561,13 +561,13 @@ def fit_freq(freq, ts, imgspacing, phi0=0.0, iteratit=False,
                          
         if fp:
             import time
-            fname = '/'.join(fp.split('/')[:-1])+"/triangles/"+fp.split('/')[-1]+"_triangle"
+            fname = '/'.join(fp.split('/')[:-1])+"/triangles/"+fp.split('/')[-1]+"_triangle_"
             subprocess.Popen('mkdir -p %s '%('/'.join(fp.split('/')[:-1])+"/triangles"), shell=True)
             
             cfig = corner.corner(samples, labels=["$\phi$", "freq"],
                       truths=[phase,freq])
             tm = time.time()
-            cfig.savefig(fname+"%d.png"%int((tm-int(tm))*10000))
+            cfig.savefig(fname+"%04d_%04d.png"%(int(xy[0]),int(xy[1])))
         
         phase_err, freq_err = phase_all[1:], freq_all[1:]
     else:
@@ -727,12 +727,12 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
             print (" Analyzing & plotting sine window {0:d} (testing frequencies {1})".format(i, freq[0]),
                        file=logfile)                
         j = j+1
-        phases['phase'][i], phases['freq'][i], phases['chi2'][i], thiswave, phases['phase_e'][i], phases['freq_e'][i] = fit_freq(freq[0], stdbs, imgspacing, phi0[i], iteratit=iteratit, mcmc=mcmc, fold=fold)#, fp = filepattern)
+        phases['phase'][i], phases['freq'][i], phases['chi2'][i], thiswave, phases['phase_e'][i], phases['freq_e'][i] = fit_freq(freq[0], stdbs, imgspacing, phi0[i], iteratit=iteratit, mcmc=mcmc, fold=fold, fp = filepattern, xy=(allights[goodlabels[i]][0], allights[goodlabels[i]][1]))
         
         sparklines(thiswave,  "          %.2f"%(phases['chi2'][i]),
                    axsp[-2], color='r', alpha=0.3, nolabel=True)
         if phases['chi2'][i] > chi2thr and len(freq)>1:
-            phases['phase'][i], phases['freq'][i], phases['chi2'][i], thiswave, phases['phase_e'][i], phases['freq_e'][i]  = fit_freq(freq[1], stdbs, imgspacing, phi0[i], iteratit=iteratit, mcmc=mcmc, fold=fold)#, fp = filepattern)
+            phases['phase'][i], phases['freq'][i], phases['chi2'][i], thiswave, phases['phase_e'][i], phases['freq_e'][i]  = fit_freq(freq[1], stdbs, imgspacing, phi0[i], iteratit=iteratit, mcmc=mcmc, fold=fold, fp = filepattern, xy=(allights[goodlabels[i]][0], allights[goodlabels[i]][0]))
             
             sparklines(thiswave,  "                   %.2f"%(phases['chi2'][i]),
                                axsp[-2], color='y', alpha=0.3, nolabel=True)
@@ -1144,8 +1144,8 @@ def runit((arg, options)):
     lmax = len(allights)
     if options.lmax: lmax = min([lmax, options.lmax])
     print ("Max number of windows to use: %d"%lmax)
-    outdir0 = '/'.join(filepattern.split('/')[:-1])+'/N%04dS%04d'%(nmax,  options.skipfiles)
-    outdir = '/'.join(filepattern.split('/')[:-1])+'/N%04dW%04dS%04d'%(nmax,
+    outdir0 = '../outputs/'.join(filepattern.split('/')[:-1])+'/N%04dS%04d'%(nmax,  options.skipfiles)
+    outdir = '../outputs/'.join(filepattern.split('/')[:-1])+'/N%04dW%04dS%04d'%(nmax,
                                                                        lmax,
                                                                        options.skipfiles)
     if not os.path.isdir(outdir):
