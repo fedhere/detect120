@@ -1,1 +1,0 @@
-{"nrows": 1530, "nbands": 3, "ncols": 2444}
