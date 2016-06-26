@@ -16,7 +16,7 @@ This repository collects the data analysis pipeline for this project, from sourc
 
 The steps of the pipeline, and the codes that perform them,  are as follow.
 
-1. First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image of the night skyline. Use **stackImages.py**. For example:
+1.  First off: You need to decide what is a source. Generally that starts with stacking images to get a deep enought image  of the night skyline. Use **stackImages.py**. For example:
 
 >$python stackImages.py groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354 --nstack 20 --showme  --gif
  
@@ -58,9 +58,9 @@ ls groundtest1/
 At this point **N0100W1533S0450** contains: 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_sparklines_lcv.pdf**: sparkline plot of ALL lightcurves in the set. very long PDF. 
 
-- **ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCA.pdf**: the PCA components up to 90\% explained variance
+-**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCA.pdf**: the PCA components up to 90\% explained variance
 
-- **ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult.pdf**, and **ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_log.pdf**: the first and second PCA componet, and the distribution of radii on the PC1-PC2 plane, natural space over r^2, and logspace (in natural space /r^2 the distribution should be flat if the projections were randomely distributed).
+-**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult.pdf**, and **ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_log.pdf**: the first and second PCA componet, and the distribution of radii on the PC1-PC2 plane, natural space over r^2, and logspace (in natural space /r^2 the distribution should be flat if the projections were randomely distributed).
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_PC1PC2plane.pdf**: projection of the lightcurves in the PC1-PC2 plane, with selection threshold marked
 
