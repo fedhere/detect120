@@ -86,22 +86,33 @@ At this point **N0100W1533S0450** contains:
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult.pdf**, and **ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_log.pdf**: the first and second PCA componet, and the distribution of radii on the PC1-PC2 plane, natural space over r^2, and logspace (in natural space /r^2 the distribution should be flat if the projections were randomely distributed).
 
-![](pipeline/stacks/groundtest1/N0100W1533S0450/
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_log.png "PCA result")
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_PC1PC2plane.pdf**: projection of the lightcurves in the PC1-PC2 plane, with selection threshold marked
 
--**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows.pdf**: the windows that make the final cut overplotted on the scene. 
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_PCAresult_PC1PC2plane.png "PC1PC2 plane"
 
--**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_splwfft.pdf**: the PCA selected lightcurves and their power spectra. overplotted is the sine fit to the lightcurve with a phase calculated as arctangent(PC1/PC2). The chi square and the location of the max of the power spectrum are marked on the left and right respectively (when 2 frequencies are tried there re 2 chi squares)
+-**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows.pdf**: the windows that make the final cut overplotted on the scene. 
+ 
+-**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_splwfft.pdf**: the PCA selected lightcurves and their power spectra. overplotted is the sine fit to the lightcurve with a phase calculated as arctangent(PC1/PC2). The chi square and the location of the max of the power spectrum are marked on the left and right respectively (when 2 frequencies are tried there re 2 chi squares) A gif of it looks like this:
+
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-2220941_PCAresult_sparklines.GIF)
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows_fits_pca.pdf**: the lightcurves that make the final cut with overplotted sine fit. Labels indicate the pixel location of the light on the scene, the phase and frequency, and the chi square of the sine fit
 
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows_fits_pca.png)
+
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_stats.pdf**: distribution of frequencies and phases in the set. the phases are calculated both by the fit and as arctangent of the ratio of the first 2 principal components.
+
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_stats.png)
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_transform.pdf**: the power spectrum and the lightcurve resonstructed by inverting it. only really interesting if the --smooth option is used and at this time it needs testing.
 
 
--**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.png**: the scene is plotted with the selected windows highlighted in color corresponing to the phase.
+
+-**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.png**: the scene is plotted with the selected windows highlighted in color corresponing to the phase (binned).
+
+![](pipeline/stacks/groundtest1/N0100W1533S0450/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_phases.png)
 
 The following results are saved:
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_bs.npy**: the extracted lightcurves. 
