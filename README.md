@@ -41,12 +41,12 @@ The coordinate file is stored in **ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords
 A  **PDF** file of the sources on the scene is also stored: **ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.pdf**
 
 
-![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.png "scene windows")
+![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows_small.png "scene windows")
 
 plus a file showing the high pass version of the image, and the pixel distribution, with the selection threshold (red).
 
 
-![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_allwindows_small.png "scene windows selection")
+![](pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_allwindows.png "scene windows selection")
 
 ###3 -  Now you can extract the lightcurves and analyze them! 
 The code that does all that is **getalllcvPCA.py**
