@@ -156,14 +156,22 @@ One should consider that some automatically selected windows belong to the same 
 
 This code makes and stores the file **stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy** wich contains the "families" of windows. it is a numpy array of families, wach entry containing a list of coordinate pairs (xy pairs)
 
-###5 - Lastly: you can make plots of the phase evolution 
-across the runs, or for several unrsts in a run. You will need to chose a reference source, and pass its coordinates with --ref, and have a families file for the color coding.
+###5 - Lastly: you can make plots of the phase evolution, 
+do that with **makePhasePlot.py**, passing it the earlier products of the pipeline. Yu can do that across the runs, or for several unrsts in a run. You will need to chose a reference source, and pass its coordinates with --ref, and have a families file for the color coding.
 
 To plot a sequence of bursts within a run
 >python makePhasePlot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy    --ref 792.81,861.53  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --onerun N0100W1533
 
 To plot a burst from several runs
 >>python makePhasePlot.py groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-213949 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-220941 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-222440 groundtest1/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-223940 --nmax 100  --skipfiles 150 --coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy  --families stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy --ref 792,861
+
+This prodices the following lots, which are discussed in our paper (submitted, reference soon)
+
+![](pipeline/groundtest1/N0100W1533S0450/phasesRef_phases_792_861.pdf.png)
+
+![](pipeline/groundtest1/N0100W1533S0450/phasesRef_phases_N0100W1533_792_861.pdf.png)
+
+![](pipeline/groundtest1/N0100W1533S0450/phasematrix_phases.pdf.png)
 
 
 ###Additional code: 
