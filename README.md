@@ -22,8 +22,8 @@ __1 -  First off: You need to decide what is a source. Generally that starts wit
  
 This creates a directory **stacks** and stores the aa file recording the image size in it (under the assumptinon that the image size for science images is the same as that of the images used to make the stack.  If the image input has a path it will also create a directory corresponding to the full image path, up to the name (**groundtest1** in this case) 
 
-![](https://github.com/fedhere/detect120/pipeline/tree/master/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.png)
-![](https://github.com/fedhere/detect120/pipeline/tree/master/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.png)
+![](https://github.com/fedhere/detect120/tree/master/pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.png)
+![](https://github.com/fedhere/detect120/tree/master/pipeline/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_labelledwindows.png)
 __2 - Find the windows (or light sources) in the stack image__. We do that by high pass filtering the image and then threshold it. Use **windosFinder.py** The threshold is set automatically to 90% of the distribution of pixels. It can also be set by hand
 At this point groundtest contains a file storing the image size as a json file
 >ls groundtest1/
