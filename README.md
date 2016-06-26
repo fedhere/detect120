@@ -30,7 +30,9 @@ We do that by high pass filtering the image and then threshold it. Use **windows
 
 At this point groundtest contains a file storing the image size as a json file
 >ls groundtest1/
+
 >ESB_c0.7Hz_250ms_2016-05-24-230354_imgsize.txt 
+
 so the rest of the pipeline will use this info and wont need to find the file size (make sure you analyze images that have the same size as your stack though!)
 
 >$python windowFinder.py stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20.npy
