@@ -23,14 +23,14 @@ params = {'font.weight' : 'normal',
 
 pl.rcParams.update(params)
 
-families = np.load("stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy")
+families = np.load("../outputs/stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy")
 fams = {}
 for i,f in enumerate(families):
     for m in f:
         fams[(int(m[0]),int(m[1]))] = i+1
-PCAr = np.load("groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-%s_PCAamplitudes.npy"%sys.argv[1])
-coords = np.load("groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-%s_coords.npy"%sys.argv[1])
-goodphases = np.load("groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-%s_goodcoords.npy"%sys.argv[1])
+PCAr = np.load("../outputs/groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-%s_PCAamplitudes.npy"%sys.argv[1])
+coords = np.load("../outputs/groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-%s_coords.npy"%sys.argv[1])
+goodphases = np.load("../outputs/groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-%s_goodcoords.npy"%sys.argv[1])
 
 colors = np.zeros(PCAr.shape[0], int)
 phases = np.ones(PCAr.shape[0])*-1

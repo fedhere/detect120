@@ -137,7 +137,7 @@ if __name__=='__main__':
     '''
     thr=200
     args = [0]
-    args[0] = "stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20.npy"
+    args[0] = "../outputs/stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20.npy"
     '''
     stack = np.load(args[0])
     

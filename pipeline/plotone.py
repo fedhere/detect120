@@ -217,7 +217,7 @@ if __name__=='__main__':
     
     options,  args = parser.parse_args()
     #options.lmax=500
-    options.coordfil="coordfile stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy"
+    #options.coordfile="../outputs/stacks/groundtest1/ESB_c0.7Hz_250ms_2016-05-24-230354_N20_coords.npy"
     
     print ("options", options)
     print ("args", args, args[0])

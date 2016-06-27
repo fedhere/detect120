@@ -32,7 +32,7 @@ pl.rcParams.update(s)
 EXTRACT = True
 EXTRACT = False
 
-
+OUTPUTDIR = '../outputs/'
 #enable parallel processing
 NOPARALLEL = True
 #NOPARALLEL = False
@@ -90,7 +90,7 @@ def convert2PIL(f, imshape, cutout):
     except Exception as e:
         return Image.fromarray(np.zeros((cutout[1]-cutout[0],cutout[3]-cutout[2], imshape['nbands']), np.uint8))
 
-def resd_fold((p), data, time):
+def resd_fold(p, data, time):
     #function to be minimized
     phi, fq = p
     print (phi,fq)
@@ -561,8 +561,8 @@ def fit_freq(freq, ts, imgspacing, phi0=0.0, iteratit=False,
                          
         if fp:
             import time
-            fname = '/'.join(fp.split('/')[:-1])+"/triangles/"+fp.split('/')[-1]+"_triangle_"
-            subprocess.Popen('mkdir -p %s '%('/'.join(fp.split('/')[:-1])+"/triangles"), shell=True)
+            fname = OUTPUTDIR + '/'.join(fp.split('/')[:-1])+"/triangles/"+fp.split('/')[-1]+"_triangle_"
+            subprocess.Popen('mkdir -p %s '%(OUTPUTDIR + '/'.join(fp.split('/')[:-1])+"/triangles"), shell=True)
             
             cfig = corner.corner(samples, labels=["$\phi$", "freq"],
                       truths=[phase,freq])
@@ -653,9 +653,9 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
         phi0=np.zeros(timeseries.shape[0])+phi0
     
     if fft:
-        outphasesfile = open(filepattern+"_fft_phases_N%04dW%04dS%04d.dat"%(nmax,lmax, skipfiles), "w")
+        outphasesfile = open(OUTPUTDIR+filepattern+"_fft_phases_N%04dW%04dS%04d.dat"%(nmax,lmax, skipfiles), "w")
     else:
-        outphasesfile = open(filepattern+"_phases_N%04dW%04dS%04d.dat"%(nmax,lmax,
+        outphasesfile = open(OUTPUTDIR+filepattern+"_phases_N%04dW%04dS%04d.dat"%(nmax,lmax,
          skipfiles), "w")
         
     print ("#index,x,y,phase,chi2,freq", file=outphasesfile)
@@ -1099,9 +1099,9 @@ def runit((arg, options)):
 
     if options.stack:
         print ("(There is a stack", options.stack,")")
-        stack = np.load(options.stack)
+        stack = np.load(OUTPUTDIR+options.stack)
         imsize  = findsize(stack,
-                           filepattern=options.stack.replace('.npy','.txt'))
+                           filepattern=OUTPUTDIR+options.stack.replace('.npy','.txt'))
     else:
         imsize  = findsize(img, filepattern=filepattern)
         stack = np.fromfile(img,dtype=np.uint8).reshape(imsize['nrows'],
@@ -1121,31 +1121,31 @@ def runit((arg, options)):
     flist = flist[options.skipfiles:nmax+options.skipfiles]    
 
     if options.coordfile:
-        print ("Using coordinates file", options.coordfile)
+        print ("Using coordinates file", OUTPUTDIR+options.coordfile)
         try:
-            allights = np.load(options.coordfile)
+            allights = np.load(OUTPUTDIR+options.coordfile)
         except:
             print ("you need to create the window mask, you can use windowFinder.py")
-            print (options.coordfile)
+            print (OUTPUTDIR+options.coordfile)
             return (-1)
-    elif os.path.isfile(filepattern+"_allights.npy"):
+    elif os.path.isfile(OUTPUTDIR + filepattern+"_allights.npy"):
         try:
-            allights = np.load(filepattern+"_allights.npy")
+            allights = np.load(OUTPUTDIR+filepattern+"_allights.npy")
         except:
             print ("you need to create the window mask, you can use windowFinder.py")
-            print (filepattern+"_allights.npy")
+            print (OUTPUTDIR+filepattern+"_allights.npy")
             return (-1)
     else:
         print ("you need to create the window mask, you can use windowFinder.py")
-        print (filepattern+"_allights.npy")
+        print (OUTPUTDIR+filepattern+"_allights.npy")
         return (-1)
         
         
     lmax = len(allights)
     if options.lmax: lmax = min([lmax, options.lmax])
     print ("Max number of windows to use: %d"%lmax)
-    outdir0 = '../outputs/'.join(filepattern.split('/')[:-1])+'/N%04dS%04d'%(nmax,  options.skipfiles)
-    outdir = '../outputs/'.join(filepattern.split('/')[:-1])+'/N%04dW%04dS%04d'%(nmax,
+    outdir0 = OUTPUTDIR+'/'.join(filepattern.split('/')[:-1])+'/N%04dS%04d'%(nmax,  options.skipfiles)
+    outdir = OUTPUTDIR+'/'.join(filepattern.split('/')[:-1])+'/N%04dW%04dS%04d'%(nmax,
                                                                        lmax,
                                                                        options.skipfiles)
     if not os.path.isdir(outdir):
@@ -1158,15 +1158,15 @@ def runit((arg, options)):
         #os.system('mkdir -p %s'%outdir0+"/gifs")
         subprocess.Popen('mkdir -p %s/%s'%(outdir0,'pngs'), shell=True)
     print ("Output directories: ",
-           '/'.join(filepattern.split('/')[:-1]), outdir0, outdir)
+           OUTPUTDIR+'/'.join(filepattern.split('/')[:-1]), outdir0, outdir)
 
-    logfile = open(filepattern+".log", "a")
-    if (os.path.getsize(filepattern+".log"))>100000:
+    logfile = open(OUTPUTDIR+filepattern+".log", "a")
+    if (os.path.getsize(OUTPUTDIR+filepattern+".log"))>100000:
         #print (os.path.getsize(filepattern+".log"), filepattern+".log")
         #print ('tail -1000 %s > tmplog | mv tmplog %s'%(filepattern+".log", filepattern+".log"))
         try:
-            subprocess.Popen('tail -1000 %s > tmplog | mv tmplog %s'%(filepattern+".log", filepattern+".log"))
-            logfile = open(filepattern+".log", "a")
+            subprocess.Popen('tail -1000 %s > tmplog | mv tmplog %s'%(filepattern+".log", OUTPUTDIR+filepattern+".log"))
+            logfile = open(OUTPUTDIR+filepattern+".log", "a")
         except OSError: pass
 
     print ("Logfile:", logfile)

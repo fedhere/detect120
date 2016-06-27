@@ -2,5 +2,14 @@
 **/.DS_Store
 **/.ipynb_checkpoints/**pyc
 *~
+*.pyc
+*.dat
+*.txt
+*.pkl
+*.html
+*.log
+*.*.npy
+*.pdf
 *GIF
 *png
+.ipynb_checkpoints

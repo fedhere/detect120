@@ -33,7 +33,7 @@ if __name__=='__main__':
     impath = os.getenv("UIdata") + filepattern
     fnameroot = filepattern.split('/')[-1]
     flist = sorted(glob.glob(impath+"*1??.raw"))#[:30]
-    coords = np.load("groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodcoords.npy")
+    coords = np.load("../outputs/groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodcoords.npy")
     img = flist[0]
     imsize  = findsize(img, filepattern=filepattern)
     img = np.fromfile(img,dtype=np.uint8).reshape(imsize['nrows'],
@@ -46,8 +46,8 @@ if __name__=='__main__':
         #imshow(np.repeat((windows == l),3).reshape(stack.shape)*stack)
 
     mask = np.zeros((img.shape[0], img.shape[1]))*False
-    families = np.load("stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy")
-    windows = np.load("stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_labels.npy")
+    families = np.load("../outputs/stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_families.npy")
+    windows = np.load("../outputs/stacks/ESB_c0.7Hz_250ms_2016-05-24-230354-0000_20_labels.npy")
 
     for f in coords.T:
         #print (mask.sum())

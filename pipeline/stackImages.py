@@ -60,12 +60,12 @@ def stackem(imgesize, stackarray, filename, gifit=False):
               sys.stdout.flush()
               fig = pl.figure()
               pl.imshow(f, interpolation='nearest')
-              pl.savefig('stacks/'+filename+'_%03d.png'%i)
+              pl.savefig('../outputs/stacks/'+filename+'_%03d.png'%i)
               pl.close(fig)
     #save the images of the stack in a movie
     if gifit:
         print ("\nGIFfing...")
-        writeGif('stacks/'+ filename + \
+        writeGif('../outputs/stacks/'+ filename + \
                  "_N%d"%stackarray.shape[0]+".GIF",
                  [Image.fromarray(np.uint8(np.array(f)/f.max()*255)) for f in stackarray],
                  duration=0.01)
@@ -124,10 +124,10 @@ if __name__ == '__main__':
     fnameroot = filepattern.split('/')[-1]
 
     #creates the directory to store the stacks
-    os.system('mkdir -p stacks/'+'/'.join(filepattern.split('/')[:-1]))
+    os.system('mkdir -p ../outputs/stacks/'+'/'.join(filepattern.split('/')[:-1]))
 
     #creates the directory to store the other produts
-    os.system('mkdir -p '+'/'.join(filepattern.split('/')[:-1]))
+    os.system('mkdir -p ../outputs/'+'/'.join(filepattern.split('/')[:-1]))
 
     #find image size
     if not options.imsize == '':
@@ -154,7 +154,7 @@ if __name__ == '__main__':
     print ("")
 
     #saves the stack as a npy array file
-    np.save('stacks/%s_N%d.npy'%(filepattern, options.nstack), stack)
+    np.save('../outputs/stacks/%s_N%d.npy'%(filepattern, options.nstack), stack)
 
     #saves the stack in a png
     stackfig = pl.figure()
@@ -162,7 +162,7 @@ if __name__ == '__main__':
     ax0.imshow(stack.clip(0,255).astype(np.uint8), interpolation='nearest')
     ax0.axis('off')
     if options.showme: pl.show()
-    stackfig.savefig('stacks/%s_N%d.png'%(filepattern, options.nstack))
+    stackfig.savefig('../outputs/stacks/%s_N%d.png'%(filepattern, options.nstack))
 
 
 
