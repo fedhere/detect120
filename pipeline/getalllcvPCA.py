@@ -23,6 +23,7 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import Imputer
 import IPython.display as IPdisplay
 import multiprocessing as mpc
+from plotStats import plotstats
 
 from findImageSize import findsize
 s = json.load( open("fbb_matplotlibrc.json") )
@@ -31,6 +32,7 @@ pl.rcParams.update(s)
 ### EXTRACT: if True extracts the lightcurves from imaging data
 EXTRACT = True
 EXTRACT = False
+
 
 OUTPUTDIR = '../outputs/'
 #enable parallel processing
@@ -136,31 +138,7 @@ def lnprob(theta, x, y):
         return -np.inf
     return lp + lnlike(theta, x, y)
 
-def plotstats(phases, fname, PC=None):
-    #plots distribution of freq/phases over a run
-    pcs = [16., 50., 68.]    
-    fig = pl.figure(figsize=(10,8))
-    ax = fig.add_subplot(211)
-    pl.hist(phases[6], color="IndianRed", alpha=0.8)    
-    ax.set_xlabel("frequency (Hz)")
-    ax.set_title("Run %s"%fname.split("_")[-2].split(".")[0])
-    pc =  np.percentile(phases[-1], pcs)
-    for k in pc:
-        ax.plot([k, k],[0, ax.get_ylim()[1]],
-                 '-', color='black', alpha=0.5)        
 
-    ax = fig.add_subplot(212)
-    pl.hist(phases[0], color="SteelBlue", alpha=0.8)
-    ax.set_xlabel("phase")
-    ax.set_xlabel(r"phase ($\pi$ rad)")
-    if not PC is None:
-        pl.hist((np.arctan2(PC[:,1][PC[:,0]>0.2],PC[:,2][PC[:,0]>0.2])+np.pi)/np.pi, color="Grey", alpha=0.8)               
-    pc =  np.percentile(phases[0], pcs)
-    for k in pc:
-        ax.plot([k, k],[0, ax.get_ylim()[1]],
-                 '-', color='black', alpha=0.5)
-    
-    pl.savefig(fname)
 
 def rsquared (data,model):
     #squares residuals
