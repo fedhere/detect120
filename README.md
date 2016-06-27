@@ -187,11 +187,11 @@ To plot a burst from several runs
 
 This prodices the following lots, which are discussed in our paper (submitted, reference soon)
 
-![](outputs/groundtest1/N0100W1533S0450/phasesRef_phases_792_861.pdf.png)
+![](outputs/phasesRef_phases_792_861.pdf.png)
 
-![](outputs/groundtest1/N0100W1533S0450/phasesRef_phases_N0100W1533_792_861.pdf.png)
+![](outputs/phasesRef_phases_N0100W1533_792_861.pdf.png)
 
-![](outputs/groundtest1/N0100W1533S0450/phasematrix_phases.pdf.png)
+![](outputs/phasematrix_phases.pdf.png)
 
 
 ###Additional code: 

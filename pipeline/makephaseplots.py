@@ -23,6 +23,7 @@ from scipy.stats import mode
 from findImageSize import findsize
 from gen_cmap import hyss_gen_cmap
 
+OUTPUTDIR = "../outputs/"
 s = json.load( open("fbb_matplotlibrc.json") )
 pl.rcParams.update(s)
 '''
@@ -179,13 +180,13 @@ if __name__ == '__main__':
                 except:
                     print ("you need to create the window mask, you can use windowFinder.py")
                     sys.exit()
-            elif os.path.isfile(filepattern+"_allights.npy") :
+            elif os.path.isfile(OUTPUTDIR+filepattern+"_allights.npy") :
                 try:
-                    allights = np.load(filepattern+"_allights.npy")
+                    allights = np.load(OUTPUTDIR+filepattern+"_allights.npy")
                     lmax = len(allights)                    
                 except:
                     print ("you need to create the window mask, you can use windowFinder.py")
-                    print (filepattern+"_allights.npy")
+                    print (OUTPUTDIR+filepattern+"_allights.npy")
                     sys.exit()
 
             else:
@@ -198,21 +199,21 @@ if __name__ == '__main__':
     
         if not options.onerun:
             if options.fft:
-                phasefilename = filepattern+\
+                phasefilename = OUTPUTDIR+filepattern+\
                             "_fft_phases_N%04dW%04dS%04d.dat"%(nmax,
                                                                lmax,
                                                                options.skipfiles)
             else:
-                phasefilename = filepattern+\
+                phasefilename = OUTPUTDIR+filepattern+\
                             "_phases_N%04dW%04dS%04d.dat"%(nmax,
                                                            lmax,
                                                           options.skipfiles)
             phaseflist.append(phasefilename)
         else:
-            print (filepattern+\
+            print (OUTPUTDIR+filepattern+\
                             "_phases_*"+options.onerun+"S????.dat")
             
-            phaseflist = np.array( glob.glob(filepattern+\
+            phaseflist = np.array( glob.glob(OUTPUTDIR+filepattern+\
                             "_phases_*"+options.onerun+"S????.dat"))
 
     phaseflist = np.array(phaseflist)
@@ -546,30 +547,30 @@ if __name__ == '__main__':
     if TWODPLOT:
         if not options.onerun:
             if options.offset:
-                fig.savefig("moneyplot_offset_%d_%d.pdf"%(ref[0],ref[1]))
+                fig.savefig(OUTPUTDIR+"/phasesRef_phases_offset_%d_%d.pdf"%(ref[0],ref[1]))
             else:
-                fig.savefig("moneyplot_phases_%d_%d.pdf"%(ref[0],ref[1]))
+                fig.savefig(OUTPUTDIR+"/phasesRef_phases_%d_%d.pdf"%(ref[0],ref[1]))
         else:
             if options.offset:
-                fig.savefig("moneyplot_offset_%s_%d_%d.pdf"%(options.onerun,
+                fig.savefig(OUTPUTDIR+"/phasesRef_offset_%s_%d_%d.pdf"%(options.onerun,
                                                         ref[0], ref[1]))
             else:
-                fig.savefig("moneyplot_phases_%s_%d_%d.pdf"%(options.onerun,
+                fig.savefig(OUTPUTDIR+"/phasesRef_phases_%s_%d_%d.pdf"%(options.onerun,
                                                         ref[0], ref[1]))
     if SINGLEPLOT:
         fig2.tight_layout()
 
         if not options.onerun:
             if options.offset:
-                fig2.savefig("phasesRef_offset_%d_%d.pdf"%(ref[0],ref[1]))
+                fig2.savefig(OUTPUTDIR+"phasesRef_offset_%d_%d.pdf"%(ref[0],ref[1]))
             else:
-                fig2.savefig("phasesRef_phases_%d_%d.pdf"%(ref[0],ref[1]))
+                fig2.savefig(OUTPUTDIR+"phasesRef_phases_%d_%d.pdf"%(ref[0],ref[1]))
         else:
             if options.offset:
-                fig2.savefig("phasesRef_offset_%s_%d_%d.pdf"%(options.onerun,
+                fig2.savefig(OUTPUTDIR+"phasesRef_offset_%s_%d_%d.pdf"%(options.onerun,
                                                         ref[0], ref[1]))
             else:
-                fig2.savefig("phasesRef_phases_%s_%d_%d.pdf"%(options.onerun,
+                fig2.savefig(OUTPUTDIR+"phasesRef_phases_%s_%d_%d.pdf"%(options.onerun,
                                                         ref[0], ref[1]))
     #pl.show()
     #pl.close('all')
@@ -654,13 +655,13 @@ if __name__ == '__main__':
         #figmx.tight_layout()
         if not options.onerun:
             if options.offset:
-                figmx.savefig("phasematrix_offset.pdf")
+                figmx.savefig(OUTPUTDIR+"phasematrix_offset.pdf")
             else:
-                figmx.savefig("phasematrix_phases.pdf")
+                figmx.savefig(OUTPUTDIR+"phasematrix_phases.pdf")
         else:
             if options.offset:
-                figmx.savefig("phasematrix_offset_%s.pdf"%(options.onerun))
+                figmx.savefig(OUTPUTDIR+"phasematrix_offset_%s.pdf"%(options.onerun))
             else:
-                figmx.savefig("phasematrix_phases_%s.pdf"%(options.onerun))
+                figmx.savefig(OUTPUTDIR+"phasematrix_phases_%s.pdf"%(options.onerun))
     else: pl.show()
     pl.close('all')
