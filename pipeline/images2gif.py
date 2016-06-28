@@ -127,7 +127,7 @@ def _writeGifToFile(fp, images, durations, loops):
     # Obtain palette for all images and count each occurance
     palettes, occur = [], []
     for im in images: 
-        palettes.append( getheader(im)[1] )
+        palettes.append(im.palette.getdata()[1])
     for palette in palettes: 
         occur.append( palettes.count( palette ) )
     

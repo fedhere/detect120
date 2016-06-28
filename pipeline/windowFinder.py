@@ -202,7 +202,7 @@ if __name__ == '__main__':
         ax3.plot([thr, thr], [0, ax3.get_ylim()[1]],
                  '-', color = 'IndianRed')
         ax3.text(thr, ax3.get_ylim()[1] * 0.8, "%d"%(thr),
-                 ha = 'right', color = 'red')
+                 ha = 'left', color = 'red')
 
         ax3.set_xlim(pc[0], max(pc[-2], thr))
         # pl.show()

@@ -39,7 +39,7 @@ OUTPUTDIR = '../outputs/'
 NOPARALLEL = True
 #NOPARALLEL = False
 #must set the backand to agg for parallel processing to work
-#if not NOPARALLEL: matplotlib.use('agg')
+if not NOPARALLEL: matplotlib.use('agg')
 
 ### READ: if True reads the results of the PCA clustering
 ### stored in earlier runs, if they exist
@@ -88,8 +88,9 @@ def convert2PIL(f, imshape, cutout):
         return Image.fromarray(np.fromfile(f, dtype=np.uint8).reshape(imshape['nrows'],
                                                                       imshape['ncols'],
                                                                       imshape['nbands'])\
-                               [cutout[0]:cutout[1],cutout[2]:cutout[3]])
+                               [cutout[0]:cutout[1],cutout[2]:cutout[3]]).convert('L')
     except Exception as e:
+        print ("failed to convert for gif")
         return Image.fromarray(np.zeros((cutout[1]-cutout[0],cutout[3]-cutout[2], imshape['nbands']), np.uint8))
 
 def resd_fold(p, data, time):
@@ -168,9 +169,10 @@ def makeGifLcPlot(x, y, ind, ts, xfreq, aperture, fnameroot,
     
 def callplotw(xc, yc, i, ts, xfreq, flist, aperture, imshape, fft=False,
               fname = None, giflen=40, stack=None, gifs = False, outdir='./'):
-   #plots thumbnails for a source makesa GIF
+   # plots thumbnails for a source makesa GIF
    fig = pl.figure(figsize=(10,10))
-   ax1 = fig.add_subplot(221)
+   ax1 = pl.subplot2grid((4,4), (0, 0), colspan = 2, rowspan = 2)
+   # add_subplot(221)
    if stack is None:
        print ("no stack")
        ind = min([len(flist),10])
@@ -186,8 +188,9 @@ def callplotw(xc, yc, i, ts, xfreq, flist, aperture, imshape, fft=False,
                plotimg = 0)
    ax1.set_title("window coordinates: %d %d"%(xc, yc))
     
-   ax2 = fig.add_subplot(222)
-   
+   # ax2 = fig.add_subplot(222)
+   ax2 = pl.subplot2grid((4,4), (0, 2), colspan = 2, rowspan = 2)   
+
    plotwindows(xc-aperture, yc-aperture, xc+aperture, yc+aperture, 
                img, imshape, wsize=(30,30), axs=ax2, c='Lime',
                plotimg = 0)
@@ -206,10 +209,12 @@ def callplotw(xc, yc, i, ts, xfreq, flist, aperture, imshape, fft=False,
                print ("failed to write to disk")
                pass
 
-   ax3 = fig.add_subplot(223)
+   # ax3 = fig.add_subplot(223)
+   ax3 = pl.subplot2grid((4,4), (2, 0), colspan = 4, rowspan = 1)
    ax3.plot(ts, label = "time series")
    ax3.legend()
-   ax4 = fig.add_subplot(224)
+   # ax4 = fig.add_subplot(224)
+   ax4 = pl.subplot2grid((4,4), (3, 0), colspan = 4, rowspan = 1)
    if fft:
        ax4.plot(np.abs(np.fft.irfft(ts)), 
                 label = "ifft")
@@ -542,8 +547,8 @@ def fit_freq(freq, ts, imgspacing, phi0=0.0, iteratit=False,
             fname = OUTPUTDIR + '/'.join(fp.split('/')[:-1])+"/triangles/"+fp.split('/')[-1]+"_triangle_"
             subprocess.Popen('mkdir -p %s '%(OUTPUTDIR + '/'.join(fp.split('/')[:-1])+"/triangles"), shell=True)
             
-            cfig = corner.corner(samples, labels=["$\phi$", "freq"],
-                      truths=[phase,freq])
+            cfig = corner.corner(samples, labels=[r"$\phi$ +2", r"$\nu$"],
+                      truths=[phase+2,freq])
             tm = time.time()
             cfig.savefig(fname+"%04d_%04d.png"%(int(xy[0]),int(xy[1])))
         
@@ -735,13 +740,14 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
                     stdbs, label="x=%.2f y=%.2f"%(phases['x'][i], phases['y'][i]))
         ax[-1].plot(np.arange(stdbs.size) * imgspacing,
                     thiswave,
-                    label=r"$\phi$=%.2f $\chi^2$=%.2f $\nu$=%.2f$"%\
-                    (phases['phase'][i], phases['chi2'][i], phases['freq'][i]))
+                    label = r"$ \phi $" + "=%.2f "%phases['phase'][i] +\
+                    r"$ \nu $" + "=%.2f "%phases['freq'][i] + r"$ \chi^2 $"+"=%.2f "%phases['chi2'][i])
         
         ax[-1].set_xticks([])
         ax[-1].set_yticks([])            
+        ax[-1].set_ylim(ax[-1].get_ylim()[0], ax[-1].set_ylim()[1]*1.5) 
         newntot += 1
-        ax[-1].legend(frameon=False, fontsize=10)
+        ax[-1].legend(frameon=False, fontsize=10, ncol=3)
         
         
         if gifs: makeGifLcPlot(phases['x'][i], phases['y'][i],
@@ -1095,7 +1101,9 @@ def runit((arg, options)):
 
     nmax = min(options.nmax, len(flist)-options.skipfiles)
     print ("Number of timestamps (files): %d"%(nmax))
-    if nmax<30: return 0
+    if nmax<30: 
+        print ("too few images: minimum 30")
+        return 0
     flist = flist[options.skipfiles:nmax+options.skipfiles]    
 
     if options.coordfile:
