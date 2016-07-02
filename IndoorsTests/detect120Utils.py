@@ -1,12 +1,7 @@
 __author__ = 'fbb CUSP2016'
 import pylab as pl
 import numpy as np
-import os
 import scipy
-from scipy import optimize
-from scipy import signal
-from scipy.ndimage.filters import median_filter
-from numpy import fft
 import statsmodels.api as sm
 from scipy.interpolate import interp1d
 
@@ -99,7 +94,10 @@ def model_wave(fl, rt, freq, mag=1.0, phase=0.0, offset=0, interpt=None):
     foldedfl, foldedt = folding(fl, rt, freq, cycles=1)
     if interpt is None: interpt = foldedt
     else:
-          tmp,  interpt = folding(np.zeros(len(interpt)), interpt, freq, cycles=1)
+          foldedfl,  interpt = folding(np.zeros(len(interpt)), interpt,
+                                  freq, cycles=1)
+    foldedfl = foldedfl * mag
+    interpt = interpt + phase
     return  makelcvmodel(foldedfl, foldedt, freq)(interpt)
 
 

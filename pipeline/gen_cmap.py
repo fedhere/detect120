@@ -2,7 +2,6 @@
 ###
 
 import numpy as np
-from scipy import interpolate
 import matplotlib.colors as colors
 import matplotlib.pyplot as plt
 
