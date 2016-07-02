@@ -34,8 +34,8 @@ def hyss_gen_cmap(clrs=None,
     # -- plot if desired
     if see:
         img = np.arange(10000).reshape(100,100)/10000.
-        plt.figure(0)
-        plt.imshow(img,cmap=my_cmap,interpolation='nearest')
+        fig = plt.figure(0)
+        fig.imshow(img,cmap=my_cmap,interpolation='nearest')
         plt.colorbar()
         plt.show()
 

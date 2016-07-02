@@ -277,9 +277,9 @@ if __name__ == '__main__':
     # set background to black
     clrs[bar == 0] = [0, 0, 0, 255]
 
-    pl.figure()
+    fig = pl.figure()
 
-    pl.imshow(clrs, interpolation = 'nearest')
+    fig.imshow(clrs, interpolation = 'nearest')
     np.save(args[0].replace(".npy", "_labelledwindows.npy"), clrs)
     pl.xlim(0, pl.xlim()[1])
     pl.ylim(pl.ylim()[0], 0)
@@ -295,9 +295,9 @@ if __name__ == '__main__':
                                                np.where(
                                                    goodwindows))).squeeze()
     mask = np.array([labels == i for i in range(1, labels.max() + 1)])
-    pl.figure()
+    fig = pl.figure()
 
-    pl.imshow(clrs, interpolation = 'nearest')
+    fig.imshow(clrs, interpolation = 'nearest')
     pl.xlim(0, pl.xlim()[1])
     pl.ylim(pl.ylim()[0], 0)
 

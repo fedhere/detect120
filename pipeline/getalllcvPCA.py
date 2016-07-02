@@ -912,8 +912,8 @@ def plotPC12plane(PCAr, srtindx, color = None, htmlout = None,
             print (label)
             
             newcolors = np.array(['#ffffff']*len(srtindx[i]))
-            newcolors [pcar[:,0][srtindx[i]]>rmin[i]**2] =
-            \["#%02x%02x%02x" % (int(255/(r+1)),
+            newcolors [pcar[:,0][srtindx[i]]>rmin[i]**2] =\
+            ["#%02x%02x%02x" % (int(255/(r+1)),
                                  int(np.sqrt(r)*255),
                                  int((r**0.4)*255)) \
                                  for r in colornorm[srtindx[i]][pcar[:,0][srtindx[i]]>rmin[i]**2]]
@@ -1363,36 +1363,38 @@ def runit((arg, options)):
         pca = pkl.load(open(pcaresultfile))
         if not options.fft:
             timeseries = bs
-            x = np.arange(timeseries.shape[0])
             if options.smooth:
                 timeseries_smooth = np.array([fftsmooth(trs, options.sample_spacing) for trs in timeseries])[:,0]
 
         else:
             timeseries = fs
+        x = np.arange(timeseries.shape[0])
              
     else: 
         print ("\n### Starting PCA")
         
         if not options.fft:
             timeseries = bs
-            x = np.arange(timeseries.shape[0])
         else:
             timeseries = fs
             
         lts = len(timeseries)
         
         pca = PCA()
+
+        x = np.arange(timeseries.shape[0])
         
         if options.smooth:
             print ("smoothing lightcurves")
             timeseries_smooth = np.array([fftsmooth(trs, options.sample_spacing) for trs in timeseries])
             fftsmoothfig = pl.figure(figsize=(10,40))            
-            for ii,jj in enumerate(np.random.randint(0, high=trs.shape[0], size=30)):
+            for ii,jj in enumerate(np.random.randint(0, high=timeseries.shape[0], size=30)):
+                x = np.arange(timeseries.shape[0])
                 ax = fftsmoothfig.add_subplot(30,2,ii*2+1)
                 sparklines(timeseries[jj], "", ax,
-                           x=np.arange(timeseries[0].shape[0]))
+                           x=x)
                 sparklines(timeseries_smooth[jj][0], "", ax,
-                           x=np.arange(timeseries[0].shape[0]),
+                           x=x,
                            color="IndianRed", alpha=0.5)
                 ax = fftsmoothfig.add_subplot(30,2,ii*2+2)
                 sparklines(timeseries_smooth[jj][1]\

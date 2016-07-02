@@ -308,21 +308,6 @@ if __name__ == '__main__':
         building = building.astype(float)/building.max().squeeze()
         mymap = hyss_gen_cmap()
         mycm = mymap(building[::-1])
-        '''
-        print (building.shape)
-
-        print (len(mycm))
-        print (mycm.max())
-
-
-        #print (pl.cm.viridis(np.array((building))))
-
-        #print( mycm)
-
-        pl.figure()
-        pl.scatter(building,building,  c=mycm)
-        pl.show()
-        '''
         phasediff = np.zeros((len(phases),len(alllights)))
 
         mymode = np.zeros(len(phases))
