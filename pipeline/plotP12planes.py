@@ -31,7 +31,6 @@ Comments: This code is designed for the runs with path
 from pylab import rc
 rc('axes', linewidth=1.2)
 #from matplotlib.font_manager import FontProperties##
-import matplotlib as mpl
 params = {'font.weight' : 'normal',
           'axes.linewidth' : 2,
           'figure.autolayout': True,

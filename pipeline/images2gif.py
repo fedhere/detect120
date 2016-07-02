@@ -38,8 +38,8 @@ import os
 
 try:
     import PIL
-    from PIL import Image, ImageChops
-    from PIL.GifImagePlugin import getheader, getdata
+    from PIL import Image
+    from PIL.GifImagePlugin import getdata
 except ImportError:
     PIL = None
 
@@ -238,7 +238,7 @@ def writeGif(filename, images, duration=0.1, loops=0, dither=1):
         else:
             raise ValueError("len(duration) doesn't match amount of images.")
     else:
-        durations = [duration for im in images2]
+        durations = [duration for image in images2]
         
     
     # open file

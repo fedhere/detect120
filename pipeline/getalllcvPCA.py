@@ -246,7 +246,7 @@ def sparklines(data, lab, ax, x=None, title=None,
                 (ax.get_ylim()[1], ax.get_ylim()[1]), 'k-',)
 
     if nolabel:
-       return  ((np.nan, np.nan), np.nan)
+        return  ((np.nan, np.nan), np.nan)
     ymax = max(data[:-5])
     xmaxind = np.where(data[:-5] == ymax)[0]
     #print (xmaxind, x[xmaxind])
@@ -529,7 +529,6 @@ def fit_freq(freq, ts, imgspacing, phi0=0.0, iteratit=False,
         #print (phase_all, freq_all)
                          
         if fp:
-            import time
             fname = OUTPUTDIR + '/'.join(fp.split('/')[:-1])+"/triangles/"+fp.split('/')[-1]+"_triangle_"
             subprocess.Popen('mkdir -p %s '%(OUTPUTDIR + '/'.join(fp.split('/')[:-1])+"/triangles"), shell=True)
             
@@ -699,9 +698,10 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
         sparklines(thiswave,  "          %.2f"%(phases['chi2'][i]),
                    axsp[-2], color='r', alpha=0.3, nolabel=True)
         if phases['chi2'][i] > chi2thr and len(freq)>1:
-            phases['phase'][i], phases['freq'][i], phases['chi2'][i], thiswave,
-            phases['phase_e'][i],
-            phases['freq_e'][i]  = fit_freq(freq[1], stdbs, imgspacing,
+            phases['phase'][i], phases['freq'][i], \
+            phases['chi2'][i], thiswave, \
+            phases['phase_e'][i], \
+            phases['freq_e'][i] = fit_freq(freq[1], stdbs, imgspacing,
                                             phi0[i], iteratit=iteratit,
                                             mcmc=mcmc, fold=fold,
                                             fp = filepattern,
@@ -880,9 +880,11 @@ def plotPC12plane(PCAr, srtindx, color = None, htmlout = None,
         print ("making Bokeh plot")
         from bokeh.plotting import Figure as figure
         from bokeh.plotting import save as save
-        from bokeh.models import ColumnDataSource, HoverTool, HBox, VBoxForm, BoxSelectTool, TapTool
-        from bokeh.models.widgets import Slider, Select, TextInput
-        from bokeh.io import curdoc, gridplot
+        from bokeh.models import ColumnDataSource, HoverTool
+        #, HBox, VBoxForm, BoxSelectTool, TapTool
+        from bokeh.models.widgets import Select
+        #Slider, Select, TextInput
+        from bokeh.io import gridplot
         from bokeh.plotting import output_file
 
         output_file(htmlout)
@@ -1007,7 +1009,7 @@ def fftsmooth(timeseries, spacing):
     return [smoothedTs, transform, smoothedFFTs, xfreq]
 
 def PCAnalysis(pca, ts, xfreq, fname, allights, pcthr=10,
-               plotsparks = False, coords = None,
+               plotsparks = False,
                smooth=False):
     #runs the PCA analysis
     PCAr = np.zeros((ts.shape[0],7))

@@ -12,7 +12,6 @@ import scipy as sp
 import pylab as pl
 import optparse
 import matplotlib.gridspec as gridspec
-from scipy import ndimage
 from scipy import optimize
 from scipy.special import gammaln
 

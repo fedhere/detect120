@@ -2,11 +2,8 @@ from __future__ import print_function
 import glob
 import numpy as np
 import pylab as pl
-import sys
 import os
-import pickle as pkl
 #from gatspy.periodic import LombScargleFast
-from findImageSize import findsize
 import json
 s = json.load( open("fbb_matplotlibrc.json") )
 pl.rcParams.update(s)

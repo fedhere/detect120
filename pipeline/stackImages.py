@@ -8,11 +8,10 @@ import glob
 import numpy as np
 import optparse
 import pylab as pl
-import matplotlib
 import json
 
 from images2gif import writeGif
-from PIL import Image, ImageSequence
+from PIL import Image
 
 from findImageSize import findsize
 s = json.load(open("fbb_matplotlibrc.json"))
@@ -40,7 +39,7 @@ SAVEALL = False
 font = {'size': 23}
 
 
-def stackem(imgesize, stackarray, filename, gifit=False):
+def stackem(stackarray, filename, gifit=False):
 
     """ stacks a series of np arrays in a stack
     Args:
@@ -157,7 +156,7 @@ if __name__ == '__main__':
         except: pass
 
     # stack the images
-    stack = stackem(imsize, rgb, filepattern, options.gif)
+    stack = stackem(rgb, filepattern, options.gif)
     print("")
 
     # saves the stack as a npy array file

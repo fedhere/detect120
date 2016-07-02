@@ -10,15 +10,7 @@ import sys
 import os
 import pickle as pkl
 import json
-import scipy.optimize
-import datetime
 
-from images2gif import writeGif
-from PIL import Image, ImageSequence
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
-import IPython.display as IPdisplay
-from statistics import mode
 from scipy.stats import mode
 from findImageSize import findsize
 from gen_cmap import hyss_gen_cmap
@@ -572,7 +564,6 @@ if __name__ == '__main__':
     #if options.onerun:
     phasediffarray=[[],[],[],[],[],[]]
     if MXPLOT:
-        from sklearn.preprocessing import Imputer        
         for i in np.arange(5):
             phasediffarray[i] = []
             

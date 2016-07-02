@@ -9,22 +9,13 @@ import sys
 import os
 import pickle as pkl
 import json
-import scipy.optimize
 import datetime
-import itertools
 import matplotlib
 
 import pylab as pl
 import subprocess
 
-from images2gif import writeGif
-from PIL import Image, ImageSequence
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
-import IPython.display as IPdisplay
-import multiprocessing as mpc
-
-from findImageSize import findsize
+from PIL import Image
 s = json.load(open("fbb_matplotlibrc.json"))
 pl.rcParams.update(s)
 
@@ -93,8 +84,6 @@ def plotit(arg, options):
     nmax = options.nmax
 
     if  glob.glob(impath + "*0000.raw") > 0:
-        img = glob.glob(impath + "*0000.raw")[0]
-
         flist = sorted(glob.glob(impath + "*.raw"))
 
         print("Total number of image files: %d" % len(flist))
@@ -144,7 +133,6 @@ def plotit(arg, options):
 
     if os.path.isfile(pcaresultfile) and os.path.isfile(goodcoordsoutfile.replace("goodcoords.npy", "PCAamplitudes.npy")):
         pca = pkl.load(open(pcaresultfile))
-        timeseries = bs
         PCAr = np.load(goodcoordsoutfile.replace("goodcoords.npy", "PCAamplitudes.npy"))
 
     else:

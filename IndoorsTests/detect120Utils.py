@@ -16,7 +16,7 @@ def mynorm(flux):
     return 2 * (flux - flux.min()) / (flux.max() - flux.min())
 
 
-def plot_flux_by_runtime(flux, c_freq, runtime, fftax):
+def plot_flux_by_runtime(flux, c_freq, runtime):
     pl.figure(figsize=(20, 5))
 
     color = 'dodgerblue'
@@ -49,7 +49,7 @@ def plot_flux_by_imgn(flux, ax, key):
     ax.set_ylabel("Almost normalized flux", fontsize=15)
     #pl.ylim(-.1, 2.1)
 
-def plot_fft(flux, fftax, key):
+def plot_fft(flux, fftax):
     #pl.figure(figsize=(20, 5))
     n = len(flux)
     freq = np.fft.rfftfreq(n)
@@ -91,7 +91,7 @@ def makelcvmodel(fl, rt, fq, folding=False):
     return interp1d(foldedt, smoothed, kind='cubic', bounds_error=False)
 
 def model_wave(fl, rt, freq, mag=1.0, phase=0.0, offset=0, interpt=None):
-    foldedfl, foldedt = folding(fl, rt, freq, cycles=1)
+    foldedfl, foldedt = folding(fl, rt+offset, freq, cycles=1)
     if interpt is None: interpt = foldedt
     else:
           foldedfl,  interpt = folding(np.zeros(len(interpt)), interpt,
@@ -122,7 +122,7 @@ def fitphase(sine, flux, fq, curve=None):
         
     else:
         res = scipy.optimize.leastsq(minimizer, (0), #(1,0)
-                           args=(flux, range(len(flux)), fq, None))
+                           args=(flux, range(len(flux)), fq, sine))
     return res
 
 
