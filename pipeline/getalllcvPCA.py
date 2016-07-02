@@ -1030,11 +1030,11 @@ def PCAnalysis(pca, ts, xfreq, fname, allights, pcthr=10,
     #plotting
     fig = pl.figure()
     ax1 = fig.add_subplot(212)
-    pl.plot(evecs[0], label=r"PC_1")
-    pl.plot(evecs[1], label=r"PC_2")
-    pl.legend(loc = 6, ncol=2)
+    ax1.plot(evecs[0], label=r"PC_1")
+    ax1.plot(evecs[1], label=r"PC_2")
+    ax1.legend(loc = 6, ncol=2)
     ax2 = fig.add_subplot(211)
-    pl.hist(np.log10(np.sqrt(PCAr[:,0])), bins=30, cumulative=True)
+    ax2.hist(np.log10(np.sqrt(PCAr[:,0])), bins=30, cumulative=True)
     ax2.set_xlabel(r"$r  = \sqrt{PC_1^2+PC_2^2}$")
     ax2.set_ylabel("Number of lightcurves \n(cumulative)")
     #ax2.set_yscale('log')
@@ -1045,12 +1045,12 @@ def PCAnalysis(pca, ts, xfreq, fname, allights, pcthr=10,
 
     fig = pl.figure()
     ax1 = fig.add_subplot(212)
-    pl.plot(evecs[0], label=r"PC_1")
-    pl.plot(evecs[1], label=r"PC_2")
-    pl.legend(loc = 6, ncol=2)
+    ax1.plot(evecs[0], label=r"PC_1")
+    ax1.plot(evecs[1], label=r"PC_2")
+    ax1.legend(loc = 6, ncol=2)
     ax2 = fig.add_subplot(211)
     hist, bins = pl.histogram(np.sqrt(PCAr[:,0]), bins=30)
-    pl.bar(bins[:-1], hist/(bins[:-1]+np.diff(bins))**2,
+    ax2.bar(bins[:-1], hist/(bins[:-1]+np.diff(bins))**2,
            np.diff(bins), color=['SteelBlue'], alpha=1.0)    
     ax2.set_xlabel(r"$r  = \sqrt{PC_1^2+PC_2^2}$")
     ax2.set_ylabel(r"Number of lightcurves / $r^2$")
@@ -1117,7 +1117,7 @@ def PCAnalysis(pca, ts, xfreq, fname, allights, pcthr=10,
             
 
     fig, rmin = plotPC12plane(PCAr, srtindx)
-    
+    print("Minimum radius",rmin)
     fig.savefig(fname.replace(".pdf","_PC1PC2plane.pdf"))
 
     print ("saving ",fname, fname.replace(".pdf","_PC1PC2plane.pdf"))
@@ -1360,102 +1360,101 @@ def runit((arg, options)):
                                                        imsize['nbands'])
  
     if options.readPCA and os.path.isfile(pcaresultfile):
-         pca = pkl.load(open(pcaresultfile))
-         if not options.fft:
-             timeseries = bs
-             x = np.arange(timeseries.shape[0])
-             if options.smooth:
-                 timeseries_smooth = np.array([fftsmooth(trs, options.sample_spacing) for trs in timeseries])[:,0]
+        pca = pkl.load(open(pcaresultfile))
+        if not options.fft:
+            timeseries = bs
+            x = np.arange(timeseries.shape[0])
+            if options.smooth:
+                timeseries_smooth = np.array([fftsmooth(trs, options.sample_spacing) for trs in timeseries])[:,0]
 
-         else:
-             timeseries = fs
+        else:
+            timeseries = fs
              
     else: 
-         print ("\n### Starting PCA")
+        print ("\n### Starting PCA")
+        
+        if not options.fft:
+            timeseries = bs
+            x = np.arange(timeseries.shape[0])
+        else:
+            timeseries = fs
+            
+        lts = len(timeseries)
+        
+        pca = PCA()
+        
+        if options.smooth:
+            print ("smoothing lightcurves")
+            timeseries_smooth = np.array([fftsmooth(trs, options.sample_spacing) for trs in timeseries])
+            fftsmoothfig = pl.figure(figsize=(10,40))            
+            for ii,jj in enumerate(np.random.randint(0, high=trs.shape[0], size=30)):
+                ax = fftsmoothfig.add_subplot(30,2,ii*2+1)
+                sparklines(timeseries[jj], "", ax,
+                           x=np.arange(timeseries[0].shape[0]))
+                sparklines(timeseries_smooth[jj][0], "", ax,
+                           x=np.arange(timeseries[0].shape[0]),
+                           color="IndianRed", alpha=0.5)
+                ax = fftsmoothfig.add_subplot(30,2,ii*2+2)
+                sparklines(timeseries_smooth[jj][1]\
+                           [:timeseries[0].shape[0]/2],
+                           "", ax,
+                           x=timeseries_smooth[jj][3]\
+                           [:timeseries[0].shape[0]/2])
+                sparklines(timeseries_smooth[jj][2]\
+                           [:timeseries[0].shape[0]/2],
+                           "", ax,
+                           x=timeseries_smooth[jj][3]\
+                           [:timeseries[0].shape[0]/2],
+                           color="IndianRed", alpha=0.5)                 
+                ax.plot([0.25,0.25],ax.get_ylim(), color='k')
+            fftsmoothfig.savefig(outdir + "/" + fnameroot + "_sparklinesSmooth_lcv.pdf")
 
-         if not options.fft:
-             timeseries = bs
-             x = np.arange(timeseries.shape[0])
-         else:
-             timeseries = fs
-
-         lts = len(timeseries)
-
-         pca = PCA()
-
-         if options.smooth:
-             print ("smoothing lightcurves")
-             timeseries_smooth = np.array([fftsmooth(trs, options.sample_spacing) for trs in timeseries])
-             fftsmoothfig = pl.figure(figsize=(10,40))            
-             for ii,jj in enumerate(np.random.randint(0, high=trs.shape[0], size=30)):
-                 ax = fftsmoothfig.add_subplot(30,2,ii*2+1)
-                 sparklines(timeseries[jj], "", ax,
-                            x=np.arange(timeseries[0].shape[0]))
-                 sparklines(timeseries_smooth[jj][0], "", ax,
-                            x=np.arange(timeseries[0].shape[0]),
-                            color="IndianRed", alpha=0.5)
-                 ax = fftsmoothfig.add_subplot(30,2,ii*2+2)
-                 sparklines(timeseries_smooth[jj][1]\
-                                             [:timeseries[0].shape[0]/2],
-                                             "", ax,
-                                             x=timeseries_smooth[jj][3]\
-                                             [:timeseries[0].shape[0]/2])
-                 sparklines(timeseries_smooth[jj][2]\
-                            [:timeseries[0].shape[0]/2],
-                            "", ax,
-                            x=timeseries_smooth[jj][3]\
-                            [:timeseries[0].shape[0]/2],
-                            color="IndianRed", alpha=0.5)                 
-                 ax.plot([0.25,0.25],ax.get_ylim(), color='k')
-             fftsmoothfig.savefig(outdir + "/" + fnameroot + "_sparklinesSmooth_lcv.pdf")
-
-             timeseries_smooth = timeseries_smooth[:,0]
+            timeseries_smooth = timeseries_smooth[:,0]
+            
+            X_pca = pca.fit_transform(timeseries_smooth)
+            pca.fit(timeseries_smooth)
              
-             X_pca = pca.fit_transform(timeseries_smooth)
-             pca.fit(timeseries_smooth)
-             
-         else:             
-             X_pca = pca.fit_transform(timeseries)
-             pca.fit(timeseries)
+        else:             
+            X_pca = pca.fit_transform(timeseries)
+            pca.fit(timeseries)
 
-         evals = pca.explained_variance_ratio_
-         evals_cs = evals.cumsum()
-         evecs = pca.components_
-
-         figrows = min(60,(int(lts/2)+1))
-         figpca = pl.figure(figsize = (10, figrows))
-         spax = []
-         
-         if options.fft:
-             for i,Xc in enumerate(evecs):
-                 spax.append(figpca.add_subplot(figrows, 2, i+1))
-                 sparklines(Xc, "%.3f"%evals_cs[i], spax[i],
-                            x=xfreq, maxminloc=options.fft)
-                 if evals_cs[i] > 0.9 or i+1 == figrows * 2:
-                     break
-         else:
-             for i,Xc in enumerate(evecs):
-                 spax.append(figpca.add_subplot(figrows, 2, i+1))
-                 sparklines(Xc, "%.3f"%evals_cs[i], spax[i], twomax=False,
-                            maxminloc=options.fft)
-                 if evals_cs[i] > 0.9 or i+1 == figrows * 2:
-                     break
+        evals = pca.explained_variance_ratio_
+        evals_cs = evals.cumsum()
+        evecs = pca.components_
+        
+        figrows = min(60,(int(lts/2)+1))
+        figpca = pl.figure(figsize = (10, figrows))
+        spax = []
+        
+        if options.fft:
+            for i,Xc in enumerate(evecs):
+                spax.append(figpca.add_subplot(figrows, 2, i+1))
+                sparklines(Xc, "%.3f"%evals_cs[i], spax[i],
+                           x=xfreq, maxminloc=options.fft)
+                if evals_cs[i] > 0.9 or i+1 == figrows * 2:
+                    break
+        else:
+            for i,Xc in enumerate(evecs):
+                spax.append(figpca.add_subplot(figrows, 2, i+1))
+                sparklines(Xc, "%.3f"%evals_cs[i], spax[i], twomax=False,
+                           maxminloc=options.fft)
+                if evals_cs[i] > 0.9 or i+1 == figrows * 2:
+                    break
                 
              
          
-         pkl.dump(pca, open(pcaresultfile, "wb"))
+        pkl.dump(pca, open(pcaresultfile, "wb"))
          
-
-         print ("Number of PCA component to reconstruct 90% signal: {0}".format(i+1))
-         
-         if not options.fft:
-             if not options.smooth:
-                 figname = outdir + "/" + fnameroot + "_PCA.pdf"
-             else : figname = outdir + "/" + fnameroot + "_PCAsmooth.pdf"
-         else: figname = outdir + "/" + fnameroot + "_PCA_fft.pdf"
-
-         figpca.savefig(figname)
-         
+        print ("Number of PCA component to reconstruct 90% signal: {0}".format(i+1))
+        
+        if not options.fft:
+            if not options.smooth:
+                figname = outdir + "/" + fnameroot + "_PCA.pdf"
+            else : figname = outdir + "/" + fnameroot + "_PCAsmooth.pdf"
+        else: figname = outdir + "/" + fnameroot + "_PCA_fft.pdf"
+        
+        figpca.savefig(figname)
+        
     if options.smooth:
             
         PCAr, pcaindx, transformed = PCAnalysis(pca,
