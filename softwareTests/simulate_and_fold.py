@@ -49,8 +49,8 @@ def folding_test(w_type='sine',
 ### TO BE FINISHED
 # this will be a more customized function to fold our actual fluxes
 # default input: empty flux (must be specified) with shutter frequency 120 Hz and camera frequency 4 Hz
-def folding(flux={}, s_freq=120, c_freq=4):
-	if flux=={}:
+def folding(flux=None, s_freq=120, c_freq=4):
+	if flux is None:
 		print 'Flux must be specified (as a dict)'
 		return
 	time = np.linspace(0, len(flux[s_freq])/c_freq, len(flux[s_freq]), endpoint=True)

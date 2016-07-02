@@ -18,7 +18,7 @@ import pylab as pl
 import subprocess
 
 from images2gif import writeGif
-#from PIL import Image, ImageSequence
+from PIL import Image
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import Imputer
 import IPython.display as IPdisplay
