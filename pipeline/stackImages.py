@@ -118,7 +118,7 @@ if __name__ == '__main__':
         sys.exit(
 
     filepattern = args[0]
-    impath = os.getenv("UIdata") + '/' + filepattern + '*.raw'
+    impath = "%s/%s*.raw"%(os.getenv("UIdata"), filepattern)
     flist = glob.glob(impath)
     img = flist[0]
 
