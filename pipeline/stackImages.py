@@ -163,7 +163,7 @@ if __name__ == '__main__':
     print("")
 
     # saves the stack as a npy array file
-    np.save('../outputs/stacks/%s_N%d.npy'%(filepattern, options.nstack),
+    np.save(OUTPUTDIR + 's/stacks/%s_N%d.npy'%(filepattern, options.nstack),
             stack)
 
     # saves the stack in a png
@@ -174,6 +174,5 @@ if __name__ == '__main__':
     if options.showme:
         pl.show()
 
-    stackfig.savefig(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern,
-                                                     options.nstack))
+    stackfig.savefig(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack))
     print(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack)
