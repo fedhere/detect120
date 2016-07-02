@@ -3,27 +3,14 @@ from __future__ import print_function
 __author__ = "fbb"
 
 import glob
-import numpy as np
 import sys
 import os
-import pickle as pkl
-import json
-import scipy.optimize
-import datetime
-import itertools
-import matplotlib
 import optparse
-
 import pylab as pl
-import subprocess
+import numpy as np
 
-from scipy import stats
 from scipy.ndimage.filters import median_filter
 from images2gif import writeGif
-from PIL import Image, ImageSequence
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
-import IPython.display as IPdisplay
 
 from findImageSize import findsize
 
@@ -61,7 +48,6 @@ if __name__=='__main__':
                       help='stack file')  
 
     options,  args = parser.parse_args()
-    print(options)
     filepattern = sys.argv[1]
     impath = os.getenv("UIdata") + filepattern
     fnameroot = filepattern.split('/')[-1]
@@ -121,17 +107,6 @@ if __name__=='__main__':
     imgs = []
     imgsnomask = []
     for f in flist:
-        '''
-        print(imgmask * np\
-                  .fromfile(f,dtype=np.uint8).reshape(imsize['nrows'],
-                                                      imsize['ncols'],
-                                                      imsize['nbands']))
-        
-        pl.imshow(imgmask * np\
-                  .fromfile(f,dtype=np.uint8).reshape(imsize['nrows'],
-                                                      imsize['ncols'],
-                                                      imsize['nbands']))
-        '''
         data =  np.fromfile(f, dtype=np.uint8).reshape(imsize['nrows'],
                            imsize['ncols'],
                            imsize['nbands'])#-50.0) * 3
