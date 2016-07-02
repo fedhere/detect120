@@ -174,5 +174,5 @@ if __name__ == '__main__':
     if options.showme:
         pl.show()
 
-    stackfig.savefig(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack))
+    pl.savefig(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack))
     print(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack)
