@@ -7,8 +7,11 @@ import matplotlib.colors as colors
 import matplotlib.pyplot as plt
 
 
-def hyss_gen_cmap(clrs=['orange','darkorange','magenta', 'purple','lime','olive','dodgerblue','lightblue'],
+def hyss_gen_cmap(clrs=None,
                   gam=1.0, piv=None, see=False):
+
+    if clrs is None:
+        clrs = ['orange','darkorange','magenta', 'purple','lime','olive','dodgerblue','lightblue']
 
     # -- utilities
     lam = np.arange(256)/255.0

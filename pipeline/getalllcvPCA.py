@@ -38,7 +38,7 @@ OUTPUTDIR = '../outputs/'
 #enable parallel processing
 NOPARALLEL = True
 #NOPARALLEL = False
-#must set the backand to agg for parallel processing to work
+# must set the backand to agg for parallel processing to work
 if not NOPARALLEL: matplotlib.use('agg')
 
 ### READ: if True reads the results of the PCA clustering
@@ -841,85 +841,159 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
     return goodphases, phases
 
 
-def plotPC12plane(PCAr, srtindx, color=None, htmlout=None, phase=None, freq=None):
-    #plots PC1 PC@ plane projection
+def plotPC12plane(PCAr, srtindx, color = None, htmlout = None,
+                  phase = None, freq = None, multi = False,
+                  titles = None, stack=None):
+    #plots PC1 PC2 plane projection
     fig = pl.figure()
-    
-    #print (color)
-    rmin = np.sqrt(PCAr[srtindx[-1]][0])
-    print ("minimum radius on the PC1 PC2 plane: %.2f" %rmin)
-    pl.axes().set_aspect('equal')
-    circle1 = pl.Circle((0,0), rmin, color='k', fill=False)
-    circle2 = pl.Circle((0,0), 1, color='k', fill=False)
-    #pl.plot(PCAr[:,1]/np.sqrt(PCAr[:,3]), PCAr[:,2]/np.sqrt(PCAr[:,3]), 'o',
-    #     alpha=0.3, color="IndianRed")
-    
-    fig.gca().add_artist(circle1)
-    fig.gca().add_artist(circle2)
-    
-    #replotting the selected lcvs to reduce their transparency
-    pl.plot((PCAr[:,1]/np.sqrt(PCAr[:,3]))[PCAr[:,0]<rmin**2],
-         (PCAr[:,2]/np.sqrt(PCAr[:,3]))[PCAr[:,0]<rmin**2],
-         'o', alpha=0.3, color="grey")
-    if color is None:
-        pl.plot((PCAr[:,1]/np.sqrt(PCAr[:,3]))[PCAr[:,0]>rmin**2],
-                (PCAr[:,2]/np.sqrt(PCAr[:,3]))[PCAr[:,0]>rmin**2],
-                'o', alpha=0.6, color="IndianRed")
-
-    else:
-        colornorm = (color.astype(float) - color.min())/color.max()    
-        #print (pl.cm.jet((color[srtindx][PCAr[:,0][srtindx]>rmin**2])/color.max()))
-        pl.scatter((PCAr[:,1][srtindx]/np.sqrt(PCAr[:,3][srtindx]))[PCAr[:,0][srtindx]>rmin**2],
-                (PCAr[:,2][srtindx]/np.sqrt(PCAr[:,3][srtindx]))[PCAr[:,0][srtindx]>rmin**2],
-                   alpha=0.6, color=pl.cm.jet((color[srtindx][PCAr[:,0][srtindx]>rmin**2])/color.max()))
+    if not multi:
+        #print (color)
+        rmin = np.sqrt(PCAr[srtindx[-1]][0])
+        print ("minimum radius on the PC1 PC2 plane: %.2f" %rmin)
+        pl.axes().set_aspect('equal')
+        circle1 = pl.Circle((0,0), rmin, color='k', fill=False)
+        circle2 = pl.Circle((0,0), 1, color='k', fill=False)
+        #pl.plot(PCAr[:,1]/np.sqrt(PCAr[:,3]), PCAr[:,2]/np.sqrt(PCAr[:,3]), 'o',
+        #     alpha=0.3, color="IndianRed")
         
-    pl.plot([0,0], [-1,1],'k', lw=0.5)
-    pl.plot([-1,1], [0,0],'k', lw=0.5)
-    pl.xlim(-1.1,1.1)
-    pl.ylim(-1.1,1.1)    
-    #pl.text(0.62, -0.85, r"$R_\mathrm{min}$=%.2f"%rmin)
-    pl.text(-0.01, -rmin-0.02, r"$R_\mathrm{min}=$%.2f"%rmin, va='top', ha='right')    
+        fig.gca().add_artist(circle1)
+        fig.gca().add_artist(circle2)
+        
+        #replotting the selected lcvs to reduce their transparency
+        pl.plot((PCAr[:,1]/np.sqrt(PCAr[:,3]))[PCAr[:,0]<rmin**2],
+                (PCAr[:,2]/np.sqrt(PCAr[:,3]))[PCAr[:,0]<rmin**2],
+                'o', alpha=0.3, color="grey")
+        if color is None:
+            pl.plot((PCAr[:,1]/np.sqrt(PCAr[:,3]))[PCAr[:,0]>rmin**2],
+                    (PCAr[:,2]/np.sqrt(PCAr[:,3]))[PCAr[:,0]>rmin**2],
+                    'o', alpha=0.6, color="IndianRed")
+
+        else:
+            colornorm = (color.astype(float) - color.min())
+            colornorm /= color.max()    
+            #print (pl.cm.jet((color[srtindx][PCAr[:,0][srtindx]>rmin**2])/color.max()))
+            pl.scatter((PCAr[:,1][srtindx]/np.sqrt(PCAr[:,3][srtindx]))[PCAr[:,0][srtindx]>rmin**2],
+                       (PCAr[:,2][srtindx]/np.sqrt(PCAr[:,3][srtindx]))[PCAr[:,0][srtindx]>rmin**2],
+                       alpha=0.6, color=pl.cm.jet((colornorm[srtindx][PCAr[:,0][srtindx]>rmin**2])))
+            
+        pl.plot([0,0], [-1,1],'k', lw=0.5)
+        pl.plot([-1,1], [0,0],'k', lw=0.5)
+        pl.xlim(-1.1,1.1)
+        pl.ylim(-1.1,1.1)    
+        #pl.text(0.62, -0.85, r"$R_\mathrm{min}$=%.2f"%rmin)
+        pl.text(-0.01, -rmin-0.02, r"$R_\mathrm{min}=$%.2f"%rmin, va='top', ha='right')    
     
-    pl.ylabel(r"$\mathrm{PC}_2$")
-    pl.xlabel(r"$\mathrm{PC}_1$")
-    if not htmlout is None and not color is None:
+        pl.ylabel(r"$\mathrm{PC}_2$")
+        pl.xlabel(r"$\mathrm{PC}_1$")
+    if not htmlout is None and not color is None and multi:
+
         print ("making Bokeh plot")
         from bokeh.plotting import Figure as figure
         from bokeh.plotting import save as save
         from bokeh.plotting import show
         from bokeh.models import ColumnDataSource, HoverTool, HBox, VBoxForm, BoxSelectTool, TapTool
         from bokeh.models.widgets import Slider, Select, TextInput
-        from bokeh.io import curdoc, output_notebook
+        from bokeh.io import curdoc, output_notebook, gridplot
         from bokeh.plotting import output_file
 
         output_file(htmlout)
         print (htmlout)
-        TOOLS = [HoverTool()]
-        colors = ["#%02x%02x%02x" % (int(r*255), int((1-r)*255), 150) \
-                  for r in colornorm[srtindx][PCAr[:,0][srtindx]>rmin**2]]
+        TOOLS = ["tap"]
+        rmin = [np.sqrt(PCAr[i][srtindx[i][-1]][0]) for i in range(len(PCAr))]
+        p = []
         
+        #x = []
+        #x = set([x+pcar[i][:,1][srtindx[i]]/np.sqrt(PCAr[i][:,3][srtindx[i]]))[PCAr[i][:,0][srtindx[i]]>rmin[i]**2] for i in enumerate(PCAr)
+        print (srtindx)
+
         source = ColumnDataSource(
-            data = dict(
-                id = srtindx,
-                x= (PCAr[:,1][srtindx]/np.sqrt(PCAr[:,3][srtindx]))[PCAr[:,0][srtindx]>rmin**2],
-                y= (PCAr[:,2][srtindx]/np.sqrt(PCAr[:,3][srtindx]))[PCAr[:,0][srtindx]>rmin**2],
-                color = colors, #(color[srtindx][PCAr[:,0][srtindx]>rmin**2]),
-                phase = phase[srtindx][PCAr[:,0][srtindx]>rmin**2],
-                freq = freq[srtindx][PCAr[:,0][srtindx]>rmin**2],
-                label = color[srtindx][PCAr[:,0][srtindx]>rmin**2]
-                ))
-        hover = HoverTool(
-            tooltips=[
-                ("ID", "@id"),
-                ("label", "@label"),
-                ("phase", "@phase"),
-                ("frequency", "@freq"),
-            ])
-        p = figure(plot_width=400, plot_height=400, title=None, tools=[hover])
-        #p.circle(x=0,y=0,radius=1,fill_color="#ffffff",line_color="#000000")
-        p.circle('x', 'y', size=7, source=source, color='color')
-        p.xaxis.axis_label = "PC1"
-        p.yaxis.axis_label = "PC2"
+                data = dict(
+                    id = [],
+                    x = [],
+                    y = [],
+                    label = []))
+        colors = []
+        for i,pcar in enumerate(PCAr):
+            colornorm = (color[i] - color[i].min())
+            colornorm = colornorm.astype(float)/color[i].max()
+            label = np.array([-1]*len(srtindx[i]))
+            
+            label [pcar[:,0][srtindx[i]]>rmin[i]**2] = [r for r in color[i][srtindx[i]][pcar[:,0][srtindx[i]]>rmin[i]**2]]
+
+            print (label)
+            
+            newcolors = np.array(['#ffffff']*len(srtindx[i]))
+            newcolors [pcar[:,0][srtindx[i]]>rmin[i]**2] = ["#%02x%02x%02x" % (int(255/(r+1)), int(np.sqrt(r)*255), int((r**0.4)*255)) for r in colornorm[srtindx[i]][pcar[:,0][srtindx[i]]>rmin[i]**2]]
+
+            newcolors[label[[pcar[:,0][srtindx[i]]>rmin[i]**2]] == 0] = "#aaaaaa"
+            colors = colors + list(newcolors)
+            print (label)
+
+            #print (PCAr,  srtindx[i])
+            source.data['id'] = source.data['id'] + list(srtindx[i])
+            
+            source.data['label'] = source.data['label'] + list(label)
+            print (source.data['label'])
+        uniqueid = np.unique(source.data['id'], return_index=True)[1]
+        source.data['id'] = np.array(source.data['id'])[uniqueid]
+        #source.data['x'] = np.array(source.data['x'])[uniqueid]
+        #source.data['y'] = np.array(source.data['y'])[uniqueid]
+        source.data['label'] = np.array(source.data['label'])[uniqueid]
+        source.data['color'] = np.array(colors)[uniqueid]
+            
+        #color = colors, #(color[srtindx][PCAr[:,0][srtindx]>rmin**2]),
+        for i,pcar in enumerate(PCAr):
+        
+            source.data['phs%d'%i] = np.ones(len(source.data['id']))*np.nan
+            source.data['fq%d'%i] = np.ones(len(source.data['id']))*np.nan
+            source.data['x%d'%i] = np.ones(len(source.data['id']))*np.nan
+            source.data['y%d'%i] = np.ones(len(source.data['id']))*np.nan
+            
+
+
+            for j,st in enumerate(source.data['id']):
+                #print (st, st in srtindx[i], phase[i][0] )
+                if st in srtindx[i] and pcar[:,0][st]>rmin[i]**2:
+                    source.data['phs%d'%i][j] = phase[i][st]
+                    source.data['fq%d'%i][j] = freq[i][st]
+                    #[pcar[:,0][j]>rmin[i]**2]
+                    source.data['x%d'%i][j] = (pcar[:,1][st]/np.sqrt(pcar[:,3][j]))
+                    source.data['y%d'%i][j] = (pcar[:,2][st]/np.sqrt(pcar[:,3][j]))
+            
+            '''
+            source.data['phs%d'%i][j] = phase[i][srtindx[i] == 
+            [srtindx[i]==source.data.id[j] for j in range(len(source.data.id[j])) ) =  np.zeros(len(srtindx[i]))
+
+            
+            source.data['phs%d'%i] = phase[i][srtindx[i]][PCAr[i][:,0][srtindx[i]]>rmin[i]**2]
+            source.data['fq%d'%i] =  np.zeros(len(srtindx[i]))
+            source.data['fq%d'%i] = freq[i][srtindx[i]][PCAr[i][:,0][srtindx[i]]>rmin[i]**2]
+            '''
+            
+            hover = HoverTool(
+                tooltips=[
+                    ("ID", "@id"),
+                    ("building", "@label"),
+                    ("phase", "@phs%d"%i),
+                    ("frequency", "@fq%d"%i),
+                ])
+            p.append(figure(plot_width=400, plot_height=400,
+                            tools=TOOLS, title=titles[i]))
+            #p.circle(x=0,y=0,radius=1,fill_color="#ffffff",line_color="#000000")
+
+            p[-1].circle('x%d'%i, 'y%d'%i, size=7, source=source, color='grey', fill_color='color')
+            p[-1].xaxis.axis_label = "PC1"
+            p[-1].yaxis.axis_label = "PC2"
+            p[-1].add_tools(hover)
+        if not stack is None:
+            p.append(figure(plot_width=stack.shape[0], plot_height=stack.shape[1], 
+                            x_range=[0, stack.shape[0]],
+                            y_range=[stack.shape[1],0], logo='grey'))
+            p[-1].image(image=[stack], x=[0], y=[0], 
+                        dw=[stack.shape[0]], dh=[stack.shape[1]], palette='Greys9')
+            
+        p = gridplot([[p[i*2], p[i*2+1]] if len(p)>=i*2+2 else [p[i*2], None] for i in range((len(p)+1)/2) ])
+        print(htmlout)
         save(p)
     return fig, rmin
 
@@ -1576,7 +1650,8 @@ if __name__=='__main__':
         
     if not options.nps:
         options.nps = mpc.cpu_count()-1 or 1
-    
+
+    print ("starting main code")
     if options.nps > 1 and options.nbursts > 1 and not NOPARALLEL:
         print ("\n\n\nrunning on %d threads\n\n\n"%options.nps)
         pool = mpc.Pool(processes=options.nps)

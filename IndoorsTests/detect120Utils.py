@@ -95,9 +95,9 @@ def makelcvmodel(fl, rt, fq, folding=False):
     #pl.show()
     return interp1d(foldedt, smoothed, kind='cubic', bounds_error=False)
 
-def model_wave(fl, rt, freq, mag=1.0, phase=0.0, offset=0, interpt=[]):
+def model_wave(fl, rt, freq, mag=1.0, phase=0.0, offset=0, interpt=None):
     foldedfl, foldedt = folding(fl, rt, freq, cycles=1)
-    if len(interpt) == 0: interpt = foldedt
+    if interpt is None: interpt = foldedt
     else:
           tmp,  interpt = folding(np.zeros(len(interpt)), interpt, freq, cycles=1)
     return  makelcvmodel(foldedfl, foldedt, freq)(interpt)
