@@ -63,12 +63,6 @@ def runit((arg, options)):
 
     print ("")
 
-    '''
-    os.path.isfile(coordsoutfile):
-    print ("reading old data file", bsoutfile)
-    bs = np.load(bsoutfile)
-    allights = np.load(coordsoutfile)
-    '''
     print ("must read: ", options.stack,
            filepattern+"_goodcoords.npy")
     pl.figure()
@@ -85,7 +79,7 @@ def runit((arg, options)):
     gw = np.load(outdir+"/"+filepattern.split('/')[-1]+"_goodcoords.npy")
     imgmagood = np.zeros((img.shape[0],imgm.shape[1],4))
 
-    for i,g in enumerate(gw.T):
+    for g in gw.T:
         if not np.isnan(g[2]) and not np.isnan(g[3]):
             imgmagood[:,:,0] = imgmagood[:,:,0]+(imgmask[imgmask[:,int(g[3]),int(g[2])]>0]).squeeze()
             imgmagood[:,:,3] = imgmagood[:,:,3]+(imgmask[imgmask[:,int(g[3]),int(g[2])]>0]).squeeze()
