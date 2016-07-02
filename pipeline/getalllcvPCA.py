@@ -18,7 +18,7 @@ import pylab as pl
 import subprocess
 
 from images2gif import writeGif
-from PIL import Image, ImageSequence
+#from PIL import Image, ImageSequence
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import Imputer
 import IPython.display as IPdisplay
@@ -89,7 +89,7 @@ def convert2PIL(f, imshape, cutout):
                                                                       imshape['ncols'],
                                                                       imshape['nbands'])\
                                [cutout[0]:cutout[1],cutout[2]:cutout[3]]).convert('L')
-    except Exception as e:
+    except Exception:
         print ("failed to convert for gif")
         return Image.fromarray(np.zeros((cutout[1]-cutout[0],cutout[3]-cutout[2], imshape['nbands']), np.uint8))
 
@@ -169,62 +169,60 @@ def makeGifLcPlot(x, y, ind, ts, xfreq, aperture, fnameroot,
     
 def callplotw(xc, yc, i, ts, xfreq, flist, aperture, imshape, fft=False,
               fname = None, giflen=40, stack=None, gifs = False, outdir='./'):
-   # plots thumbnails for a source makesa GIF
-   fig = pl.figure(figsize=(10,10))
-   ax1 = pl.subplot2grid((4,4), (0, 0), colspan = 2, rowspan = 2)
-   # add_subplot(221)
-   if stack is None:
-       print ("no stack")
-       ind = min([len(flist),10])
-       img = np.fromfile(flist[ind],
-                        dtype=np.uint8).reshape(imshape['nrows'],
-                                                imshape['ncols'],
-                                                imshape['nbands'])
-   else:
-       img = stack
-
-   plotwindows(xc-25, yc-25, xc+25, yc+25,
-               img, imshape, axs=ax1, c='w',
-               plotimg = 0)
-   ax1.set_title("window coordinates: %d %d"%(xc, yc))
+    # plots thumbnails for a source makesa GIF
+    fig = pl.figure(figsize=(10,10))
+    ax1 = pl.subplot2grid((4,4), (0, 0), colspan = 2, rowspan = 2)
+    # add_subplot(221)
+    if stack is None:
+        print ("no stack")
+        ind = min([len(flist),10])
+        img = np.fromfile(flist[ind],
+                          dtype=np.uint8).reshape(imshape['nrows'],
+                                                  imshape['ncols'],
+                                                  imshape['nbands'])
+    else:
+        img = stack
+        
+    plotwindows(xc-25, yc-25, xc+25, yc+25,
+                img, imshape, axs=ax1, c='w',
+                plotimg = 0)
+    ax1.set_title("window coordinates: %d %d"%(xc, yc))
     
-   # ax2 = fig.add_subplot(222)
-   ax2 = pl.subplot2grid((4,4), (0, 2), colspan = 2, rowspan = 2)   
+    # ax2 = fig.add_subplot(222)
+    ax2 = pl.subplot2grid((4,4), (0, 2), colspan = 2, rowspan = 2)   
+    
+    plotwindows(xc-aperture, yc-aperture, xc+aperture, yc+aperture, 
+                img, imshape, wsize=(30,30), axs=ax2, c='Lime',
+                plotimg = 0)
+    ax2.set_title("aperture %d, index %d"%(aperture, i))
+    ax2.axis('off')
+    
+    if gifs:
+        giflen = min([giflen, len(flist)])
+        images = [convert2PIL(f, imshape, [int(yc)-22,int(yc)+21, int(xc)-22,int(xc)+21]) for f in flist[:giflen]]
+        fullfname = outdir + "/gifs/" + fname.split('/')[-1]
+        try: 
+            writeGif(fullfname + "_%04d_%04d"%(xc,yc)+".GIF",
+                     images, duration=0.01)
+        except: 
+            print ("failed to write to disk")
 
-   plotwindows(xc-aperture, yc-aperture, xc+aperture, yc+aperture, 
-               img, imshape, wsize=(30,30), axs=ax2, c='Lime',
-               plotimg = 0)
-   ax2.set_title("aperture %d, index %d"%(aperture, i))
-   ax2.axis('off')
-
-   if gifs:
-       giflen = min([giflen, len(flist)])
-       images = [convert2PIL(f, imshape, [int(yc)-22,int(yc)+21, int(xc)-22,int(xc)+21]) for f in flist[:giflen]]
-       fullfname = outdir + "/gifs/" + fname.split('/')[-1]
-       if gifs:
-           try: 
-               writeGif(fullfname + "_%04d_%04d"%(xc,yc)+".GIF",
-                        images, duration=0.01)
-           except: 
-               print ("failed to write to disk")
-               pass
-
-   # ax3 = fig.add_subplot(223)
-   ax3 = pl.subplot2grid((4,4), (2, 0), colspan = 4, rowspan = 1)
-   ax3.plot(ts, label = "time series")
-   ax3.legend()
-   # ax4 = fig.add_subplot(224)
-   ax4 = pl.subplot2grid((4,4), (3, 0), colspan = 4, rowspan = 1)
-   if fft:
-       ax4.plot(np.abs(np.fft.irfft(ts)), 
-                label = "ifft")
-       #ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
-   else:
-       ax4.plot(xfreq[2:], np.abs(np.fft.rfft(ts))[2:], 
-                label = "fft")
-       ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
-   ax4.legend()
-   return fig
+    # ax3 = fig.add_subplot(223)
+    ax3 = pl.subplot2grid((4,4), (2, 0), colspan = 4, rowspan = 1)
+    ax3.plot(ts, label = "time series")
+    ax3.legend()
+    # ax4 = fig.add_subplot(224)
+    ax4 = pl.subplot2grid((4,4), (3, 0), colspan = 4, rowspan = 1)
+    if fft:
+        ax4.plot(np.abs(np.fft.irfft(ts)), 
+                 label = "ifft")
+        #ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
+    else:
+        ax4.plot(xfreq[2:], np.abs(np.fft.rfft(ts))[2:], 
+                 label = "fft")
+        ax4.plot([0.25, 0.25], [ax4.get_ylim()[0], ax4.get_ylim()[1]])
+    ax4.legend()
+    return fig
 
 
 def sparklines(data, lab, ax, x=None, title=None,
@@ -315,7 +313,7 @@ def read_to_lc(coords, flist, fname, imshape, fft=False, c='w',
     fullfname = outdir + "/pickles/" + fname.split('/')[-1]
     nmax = len(flist)
     if showme :
-        plotwindows(x1,y1,x2,y2, flist[0], c=c)
+        plotwindows(x1, y1, x2, y2, flist[0], imshape, c=c)
     rereadnow = extract
 
     if not rereadnow:
@@ -367,19 +365,7 @@ def read_to_lc(coords, flist, fname, imshape, fft=False, c='w',
                                      imshape['nbands'])[y1:y2,x1:x2]
     except IndexError:
         print ("something is wrong with the file list ", flist)
-    '''
-    print (flist[0])
-    print (np.fromfile(flist[0],
-                       dtype=np.uint8).reshape(imshape['nrows'],
-                                               imshape['ncols'],
-                                               imshape['nbands']))
-    print (np.fromfile(flist[0],
-                      dtype=np.uint8).reshape(imshape['nrows'],
-                                              imshape['ncols'],
-                                              imshape['nbands'])[y1:y2,x1:x2])
-        
-        #print (glob.glob(impath+"*.raw"))
-    '''
+
     area = (x2-x1)*(y2-y1)
     if verbose:
         print ('mean: {0:.2f}, stdev: {1:.2f}, area: {2:d} pixels, {3:d} images, average flux/pixel: {4:.1f}'.format(
@@ -428,9 +414,9 @@ def get_plot_lca (coords, flist, fname, imshape, fft=False, c='w', verbose=True,
         pl.close(fig)
     return flux0, afft
 
-def extraction(((coord), xfreq, lmax,
-               flist, filepattern, imsize, outdir,
-                options, fig, ax, figfft, axfft)):
+def extraction(((coord),
+                flist, filepattern, imsize, outdir,
+                options)):
     #extracting lcv
     cc,i = coord
     extract = EXTRACT+options.extract
@@ -451,7 +437,7 @@ def extraction(((coord), xfreq, lmax,
 
 
 
-def plotwindows(x1,y1,x2,y2, img, imshape, wsize=None,
+def plotwindows(x1, y1, x2, y2, img, imshape, wsize=None,
                 axs=None, c='w', plotimg=0):
     ##plots selected windows
     if not axs :
@@ -549,7 +535,6 @@ def fit_freq(freq, ts, imgspacing, phi0=0.0, iteratit=False,
             
             cfig = corner.corner(samples, labels=[r"$\phi$ +2", r"$\nu$"],
                       truths=[phase+2,freq])
-            tm = time.time()
             cfig.savefig(fname+"%04d_%04d.png"%(int(xy[0]),int(xy[1])))
         
         phase_err, freq_err = phase_all[1:], freq_all[1:]
@@ -579,7 +564,7 @@ def fit_freq(freq, ts, imgspacing, phi0=0.0, iteratit=False,
                 #print (iteration, freq, phase, better)
     sinwave = wave(lts, phase, np.abs(freq))
 
-    if len(sinwave) == 2: thiswave = sinwave[0]
+    #if len(sinwave) == 2: thiswave = sinwave[0]
     chi2 = (chisq(signal, sinwave) if np.abs(freq-0.25)<0.06 else 99)
     #print (chi2)
     return phase, freq, chi2, sinwave, phase_err, freq_err
@@ -649,7 +634,6 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
     axspfft = []    
     goodcounter = 0
     #print (timeseries.shape, goodlabels.shape, transformed.shape)
-    ilast = 0
     for i, Xc in enumerate(timeseries):
         stdtimeseries = (Xc-Xc.mean())/Xc.std()
         stdbs = (bs[i]-bs[i].mean())/bs[i].std()
@@ -692,12 +676,12 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
             sparklines(transformed[i][2:-5],
                        "", axsp[-1],
                        color=color, alpha=alpha, maxminloc=True)
-        final_good_windows = []
         
         goodcounter +=1
         
         if len(freq)==2:
-            print ("\r Analyzing window {0:d} of {1:d} (testing frequencies {2}, {3}, accepted so far {4})".format(goodcounter, ntot, freq[0], freq[1], newntot),
+            print ("\r Analyzing window {0:d} of {1:d} (testing frequencies {2}, {3}, accepted so far {4})"\
+                   .format(goodcounter, ntot, freq[0], freq[1], newntot),
                    end="")
             sys.stdout.flush()
 
@@ -715,7 +699,14 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
         sparklines(thiswave,  "          %.2f"%(phases['chi2'][i]),
                    axsp[-2], color='r', alpha=0.3, nolabel=True)
         if phases['chi2'][i] > chi2thr and len(freq)>1:
-            phases['phase'][i], phases['freq'][i], phases['chi2'][i], thiswave, phases['phase_e'][i], phases['freq_e'][i]  = fit_freq(freq[1], stdbs, imgspacing, phi0[i], iteratit=iteratit, mcmc=mcmc, fold=fold, fp = filepattern, xy=(allights[goodlabels[i]][0], allights[goodlabels[i]][0]))
+            phases['phase'][i], phases['freq'][i], phases['chi2'][i], thiswave,
+            phases['phase_e'][i],
+            phases['freq_e'][i]  = fit_freq(freq[1], stdbs, imgspacing,
+                                            phi0[i], iteratit=iteratit,
+                                            mcmc=mcmc, fold=fold,
+                                            fp = filepattern,
+                                            xy=(allights[goodlabels[i]][0],
+                                                allights[goodlabels[i]][0]))
             
             sparklines(thiswave,  "                   %.2f"%(phases['chi2'][i]),
                                axsp[-2], color='y', alpha=0.3, nolabel=True)
@@ -776,7 +767,6 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
 
         
         
-        ilast = i
 
     goodphases = np.array([phases['phase'][phases['chi2']< chi2thr],
                            phases['index'][phases['chi2']< chi2thr],
@@ -832,7 +822,7 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
     try:
         fig.savefig(fignamegwfpca)                        
     except ValueError: 
-        print ("could not save figure %s"%fignamepca)
+        print ("could not save figure %s"%fignamegwfpca)
     pl.close(fig)
     print ("\nActual number of windows well fit by a sine wave (chisq<%.2f): %d"%(chi2thr, newntot))
   
@@ -890,10 +880,9 @@ def plotPC12plane(PCAr, srtindx, color = None, htmlout = None,
         print ("making Bokeh plot")
         from bokeh.plotting import Figure as figure
         from bokeh.plotting import save as save
-        from bokeh.plotting import show
         from bokeh.models import ColumnDataSource, HoverTool, HBox, VBoxForm, BoxSelectTool, TapTool
         from bokeh.models.widgets import Slider, Select, TextInput
-        from bokeh.io import curdoc, output_notebook, gridplot
+        from bokeh.io import curdoc, gridplot
         from bokeh.plotting import output_file
 
         output_file(htmlout)
@@ -923,7 +912,11 @@ def plotPC12plane(PCAr, srtindx, color = None, htmlout = None,
             print (label)
             
             newcolors = np.array(['#ffffff']*len(srtindx[i]))
-            newcolors [pcar[:,0][srtindx[i]]>rmin[i]**2] = ["#%02x%02x%02x" % (int(255/(r+1)), int(np.sqrt(r)*255), int((r**0.4)*255)) for r in colornorm[srtindx[i]][pcar[:,0][srtindx[i]]>rmin[i]**2]]
+            newcolors [pcar[:,0][srtindx[i]]>rmin[i]**2] =
+            \["#%02x%02x%02x" % (int(255/(r+1)),
+                                 int(np.sqrt(r)*255),
+                                 int((r**0.4)*255)) \
+                                 for r in colornorm[srtindx[i]][pcar[:,0][srtindx[i]]>rmin[i]**2]]
 
             newcolors[label[[pcar[:,0][srtindx[i]]>rmin[i]**2]] == 0] = "#aaaaaa"
             colors = colors + list(newcolors)
@@ -960,15 +953,13 @@ def plotPC12plane(PCAr, srtindx, color = None, htmlout = None,
                     source.data['x%d'%i][j] = (pcar[:,1][st]/np.sqrt(pcar[:,3][j]))
                     source.data['y%d'%i][j] = (pcar[:,2][st]/np.sqrt(pcar[:,3][j]))
             
-            '''
-            source.data['phs%d'%i][j] = phase[i][srtindx[i] == 
-            [srtindx[i]==source.data.id[j] for j in range(len(source.data.id[j])) ) =  np.zeros(len(srtindx[i]))
+            #source.data['phs%d'%i][j] = phase[i][srtindx[i] == 
+            #[srtindx[i]==source.data.id[j] for j in range(len(source.data.id[j])) ) =  np.zeros(len(srtindx[i]))
 
             
-            source.data['phs%d'%i] = phase[i][srtindx[i]][PCAr[i][:,0][srtindx[i]]>rmin[i]**2]
-            source.data['fq%d'%i] =  np.zeros(len(srtindx[i]))
-            source.data['fq%d'%i] = freq[i][srtindx[i]][PCAr[i][:,0][srtindx[i]]>rmin[i]**2]
-            '''
+            #source.data['phs%d'%i] = phase[i][srtindx[i]][PCAr[i][:,0][srtindx[i]]>rmin[i]**2]
+            #source.data['fq%d'%i] =  np.zeros(len(srtindx[i]))
+            #source.data['fq%d'%i] = freq[i][srtindx[i]][PCAr[i][:,0][srtindx[i]]>rmin[i]**2]
             
             hover = HoverTool(
                 tooltips=[
@@ -999,15 +990,16 @@ def plotPC12plane(PCAr, srtindx, color = None, htmlout = None,
 
 def fftsmooth(timeseries, spacing):
     #smooths lightcurves in fourier space, gaussian filter near 0.25Hz
-    from scipy.signal import gaussian
-    from scipy.ndimage import filters
+    #from scipy.signal import gaussian
+    #from scipy.ndimage import filters
 
     transform = np.fft.fft(timeseries)
     #print (transform.shape)
     xfreq = np.fft.fftfreq(transform.shape[0], d=spacing)  
     xtmp = np.abs( xfreq - 0.25)
     freq0 = np.where(xtmp==xtmp.min())
-    g = np.exp(-((np.abs(xfreq) - xfreq[freq0[0]]) / (2.0*xfreq[freq0[0]])) ** 2.)
+    g = np.exp(-((np.abs(xfreq) - xfreq[freq0[0]]) /
+                 (2.0*xfreq[freq0[0]])) ** 2.)
     print ("SIGMA: ", xfreq[freq0[0]])
     smoothedFFTs = transform * g
     smoothedTs = np.real(np.fft.ifft(smoothedFFTs))
@@ -1279,8 +1271,8 @@ def runit((arg, options)):
             primargs = np.array(zip(allights[:lmax], range(lmax)))
             #print (primargs)
             #sys.exit()
-            secondargs = [xfreq, lmax, filepattern,
-                          imsize, outdir0, options, figspk, ax, figspkfft, axfft]
+            secondargs = [lmax, filepattern,
+                          imsize, outdir0, options]
             pool.map(extraction, (itertools.izip(primargs, itertools.repeat(secondargs))))
             return (-1)
         else:
@@ -1290,11 +1282,10 @@ def runit((arg, options)):
                        .format(i+1, lmax, int(cc[0]),  int(cc[1])), end="")
                 sys.stdout.flush()
                 
-                bs[i], fs[i] = extraction(((cc, i), xfreq, lmax,
+                bs[i], fs[i] = extraction(((cc, i), 
                                           flist, filepattern,
                                           imsize, outdir0,
-                                          options, figspk, ax,
-                                          figspkfft, axfft))
+                                          options))
                 
                 ax.append(figspk.add_subplot(lmax/2+1,2,i+1))
 
