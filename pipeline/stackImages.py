@@ -24,6 +24,10 @@ except NameError:
     # Python 3
     raw_input = input
 
+
+
+
+    
 # if you have the stack parameters, for example from stacks already processed
 # you can read this in
 # import configstack as cfg
@@ -115,10 +119,12 @@ if __name__ == '__main__':
     except KeyError:
         print("must set environmental variable UIdata ")
         print("to the raw data directory")
-        sys.exit(
+        sys.exit()
+
+    UIdata = os.getenv("UIdata")
 
     filepattern = args[0]
-    impath = "%s/%s*.raw"%(os.getenv("UIdata"), filepattern)
+    impath = "%s/%s*.raw"%(UIdata, filepattern)
     flist = glob.glob(impath)
     img = flist[0]
 
