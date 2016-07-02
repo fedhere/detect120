@@ -1,15 +1,4 @@
-import glob
 import numpy as np
-import optparse
-import sys
-import os
-import pickle as pkl
-import json
-import scipy.optimize
-import datetime
-import itertools
-import matplotlib
-
 import pylab as pl
 
 def plotstats(phases, fname, PC=None):
