@@ -11,7 +11,7 @@ import numpy as np
 
 from scipy.ndimage.filters import median_filter
 from images2gif import writeGif
-
+from PIL import Image
 from findImageSize import findsize
 
 #giflen=100
