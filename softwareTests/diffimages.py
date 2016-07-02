@@ -2,14 +2,6 @@ from __future__ import print_function
 import glob
 import numpy as np
 import matplotlib.pyplot as pl
-import sys
-import pickle as pkl
-from scipy import misc
-from scipy import ndimage
-import matplotlib
-
-
-
 import json
 s = json.load( open("fbb_matplotlibrc.json") )
 pl.rcParams.update(s)
@@ -46,8 +38,6 @@ def scrollimg(data):
     
         return
     
-
-    xx   = np.arange(data.shape[1])
     # -- set up the plot
     ind = [0]
     fig = pl.figure()
@@ -66,7 +56,7 @@ def scrollimg(data):
     return
 
 
-def diffim(flist, fname, imgeom, col='w'):
+def diffim(flist, fname, imgeom):
     nrow, ncol, nband = imgeom
     diffims = np.zeros((len(flist),nrow,ncol,nband))
     print ("here")
@@ -81,8 +71,8 @@ def diffim(flist, fname, imgeom, col='w'):
     #scrollimg(data)
     scrollimg(diffims)
 
-    #pl.savefig('stacks/'+fname+"_%04d_diff.png"%(i))
-    #pl.close()
+    pl.savefig('stacks/'+fname+"_%04d_diff.png"%(i))
+    pl.close()
 
 print (cfg.imgpars['froot'])
 flist = glob.glob(cfg.imgpars['froot'])

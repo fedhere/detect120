@@ -1,7 +1,6 @@
 from struct import pack
-from math import sin, pi
+from math import sin
 import wave
-import random
 
 RATE=44100
 

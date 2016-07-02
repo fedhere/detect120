@@ -49,22 +49,22 @@ def runit((arg, options)):
            '/'.join(filepattern.split('/')[:-1]),  outdir)
 
     if options.fft:
-        bsoutfile = outdir + "/" + fnameroot + "_bs_fft.npy"
-        coordsoutfile = outdir + "/" + fnameroot + "_coords_fft.npy"
-        goodcoordsoutfile = outdir + "/" + fnameroot + "_goodcoords_fft.npy"                
-        kmresultfile = outdir + "/" + fnameroot + "_kmresult_fft.pkl"
+        #bsoutfile = outdir + "/" + fnameroot + "_bs_fft.npy"
+        #coordsoutfile = outdir + "/" + fnameroot + "_coords_fft.npy"
+        goodcoordsoutfile = outdir + "/" + fnameroot + "_goodcoords_fft.npy"  
+        #kmresultfile = outdir + "/" + fnameroot + "_kmresult_fft.pkl"
 
         
     else:
-        bsoutfile = outdir + "/" + fnameroot + "_bs.npy"
-        coordsoutfile = outdir + "/" + fnameroot + "_coords.npy"
+        #bsoutfile = outdir + "/" + fnameroot + "_bs.npy"
+        #coordsoutfile = outdir + "/" + fnameroot + "_coords.npy"
         goodcoordsoutfile = outdir + "/" + fnameroot + "_goodcoords.npy"
         kmresultfile = outdir + "/" + fnameroot + "_kmresult.pkl"
 
     print ("")
 
-    print ("must read: ", options.stack,
-           filepattern+"_goodcoords.npy")
+    print ("must read: ", goodcoordsoutfile)
+
     pl.figure()
     img = np.load(options.stack)
     imgm = imgmask.sum(axis=0)
