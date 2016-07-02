@@ -60,6 +60,7 @@ def diffim(flist, fname, imgeom):
     nrow, ncol, nband = imgeom
     diffims = np.zeros((len(flist),nrow,ncol,nband))
     print ("here")
+    i = 0
     for i in range(len(flist)-1):
         #print ("image %d"%i)
         diffims[i] = (np.fromfile(flist[0],

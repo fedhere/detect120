@@ -59,7 +59,7 @@ def runit((arg, options)):
         #bsoutfile = outdir + "/" + fnameroot + "_bs.npy"
         #coordsoutfile = outdir + "/" + fnameroot + "_coords.npy"
         goodcoordsoutfile = outdir + "/" + fnameroot + "_goodcoords.npy"
-        kmresultfile = outdir + "/" + fnameroot + "_kmresult.pkl"
+        #kmresultfile = outdir + "/" + fnameroot + "_kmresult.pkl"
 
     print ("")
 
