@@ -10,7 +10,7 @@ wv.setparams((1, 2, RATE, 0, 'NONE', 'not compressed'))
 maxVol=2**5-1.0 #maximum amplitude
 wvData=""
 for i in range(0, RATE*3):
-        wvData+=pack('h', maxVol*sin(i*500.0/RATE)) #500Hz
+    wvData+=pack('h', maxVol*sin(i*500.0/RATE)) #500Hz
 wv.writeframes(wvData)
 wv.close()
 
@@ -20,7 +20,7 @@ wv.setparams((2, 2, RATE, 0, 'NONE', 'not compressed'))
 maxVol=2**15-1.0 #maximum amplitude
 wvData=""
 for i in range(0, RATE*30):
-        wvData+=pack('h', maxVol*sin(i*500.0/RATE)) #500Hz left
-        wvData+=pack('h', maxVol*sin(i*200.0/RATE)) #200Hz right
+    wvData+=pack('h', maxVol*sin(i*500.0/RATE)) #500Hz left
+    wvData+=pack('h', maxVol*sin(i*200.0/RATE)) #200Hz right
 wv.writeframes(wvData)
 wv.close()

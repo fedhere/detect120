@@ -341,15 +341,15 @@ if __name__ == '__main__':
                                     'k-', alpha=0.5)
                         else:
                         
-                             ax.plot([i-1,i], [phasediff[i-1][l]-mymode[i-1],
+                            ax.plot([i-1,i], [phasediff[i-1][l]-mymode[i-1],
                                               phasediff[i][l]-mymode[i]],
                                     '-', color = mycm[l], alpha=1)
-                                    #'IndianRed', alpha=0.5)
+                            #'IndianRed', alpha=0.5)
                             #phasediff_old[l] = phasediff[l]
 
                             #axref.plot(i, phasediff[i][l]-myref[i], 'o', color = mycm[l],alpha=0.5)
-                    #ax.scatter([i]*len(phasediff[i]), phasediff[i]-mymode[i], 
-                    #        color = mycm, alpha=0.5)
+                            #ax.scatter([i]*len(phasediff[i]), phasediff[i]-mymode[i], 
+                            #        color = mycm, alpha=0.5)
                             
                         
                         if np.abs(phasediff[i-1][l]-myref[i-1] -

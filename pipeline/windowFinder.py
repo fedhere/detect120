@@ -154,18 +154,18 @@ if __name__ == '__main__':
                                                  (GS, GS, 0)))
 
     # reset the limits
-    foo = overgaussstack - overgaussstack.min()
-    foo /= foo.max()
+    hpfimg = overgaussstack - overgaussstack.min()
+    hpfimg /= hpfimg.max()
 
-    foo *= 255
-    flatfoo = foo.flatten()
+    hpfimg *= 255
+    flathpfimg = hpfimg.flatten()
     pcs = np.array([16, 50, 84, 90, 95, 99.5])
-    pc = np.percentile(flatfoo, pcs)
+    pc = np.percentile(flathpfimg, pcs)
     if options.noauto: thr = pc[pcs == 90]
     else: thr = options.thr
 
-    numbins = int(knuthn(flatfoo) + 0.5)
-    counts, bins = np.histogram(flatfoo, bins = numbins,
+    numbins = int(knuthn(flathpfimg) + 0.5)
+    counts, bins = np.histogram(flathpfimg, bins = numbins,
                                 density = True)
     widths = np.diff(bins)
     countsnorm = counts / counts.max()
@@ -177,7 +177,7 @@ if __name__ == '__main__':
         stackfig = pl.figure()
         gs = gridspec.GridSpec(2, 2)
         ax0 = stackfig.add_subplot(gs[0, 0])
-        ax0.imshow(foo.clip(thr/3, 255).astype(np.uint8),
+        ax0.imshow(hpfimg.clip(thr/3, 255).astype(np.uint8),
                    interpolation='nearest')
         ax0.set_title("gaussian filter residuals, gaussian size: %d"%GS,
                       fontsize = 10)
@@ -185,7 +185,7 @@ if __name__ == '__main__':
         ax1 = stackfig.add_subplot(gs[0, 1])
         ax1.set_title("thresholded image, threshold: %.2f"%thr,
                       fontsize = 10)
-        ax1.imshow(foo.mean(-1) > thr, interpolation = 'nearest',
+        ax1.imshow(hpfimg.mean(-1) > thr, interpolation = 'nearest',
                    cmap = 'gist_gray')
         ax1.axis('off')
         ax3 = stackfig.add_subplot(gs[1, :])
@@ -216,10 +216,10 @@ if __name__ == '__main__':
         else:
             thr = np.float(raw_input("try another threshold"))
             ax0 = stackfig.add_subplot(gs[0, 0])
-            ax0.imshow(foo.clip(thr / 3, 255).astype(np.uint8),
+            ax0.imshow(hpfimg.clip(thr / 3, 255).astype(np.uint8),
                        interpolation = 'nearest')
             ax1 = stackfig.add_subplot(gs[0, 1])
-            ax1.imshow(foo.mean(-1) > thr,
+            ax1.imshow(hpfimg.mean(-1) > thr,
                        interpolation = 'nearest',
                        cmap = 'gist_gray')
             ax3 = stackfig.add_subplot(gs[1, :])
@@ -242,7 +242,7 @@ if __name__ == '__main__':
         ax3.set_xlim(pc[0], max(pc[-1], thr))
     pl.ioff()
     newdata = sp.ndimage.filters.median_filter(\
-            (foo.mean(-1) > thr).astype(float), 4).astype(np.uint8)
+            (hpfimg.mean(-1) > thr).astype(float), 4).astype(np.uint8)
 
     labels, nlabels = sp.ndimage.measurements.label(newdata)
 
@@ -267,14 +267,14 @@ if __name__ == '__main__':
     def mapcolor(i):
         return tmp[i].astype(float)
 
-    bar = np.array(map(mapcolor, labels))
+    mpcl = np.array(map(mapcolor, labels))
     print(labels, labels == 0)
-    bar[labels == 0] = 0.
-    bar = bar / bar.max()
-    clrs = (pl.cm.jet((bar)) * 255).astype(np.uint8)
+    mpcl[labels == 0] = 0.
+    mpcl = mpcl / mpcl.max()
+    clrs = (pl.cm.jet((mpcl)) * 255).astype(np.uint8)
 
     # set background to black
-    clrs[bar == 0] = [0, 0, 0, 255]
+    clrs[mpcl == 0] = [0, 0, 0, 255]
 
     fig = pl.figure()
 
