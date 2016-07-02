@@ -882,7 +882,7 @@ def plotPC12plane(PCAr, srtindx, color = None, htmlout = None,
         from bokeh.plotting import save as save
         from bokeh.models import ColumnDataSource, HoverTool
         #, HBox, VBoxForm, BoxSelectTool, TapTool
-        from bokeh.models.widgets import Select
+        #from bokeh.models.widgets import Select
         #Slider, Select, TextInput
         from bokeh.io import gridplot
         from bokeh.plotting import output_file

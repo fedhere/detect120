@@ -15,7 +15,6 @@ import matplotlib
 import pylab as pl
 import subprocess
 
-from PIL import Image
 s = json.load(open("fbb_matplotlibrc.json"))
 pl.rcParams.update(s)
 
@@ -87,7 +86,7 @@ def plotit(arg, options):
         flist = sorted(glob.glob(impath + "*.raw"))
 
         print("Total number of image files: %d" % len(flist))
-
+        
         nmax = min(options.nmax, len(flist) - options.skipfiles)
 
         print("Number of timestamps (files): %d" % (nmax))

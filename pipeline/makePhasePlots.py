@@ -8,7 +8,6 @@ import optparse
 import pylab as pl
 import sys
 import os
-import pickle as pkl
 import json
 
 from scipy.stats import mode
