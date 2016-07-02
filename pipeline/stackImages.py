@@ -26,7 +26,7 @@ except NameError:
 
 
 
-
+OUTPUTDIR = '../outputs/'
     
 # if you have the stack parameters, for example from stacks already processed
 # you can read this in
@@ -171,7 +171,9 @@ if __name__ == '__main__':
     ax0 = stackfig.add_subplot(211)
     ax0.imshow(stack.clip(0, 255).astype(np.uint8), interpolation='nearest')
     ax0.axis('off')
-    if options.showme: pl.show()
-    stackfig.savefig('../outputs/stacks/%s_N%d.png'%(filepattern,
+    if options.showme:
+        pl.show()
+
+    stackfig.savefig(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern,
                                                      options.nstack))
-    print('../outputs/stacks/%s_N%d.png'%(filepattern, options.nstack)
+    print(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack)
