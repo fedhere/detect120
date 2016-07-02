@@ -17,6 +17,7 @@ matplotlib.use('agg')
 import pylab as pl
 import subprocess
 import findsize
+from getalllcvPCA import read_to_lc
 
 if __name__=='__main__':
     parser = optparse.OptionParser(usage="getallcv.py 'filepattern' ",
@@ -150,11 +151,11 @@ if __name__=='__main__':
     
     
             
-snrt = snr.T
-bin_limits = np.arange(min(x)-0.05, max(x)+0.05, 0.05)  
-points_by_bin = [ [] for _ in bin_limits ]
-for (bin_num, y_value) in zip(searchsorted(bin_limits, snrt[5], "right"), snrt[2]/snrt[3]):
-    points_by_bin[bin_num].append(y_value)
-ax = pl.figure().add_subplot(111)
-ax.set_xticklabels(['%.2f'%b for b in bin_limits])
-bp = ax.boxplot(points_by_bin)
+    snrt = snr.T
+    bin_limits = np.arange(min(x)-0.05, max(x)+0.05, 0.05)  
+    points_by_bin = [ [] for _ in bin_limits ]
+    for (bin_num, y_value) in zip(searchsorted(bin_limits, snrt[5], "right"), snrt[2]/snrt[3]):
+        points_by_bin[bin_num].append(y_value)
+    ax = pl.figure().add_subplot(111)
+    ax.set_xticklabels(['%.2f'%b for b in bin_limits])
+    bp = ax.boxplot(points_by_bin)
