@@ -16,6 +16,7 @@ import matplotlib
 matplotlib.use('agg')
 import pylab as pl
 import subprocess
+import findsize
 
 if __name__=='__main__':
     parser = optparse.OptionParser(usage="getallcv.py 'filepattern' ",

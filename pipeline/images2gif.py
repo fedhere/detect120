@@ -34,6 +34,7 @@ Many thanks to Ant1 for:
 - based on gif file structure as provided by wikipedia
 
 """
+import os
 
 try:
     import PIL

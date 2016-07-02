@@ -9,7 +9,6 @@ import json
 import os
 from getalllcvPCA import plotPC12plane
 
-import pylab as pl
 
 OUTPUTDIR = "../outputs/"
 

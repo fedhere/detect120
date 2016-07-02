@@ -825,14 +825,14 @@ def fit_waves(filepattern, lmax, nmax, timeseries, transformed,
     try:
         fig2.savefig(fignamegw)
     except ValueError: 
-        print ("could not save figure %s"%figname)    
+        print ("could not save figure %s"%fignamegw)    
     pl.close(fig2)
 
     ax[-1].set_xlabel("seconds")
     try:
         fig.savefig(fignamegwfpca)                        
     except ValueError: 
-        print ("could not save figure %s"%figname)
+        print ("could not save figure %s"%fignamepca)
     pl.close(fig)
     print ("\nActual number of windows well fit by a sine wave (chisq<%.2f): %d"%(chi2thr, newntot))
   

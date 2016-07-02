@@ -140,8 +140,7 @@ def plotit(arg, options):
         print("reading old data file", bsoutfile)
         bs = np.load(bsoutfile)
     else:
-        print("data files %s and %s must exist already" % (bsoutfile,
-                                                          coordsoutfile))
+        print("data files %s must exist already" % (bsoutfile))
 
     if os.path.isfile(pcaresultfile) and os.path.isfile(goodcoordsoutfile.replace("goodcoords.npy", "PCAamplitudes.npy")):
         pca = pkl.load(open(pcaresultfile))

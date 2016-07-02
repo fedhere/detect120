@@ -14,6 +14,7 @@ import optparse
 import matplotlib.gridspec as gridspec
 from scipy import ndimage
 from scipy import optimize
+from scipy.special import gammaln
 
 try:
     raw_input

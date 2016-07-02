@@ -4,7 +4,6 @@ __author__ = "fbb"
 
 import glob
 import numpy as np
-import optparse
 import sys
 import os
 import pickle as pkl
