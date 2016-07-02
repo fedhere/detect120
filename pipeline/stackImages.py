@@ -156,8 +156,6 @@ if __name__ == '__main__':
                                    imsize['nbands']).astype(float)
         except: pass
 
-
-
     # stack the images
     stack = stackem(imsize, rgb, filepattern, options.gif)
     print("")
@@ -174,5 +172,5 @@ if __name__ == '__main__':
     if options.showme:
         pl.show()
 
-    pl.savefig(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack))
-    print(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack)
+    stackfig.savefig(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack))
+    print(OUTPUTDIR + '/stacks/%s_N%d.png'%(filepattern, options.nstack))
