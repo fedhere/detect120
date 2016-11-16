@@ -1,8 +1,10 @@
 # detect120
 
 
-**monitor the 120 Hz grid frequency with low cost equipment**
+**monitor the 120 Hz grid frequency with low cost equipment to predict power failures and monitor power consumption**
 
+<b> please cite our [paper] (https://dl.acm.org/citation.cfm?id=2993570) on the [BuidSys2016] (buildsys.org/2016) conference precedings, also available on the [arxiv](https://arxiv.org/abs/1611.04633).</b> 
+<b> project [website](https://serv.cusp.nyu.edu/~fbianco/detect120/)</b>
 This repository collects the pipeline and some output from our experiments on studying the urban electrical grid's behavior through visible imaging monitoring at subsecond frequency. 
 A single camera sited at an urban vantage point offers broad, persistent, real-time coverage granular to individual housing units.
 
