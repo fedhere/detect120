@@ -8,7 +8,7 @@
 
 <b> project [website](https://serv.cusp.nyu.edu/~fbianco/detect120/)</b>
 
-This research is done at [CUSP](https://cusp.nyu.edu): CenterforUrban Science and Progress at New York University.
+This research is done at [CUSP](http://cusp.nyu.edu): CenterforUrban Science and Progress at New York University.
 
 This repository collects the pipeline and some output from our experiments on studying the urban electrical grid's behavior through visible imaging monitoring at subsecond frequency. 
 A single camera sited at an urban vantage point offers broad, persistent, real-time coverage granular to individual housing units.
@@ -201,7 +201,7 @@ This prodices the following lots, which are discussed in our paper (submitted, r
 ![](outputs/phasematrix_phases.pdf.png)
 
 
-###Additional code: 
+### Additional code: 
 
 **make_freqvsphase_errors.py** makes plots of freq vs phase, with errors, from the MCMC output.
 
