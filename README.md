@@ -99,7 +99,7 @@ At this point **N0100W1533S0450** contains:
  
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_splwfft.pdf**: the PCA selected lightcurves and their power spectra. overplotted is the sine fit to the lightcurve with a phase calculated as arctangent(PC1/PC2). The chi square and the location of the max of the power spectrum are marked on the left and right respectively (when 2 frequencies are tried there re 2 chi squares) A gif of it looks like this:
 
-![](outputs/groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-2220941_PCAresult_sparklines.GIF)
+![](https://github.com/fedhere/detect120/blob/master/additional_plots/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-2220941_PCAresult_sparklines.GIF)
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows_fits_pca.pdf**: the lightcurves that make the final cut with overplotted sine fit. Labels indicate the pixel location of the light on the scene, the phase and frequency, and the chi square of the sine fit
 
