@@ -1,7 +1,14 @@
 # detect120
 
 
-**monitor the 120 Hz grid frequency with low cost equipment**
+**We monitor the 120 Hz grid frequency with low cost equipment to predict power failures and monitor power consumption**
+
+<b> please cite our [paper] (https://dl.acm.org/citation.cfm?id=2993570) on the [BuidSys2016] (http://buildsys.acm.org/2016/) conference precedings, also available on the [arxiv](https://arxiv.org/abs/1611.04633).</b> 
+
+
+<b> project [website](https://serv.cusp.nyu.edu/~fbianco/detect120/)</b>
+
+This research is done at [CUSP](http://cusp.nyu.edu): Center for Urban Science and Progress at New York University.
 
 This repository collects the pipeline and some output from our experiments on studying the urban electrical grid's behavior through visible imaging monitoring at subsecond frequency. 
 A single camera sited at an urban vantage point offers broad, persistent, real-time coverage granular to individual housing units.
@@ -99,7 +106,7 @@ At this point **N0100W1533S0450** contains:
  
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_splwfft.pdf**: the PCA selected lightcurves and their power spectra. overplotted is the sine fit to the lightcurve with a phase calculated as arctangent(PC1/PC2). The chi square and the location of the max of the power spectrum are marked on the left and right respectively (when 2 frequencies are tried there re 2 chi squares) A gif of it looks like this:
 
-![](outputs/groundtest1/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-2220941_PCAresult_sparklines.GIF)
+![](https://github.com/fedhere/detect120/blob/master/additional_plots/N0100W1533S0150/ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-2220941_PCAresult_sparklines.GIF)
 
 -**ESB_s119.75Hz_c4.00Hz_100ms_2016-05-24-215440_goodwindows_fits_pca.pdf**: the lightcurves that make the final cut with overplotted sine fit. Labels indicate the pixel location of the light on the scene, the phase and frequency, and the chi square of the sine fit
 
@@ -194,7 +201,7 @@ This prodices the following lots, which are discussed in our paper (submitted, r
 ![](outputs/phasematrix_phases.pdf.png)
 
 
-###Additional code: 
+### Additional code: 
 
 **make_freqvsphase_errors.py** makes plots of freq vs phase, with errors, from the MCMC output.
 
